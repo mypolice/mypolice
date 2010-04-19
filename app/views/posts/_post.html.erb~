@@ -1,0 +1,6 @@
+<% div_for post do %>
+  <h2><%= link_to_unless_current post.title, post%></h2>
+  <p><%= post.user %></p>
+  <%= simple_format post.body %>
+<%end%>
+

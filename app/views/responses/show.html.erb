@@ -1,0 +1,20 @@
+<p class="notice"><%= notice %></p>
+
+<p>
+  <b>Post:</b>
+  <%= @response.post_id %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @response.body %>
+</p>
+
+<p>
+  <b>Post:</b>
+  <%= @response.post %>
+</p>
+
+
+<%= link_to 'Edit', edit_response_path(@response) %> |
+<%= link_to 'Back', responses_path %> 

@@ -1,0 +1,7 @@
+<% div_for response do %>
+  <p>
+  <strong> Posted by <%= (response.police.email)%> <%= time_ago_in_words(response.created_at) %>
+    ago</strong><br />
+    <%= (response.body) %>
+  </p>
+<% end%
