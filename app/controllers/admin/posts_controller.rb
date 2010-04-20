@@ -1,5 +1,5 @@
-class PostsController < ApplicationController
-  layout :post 
+class Admin::PostsController < ApplicationController
+  before_filter :authenticate_admin!
   def index
     @posts = Post.all
 
@@ -11,8 +11,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/1
-  # GET /posts/1.xml
   def show
     @post = Post.find(params[:id])
 
@@ -22,8 +20,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/new
-  # GET /posts/new.xml
   def new
     @post = Post.new
     respond_to do |format|
@@ -32,6 +28,9 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
 
   def create
     @post = Post.new(params[:post])
@@ -47,5 +46,30 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+    @post = Post.find(params[:id])
+
+    respond_to do |format|
+      if @post.update_attributes(params[:post])
+        format.html { redirect_to([:admin, @post], :notice => 'Post was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /posts/1
+  # DELETE /posts/1.xml
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(admin_posts_url) }
+      format.xml  { head :ok }
+    end
+  end
  
 end

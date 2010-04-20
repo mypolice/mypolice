@@ -1,0 +1,10 @@
+<% div_for post do %>
+  <h2><%= link_to_unless_current post.title, post%></h2>
+  <p>posted by <%= post.user.email %></p>
+  <%= simple_format post.body %>
+  <p>
+  <%= link_to 'Edit', edit_admin_post_path(post) %> |
+  <%= link_to 'Destory', [:admin, post], :method => :delete, :confirm => "Are you sure?" %>|
+  </p>
+<%end%>
+

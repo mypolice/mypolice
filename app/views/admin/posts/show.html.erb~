@@ -1,5 +1,9 @@
-<%= link_to "Back to All Posts", posts_path %>
 <%= render :partial => @post %>
+
+
+<p>
+  <%= link_to 'See All Posts', posts_path %>
+</p>
 
 <h2>Responses</h2>
 <div id = "responses">

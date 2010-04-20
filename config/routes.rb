@@ -10,8 +10,13 @@ Mypolice::Application.routes.draw do |map|
     resources :responses
     resources :comments
   end
+  
 
-  devise_for :users
+  namespace :admin do 
+    resources :posts, :comments, :responses, :users
+  end
+  
+  devise_for :users  
 
   get "home/index"
 

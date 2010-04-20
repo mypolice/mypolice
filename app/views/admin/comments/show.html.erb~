@@ -1,0 +1,15 @@
+
+  <b>Post:</b>
+  <p>Title: <%= @post.title %></p>
+  Body: <%= @post.body %>
+
+
+<p>
+  <b>Body:</b>
+  <%= @comment.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_comment_path(@comment) %> |
+<%= link_to 'Back', admin_comments_path %> |
+<%= link_to 'Destroy', [:admin, @comment], :action => :delete, :confirm => 'Are you sure to delete?' %>
