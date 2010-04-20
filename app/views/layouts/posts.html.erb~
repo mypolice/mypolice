@@ -5,10 +5,13 @@
   <%= stylesheet_link_tag 'scaffold' %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+  <%= active_scaffold_includes %>
+  
 </head>
 <body>
   <div>
      <div>
+       <% if current_user %>
         <p> Sign up as user 
         <% if user_signed_in? %>
           Signed in as <%= current_user.email%>. Not you?
@@ -17,7 +20,9 @@
           <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
         <% end %>
         </p>
+      <% end %>
 
+      <% if current_admin %>
         <p> sign up as admin
         <% if admin_signed_in? %>
           Signed in as <%= current_admin.email%>. Not you?
@@ -26,7 +31,9 @@
           <%= link_to "Sign up", new_admin_registration_path %> or <%= link_to "Sign in", new_admin_session_path %>
         <% end %>
         </p>
+      <% end %>
 
+      <% if current_police%>
          <p> sign up as police 
         <% if police_signed_in? %>
           Signed in as <%= current_police.name%>. Not you?
@@ -35,6 +42,7 @@
           <%= link_to "Sign up", new_police_registration_path %> or <%= link_to "Sign in", new_police_session_path %>
         <% end %>
         </p>
+      <% end %>
       </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
