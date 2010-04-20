@@ -13,7 +13,7 @@ Mypolice::Application.routes.draw do |map|
   
 
   namespace :admin do 
-    resources :posts, :comments, :responses, :users
+    resources :posts, :comments, :responses, :users, :polices
   end
   
   devise_for :users  

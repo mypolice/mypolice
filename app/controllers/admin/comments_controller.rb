@@ -29,7 +29,7 @@ class Admin::CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to([:admin, @comment], :notice => 'Post was successfully updated.') }
+        format.html { redirect_to([:admin, @comment], :notice => 'Comment was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
