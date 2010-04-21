@@ -10,11 +10,16 @@ Mypolice::Application.routes.draw do |map|
     resources :responses
     resources :comments
   end
-  
+
 
   namespace :admin do 
-    resources :posts, :comments, :responses, :users, :polices
-
+    resources :posts do  
+        put :approve, :on => :member
+        put :unapprove, :on => :member
+        get :approved, :on => :collection
+        get :unapproved, :on => :collection
+      end
+    resources :comments, :responses, :users, :polices
   end
   
   devise_for :users  
@@ -23,7 +28,7 @@ Mypolice::Application.routes.draw do |map|
   
   match "/admin" => "admin/dashboard#index", :as => :admin_root
   match "/police" => "police/dashboard#index", :as => :police_root
-
+ 
   
   resource :admins do 
     root :to => :admin_root 

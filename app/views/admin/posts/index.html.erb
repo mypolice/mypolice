@@ -1,7 +1,8 @@
 <h1>Listing posts</h1>
 
+<%= link_to 'See All Post', admin_posts_path %>|
+<%= link_to 'See All Approved Post', approved_admin_posts_path %>|
+<%= link_to 'See All Unapproved Post', unapproved_admin_posts_path %>|
+<%= link_to 'Dashboard', admin_root_path %>
+
 <%= render :partial => @posts %>
-
-
-<%= link_to 'See All Post', admin_posts_path %>
-<%= link_to 'New Post', new_post_path %>

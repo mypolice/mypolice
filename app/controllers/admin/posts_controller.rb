@@ -1,8 +1,8 @@
 class Admin::PostsController < ApplicationController
   before_filter :authenticate_admin!
+
   def index
     @posts = Post.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
@@ -13,17 +13,8 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @post }
-    end
-  end
-
-  def new
-    @post = Post.new
-    respond_to do |format|
-      format.html # new.html.erb
       format.xml  { render :xml => @post }
     end
   end
@@ -32,23 +23,9 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def create
-    @post = Post.new(params[:post])
-    @post.user = current_user
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
-        format.xml  { render :xml => @post, :status => :created, :location => @post }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
 
   def update
     @post = Post.find(params[:id])
-
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to([:admin, @post], :notice => 'Post was successfully updated.') }
@@ -65,11 +42,37 @@ class Admin::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-
     respond_to do |format|
       format.html { redirect_to(admin_posts_url, :notice => 'Successfully deleted') }
       format.xml  { head :ok }
     end
   end
  
+  def approve
+    @post = Post.find(params[:id])
+    @post.update_attribute :approved, true
+    flash[:notice] = "approved"
+    respond_to do |format|
+      format.html {redirect_to(admin_posts_url)}
+    end
+  end
+
+   def unapprove
+    @post = Post.find(params[:id])
+    @post.update_attribute :approved, false
+    flash[:notice] = "unapproved"
+    respond_to do |format|
+      format.html {redirect_to(admin_posts_url)}
+    end
+  end
+
+   def approved
+    @posts = Post.where(:approved => true)
+    render :action=>"index"
+   end
+
+   def unapproved
+      @posts = Post.where(:approved => false)
+      render :action=>"index"
+  end
 end

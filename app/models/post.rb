@@ -3,4 +3,6 @@ class Post < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :responses, :dependent => :destroy
   belongs_to :user
+  named_scope :approved, :conditions => ['approved = ?', true]
+  named_scope :unapproved, :conditions => ['approved =?', false]
 end
