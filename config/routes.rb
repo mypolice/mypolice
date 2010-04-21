@@ -14,11 +14,25 @@ Mypolice::Application.routes.draw do |map|
 
   namespace :admin do 
     resources :posts, :comments, :responses, :users, :polices
+
   end
   
   devise_for :users  
 
   get "home/index"
+  
+  match "/admin" => "admin/dashboard#index", :as => :admin_root
+  match "/police" => "police/dashboard#index", :as => :police_root
+
+  
+  resource :admins do 
+    root :to => :admin_root 
+  end
+
+  resource :polices do
+    root :to => :police_root
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

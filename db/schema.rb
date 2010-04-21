@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100419084942) do
+ActiveRecord::Schema.define(:version => 20100421135725) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -64,8 +64,10 @@ ActiveRecord::Schema.define(:version => 20100419084942) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "approved",   :default => false
   end
 
+  add_index "posts", ["approved"], :name => "index_posts_on_approved"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "responses", :force => true do |t|
