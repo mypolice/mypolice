@@ -45,7 +45,7 @@ class Admin::ResponsesController < ApplicationController
     @response.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_responses_url) }
+      format.html { redirect_to(admin_responses_url, :notice => 'successfully deleted') }
       format.xml  { head :ok }
     end
   end

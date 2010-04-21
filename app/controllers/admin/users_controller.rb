@@ -33,11 +33,11 @@ class Admin::UsersController < ApplicationController
     @user = User.new(params[:user])
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+        format.html { redirect_to([:admin, @user], :notice => 'User was successfully created.') }
+        format.xml  { render :xml =>[:admin, @user], :status => :created, :location => [:admin, @user] }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => [:admin, @user].errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -51,7 +51,7 @@ class Admin::UsersController < ApplicationController
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => [:admin, @user.errors], :status => :unprocessable_entity }
       end
     end
   end
@@ -63,7 +63,7 @@ class Admin::UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_users_url) }
+      format.html { redirect_to(admin_users_url, :notice => 'Successfully deleted') }
       format.xml  { head :ok }
     end
   end

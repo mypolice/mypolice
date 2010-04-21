@@ -1,7 +1,0 @@
-<h1>Listing users</h1>
-
-<%= render :partial => @users %>
-
-
-<%= link_to 'See All User', admin_users_path %>
-<%= link_to 'New User', new_admin_user_path %>

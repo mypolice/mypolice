@@ -33,11 +33,11 @@ class Admin::PolicesController < ApplicationController
     @police = Police.new(params[:police])
     respond_to do |format|
       if @police.save
-        format.html { redirect_to(@police, :notice => 'Police was successfully created.') }
-        format.xml  { render :xml => @police, :status => :created, :location => @police }
+        format.html { redirect_to([:admin, @police], :notice => 'Police was successfully created.') }
+        format.xml  { render :xml => [:admin, @police], :status => :created, :location =>[:admin, @police] }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @police.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml =>[:admin, @police].errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -51,7 +51,7 @@ class Admin::PolicesController < ApplicationController
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @police.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => [:admin, @police].errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,7 +63,7 @@ class Admin::PolicesController < ApplicationController
     @police.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_polices_url) }
+      format.html { redirect_to(admin_polices_url, :notice => 'Successfully Deleted' )}
       format.xml  { head :ok }
     end
   end

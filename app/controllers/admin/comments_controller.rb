@@ -45,7 +45,7 @@ class Admin::CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_comments_url) }
+      format.html { redirect_to(admin_comments_url, :notice =>'Successfully deleted ') }
       format.xml  { head :ok }
     end
   end

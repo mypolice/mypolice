@@ -67,7 +67,7 @@ class Admin::PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_posts_url) }
+      format.html { redirect_to(admin_posts_url, :notice => 'Successfully deleted') }
       format.xml  { head :ok }
     end
   end
