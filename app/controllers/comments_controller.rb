@@ -7,10 +7,10 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
-        format.html{ redirect_to @post}
+        format.html{ redirect_to @post, :notice =>"comment was created, but need to be approved"}
         format.js
       else 
-        #format.html {redirect_to "www.google.com"}
+        format.html {redirect_to @post, :notice => "failed"}
       end
     end
   end

@@ -8,7 +8,7 @@
     <th></th>
     <th></th>
   </tr>
-
+ 
 <% @comments.each do |comment| %>
   <tr>
     <td><%= comment.post_id %></td>
@@ -16,6 +16,11 @@
     <td><%= link_to 'Show', [:admin, comment] %></td>
     <td><%= link_to 'Edit', edit_admin_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', [:admin, comment], :confirm => 'Are you sure?', :method => :delete %></td>
+   <% if comment.approved %>
+     <td> <%= link_to 'Unapproved', unapprove_admin_comment_path(comment), :method =>:put %> </td>
+   <% else %>
+     <td> <%= link_to 'Approved', approve_admin_comment_path(comment), :method =>:put%> </td>
+  <% end %>
   </tr>
 <% end %>
 </table>

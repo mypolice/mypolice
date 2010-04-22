@@ -22,19 +22,11 @@
 
 <h2>Comments</h2>
 <div id = "comments">
-  <%= render :partial => @post.comments %>
+  <p> Unapproved comments</p>
+  <%= render :partial => @post.comments.unapproved %>
+  <p> approved comments</p>
+  <%= render :partial => @post.comments.approved %>
 </div>
 
-<% if current_user %>
-  <% form_for [@post, Comment.new], :remote => true do |f| %>
-    <p>
-      <%= f.label :body, "New Comment" %> <br/>
-      <%= f.text_area :body %>
-    </p>
-    <p> <%= f.submit "Add Comment" %> </p>
-  <% end %>
-<% elsif !current_police %>
-  <p> <%= link_to "Sign in", new_user_session_path %> to add comments </p>
-<% end %>
 
 

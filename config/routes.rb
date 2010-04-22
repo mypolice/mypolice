@@ -19,7 +19,13 @@ Mypolice::Application.routes.draw do |map|
         get :approved, :on => :collection
         get :unapproved, :on => :collection
       end
-    resources :comments, :responses, :users, :polices
+    resources :comments do  
+        put :approve, :on => :member
+        put :unapprove, :on => :member
+        get :approved, :on => :collection
+        get :unapproved, :on => :collection
+      end
+    resources :responses, :users, :polices
   end
   
   devise_for :users  

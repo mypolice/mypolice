@@ -50,4 +50,32 @@ class Admin::CommentsController < ApplicationController
     end
   end
  
+    def approve
+    @comment = Comment.find(params[:id])
+    @comment.update_attribute :approved, true
+    flash[:notice] = "approved"
+    respond_to do |format|
+      format.html {redirect_to(admin_comments_url)}
+    end
+  end
+
+   def unapprove
+    @comment = Comment.find(params[:id])
+    @comment.update_attribute :approved, false
+    flash[:notice] = "unapproved"
+    respond_to do |format|
+      format.html {redirect_to(admin_comments_url)}
+    end
+  end
+
+   def approved
+    @posts = Comment.where(:approved => true)
+    render :action=>"index"
+   end
+
+   def unapproved
+      @posts = Comment.where(:approved => false)
+      render :action=>"index"
+  end
+
 end

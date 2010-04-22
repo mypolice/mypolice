@@ -1,7 +1,17 @@
 <% div_for comment do %>
+  <% if comment.approved %>
   <p>
   <strong> Posted by <%= (comment.user.email) %> <%= time_ago_in_words(comment.created_at) %>
     ago</strong><br />
     <%= (comment.body) %>
-  </p>
+    </p>
+
+  <% else %>
+  <p> The following comment need to be approved </p>
+  <strong> Posted by <%= (comment.user.email) %> <%= time_ago_in_words(comment.created_at) %>
+    ago</strong><br />
+    <%= (comment.body) %>
+    </p>
+
+  <% end%>
 <% end%>
