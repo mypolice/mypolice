@@ -1,7 +1,6 @@
 Mypolice::Application.routes.draw do |map|
   resources :responses
 
-
   devise_for :polices
 
   devise_for :admins
@@ -27,6 +26,11 @@ Mypolice::Application.routes.draw do |map|
       end
     resources :responses, :users, :polices
   end
+
+  namespace :police do
+    resources :polices
+  end
+
   
   devise_for :users  
 
@@ -35,7 +39,8 @@ Mypolice::Application.routes.draw do |map|
   match "/admin" => "admin/dashboard#index", :as => :admin_root
   match "/police" => "police/dashboard#index", :as => :police_root
  
-  
+  match '/police/profile/:id/' => 'police/polices#show', :as => :profile   
+
   resource :admins do 
     root :to => :admin_root 
   end

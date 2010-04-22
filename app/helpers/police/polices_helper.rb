@@ -1,0 +1,2 @@
+module Police::PolicesHelper
+end
