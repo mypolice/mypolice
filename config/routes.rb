@@ -24,7 +24,11 @@ Mypolice::Application.routes.draw do |map|
         get :approved, :on => :collection
         get :unapproved, :on => :collection
       end
-    resources :responses, :users, :polices
+    resources :polices do
+        put :cheif, :on => :member
+        put :uncheif, :on =>:member
+    end
+    resources :responses, :users
   end
 
   namespace :police do

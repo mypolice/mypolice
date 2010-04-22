@@ -1,9 +1,0 @@
-<% div_for user do %>
-  <p>Email <%= user.email %></p>
-  <p>Sign in Counts<%= user.sign_in_count %></p>
-  <p>Last Sign in up <%= user.last_sign_in_ip %></p>
-  <%= link_to 'Edit', edit_admin_user_path(user) %> |
-  <%= link_to 'Destroy', [:admin, user], :method => :delete, :confirm => "Are you sure?" %>|
-  </p>
-<%end%>
-

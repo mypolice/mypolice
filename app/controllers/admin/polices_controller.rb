@@ -68,4 +68,21 @@ class Admin::PolicesController < ApplicationController
     end
   end
 
+  def cheif
+    @police = Police.find(params[:id])
+    @police.update_attribute :ischeif, true
+    flash[:notice] = "Already set him/her as Chief"
+    respond_to do |format|
+      format.html{redirect_to(admin_polices_url)}
+    end
+  end
+
+  def uncheif
+    @police = Police.find(params[:id])
+    @police.update_attribute :ischeif, false
+    flash[:notice] = "Already remove him/her as Chief"
+    respond_to do |format|
+      format.html{redirect_to(admin_polices_url)}
+    end
+  end
 end

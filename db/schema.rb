@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100422100328) do
+ActiveRecord::Schema.define(:version => 20100422162037) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(:version => 20100422100328) do
   add_index "comments", ["approved"], :name => "index_comments_on_approved"
 
   create_table "polices", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "email",                               :default => "",    :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",    :null => false
+    t.string   "password_salt",                       :default => "",    :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -56,9 +56,11 @@ ActiveRecord::Schema.define(:version => 20100422100328) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.boolean  "ischeif",                             :default => false
   end
 
   add_index "polices", ["email"], :name => "index_polices_on_email", :unique => true
+  add_index "polices", ["ischeif"], :name => "index_polices_on_ischeif"
   add_index "polices", ["reset_password_token"], :name => "index_polices_on_reset_password_token", :unique => true
 
   create_table "posts", :force => true do |t|

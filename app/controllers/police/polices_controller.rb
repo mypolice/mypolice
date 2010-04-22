@@ -25,5 +25,29 @@ class Police::PolicesController < ApplicationController
     end
   end
 
+  def new 
+    if current_police.ischeif 
+      @police = Police.new
+      respond_to do |format|
+        format.html
+        format.xml {render :xml => @police}
+      end
+    else
+    #need add it later   
+    end
+  end
+
+  def create
+    @police = Police.new(params[:police])
+    respond_to do |format|
+      if @police.save
+        format.html { redirect_to([:admin, @police], :notice => 'Police was successfully created.') }
+        format.xml  { render :xml => [:admin, @police], :status => :created, :location =>[:admin, @police] }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml =>[:admin, @police].errors, :status => :unprocessable_entity }
+      end
+    end
+  end
 
 end

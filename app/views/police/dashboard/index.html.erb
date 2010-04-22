@@ -1,21 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN "
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-  <head>
-    <title> <%= yield(:title) || "untitled" %> </title>
-    <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag :all %>
-    <%= csrf_meta_tag %>
-    <%= yield(:head) %>
-  </head>
-  <body>  
-    <div>
-      <div>
 
 
     <h1>Police Dashboard#index</h1>
-   nothing for now
-  </div>
 
-  </body>
-</html>
+<% if !current_police.ischeif %>
+<p>
+  <%= link_to 'Add a new police', new_police_police_path %>
+</p>
+<% end %>
+
