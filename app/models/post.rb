@@ -5,4 +5,6 @@ class Post < ActiveRecord::Base
   belongs_to :user
   named_scope :approved, :conditions => ['approved = ?', true]
   named_scope :unapproved, :conditions => ['approved =?', false]
+
+  acts_as_taggable
 end

@@ -9,7 +9,8 @@ Mypolice::Application.routes.draw do |map|
     resources :responses
     resources :comments
   end
-
+  
+  resources :tags
 
   namespace :admin do 
     resources :posts do  
@@ -28,7 +29,7 @@ Mypolice::Application.routes.draw do |map|
         put :cheif, :on => :member
         put :uncheif, :on =>:member
     end
-    resources :responses, :users
+    resources :responses, :users, :tags
   end
 
   namespace :police do

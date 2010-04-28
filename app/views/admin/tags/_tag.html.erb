@@ -1,0 +1,5 @@
+<% div_for tag do %>
+  <p><%=  tag.name %>
+  <%= link_to 'Show', admin_tag_path(tag) %>
+  <%= link_to 'Delete', [:admin, tag], :method => :delete,:confirm => "Are you sure?" %></p>
+<% end %>
