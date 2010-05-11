@@ -1,5 +1,5 @@
 <%= form_for([:admin,@post]) do |f| %>
-  <%= f.error_messages %>
+  <%= render "shared/error_message", :target => @post %>
 
   <div class="field">
     <%= f.label :title %><br />
@@ -7,9 +7,16 @@
   </div>
 
   <div class="field">
+    <%= f.label("Category",:name) %><br />
+    <% category_array = Category.all.map{|c|[c.name,c.id]} %>
+    <%= f.select(:category_id, options_for_select(category_array, @post.category_id)) %>
+  </div>
+
+  <div class="field">
     <%= f.label :body %><br />
     <%= f.text_area :body %>
   </div>
+ 
   <div class="actions">
     <%= f.submit %>
   </div>

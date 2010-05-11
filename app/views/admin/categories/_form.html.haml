@@ -1,0 +1,9 @@
+-form_for([:admin,@category]) do |f|
+  =render "shared/error_message", :target => @category
+  .field
+    %p 
+      =f.label :name
+    %p 
+      =f.text_field :name
+  .actions
+    =f.submit

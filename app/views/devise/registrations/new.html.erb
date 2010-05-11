@@ -1,8 +1,9 @@
-<h2>Sign up</h2>
+<% title "Signup as "<< resource_name %> 
+<h2><%= "Sign up as " << resource_name%> </h2>
 
 <%= form_for(resource_name, resource, :url => registration_path(resource_name)) do |f| %>
-  <%= f.error_messages %>
-  <p><%= f.label :email %></p>
+  <%= render "shared/error_message", :target => resource %>
+  <p><%= f.label :email %> <%= mark_required(resource, :email) %></p>
   <p><%= f.text_field :email %></p>
 
   <p><%= f.label :password %></p>

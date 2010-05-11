@@ -1,6 +1,5 @@
 <%= form_for([:admin,@comment]) do |f| %>
-  <%= f.error_messages %>
-
+<%= render "shared/error_message", :target => @comment %>
   <div class="field">
     <%= f.label :body %><br />
     <%= f.text_area :body %>

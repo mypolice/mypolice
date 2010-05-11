@@ -10,17 +10,6 @@
   <%= render :partial => @post.responses %>
 </div>
 
-<% if current_police%>
-  <% form_for [@post, Response.new], :remote => true do |f| %>
-   <p>
-      <%= f.label :body, "New Response" %> <br/>
-      <%= f.text_area :body %>
-    </p>
-    <p> <%= f.submit "Add Response" %> </p>
-  <% end %>
-<% end %>
-
-<h2>Comments</h2>
 <div id = "comments">
   <p> Unapproved comments</p>
   <%= render :partial => @post.comments.unapproved %>

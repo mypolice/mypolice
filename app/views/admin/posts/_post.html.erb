@@ -1,7 +1,10 @@
 <% div_for post do %>
-  <h2><%= link_to_unless_current post.title, post%></h2>
+  <h2><%= link_to_unless_current post.title, [:admin, post]%></h2>
   <p>posted by <%= post.user.email %></p>
-  <%= simple_format post.body %>
+  <% if post.category %>
+    <p>Category:<%= post.category.name%></p>
+  <%end%>
+    <%= simple_format post.body %>
   <p>
   <% if post.approved %>
     <%= link_to 'unapproved', unapprove_admin_post_path(post), :method => :put %>|
