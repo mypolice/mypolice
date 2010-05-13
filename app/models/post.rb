@@ -4,8 +4,8 @@ class Post < ActiveRecord::Base
   has_many :responses, :dependent => :destroy
   belongs_to :user
   belongs_to :category
-  named_scope :approved, :conditions => ['approved = ?', true]
-  named_scope :unapproved, :conditions => ['approved =?', false]
+  scope :approved, where(:approved=>true)
+  scope :unapproved, where(:approved=>false)
 
   acts_as_taggable
 end

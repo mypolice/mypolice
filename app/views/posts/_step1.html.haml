@@ -1,0 +1,9 @@
+.field
+  =f.label :title
+  =f.text_field :title 
+.filed
+  =f.label(:category_id,"Category")
+  -category_array = Category.all.map{|c| [c.name,c.id]}
+  =f.select(:category_id, options_for_select(category_array, @post.category_id))
+.action
+  =f.submit

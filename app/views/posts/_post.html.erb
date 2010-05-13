@@ -1,7 +1,11 @@
 <% div_for post do %>
   <h2><%= link_to_unless_current post.title, post%></h2>
   <p>posted by <%= post.user.email %></p>
+  <p>Stroy:</p>
   <%= simple_format post.body %>
+  <p>Suggestion:</p>
+  <%= simple_format post.suggestion %>
+  <p>
   <p> Tags:
   <% post.tags.each do |tag| %>
     <%= tag %>

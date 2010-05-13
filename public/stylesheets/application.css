@@ -105,3 +105,6 @@ ul.hmenu li {
 display: inline;
 }
 
+.hidden{
+  display:none;
+}
