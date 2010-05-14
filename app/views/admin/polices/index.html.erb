@@ -1,6 +1,5 @@
 <h1>Listing polices</h1>
-
-<%= render :partial => @polices %>
-
-
 <%= link_to 'New police', new_admin_police_path %>
+<%= render :partial => @polices %>
+<%= will_paginate @polices %>
+

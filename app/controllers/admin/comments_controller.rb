@@ -2,7 +2,7 @@ class Admin::CommentsController < ApplicationController
    before_filter :authenticate_admin!
 
   def index
-    @comments = Comment.all
+    @comments = Comment.paginate :page=>params[:page], :per_page=>'10', :order=>'created_at DESC'
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @comments }
@@ -69,12 +69,15 @@ class Admin::CommentsController < ApplicationController
   end
 
    def approved
-    @posts = Comment.where(:approved => true)
-    render :action=>"index"
+    #@posts = Comment.where(:approved => true)
+      @comments = Comment.approved.paginate :page=>params[:page], :per_page=>'10', :order=>'created_at DESC'
+
+     render :action=>"index"
    end
 
    def unapproved
-      @posts = Comment.where(:approved => false)
+      #@comments = Comment.where(:approved => false)
+      @comments = Comment.unapproved.paginate :page=>params[:page], :per_page=>'10', :order=>'created_at DESC'
       render :action=>"index"
   end
 

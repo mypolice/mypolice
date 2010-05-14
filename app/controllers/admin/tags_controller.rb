@@ -2,7 +2,7 @@ class Admin::TagsController < ApplicationController
   before_filter :authenticate_admin!
 
   def index
-    @tags = Tag.all
+    @tags = Tag.paginate :page=>params[:page], :per_page=>'10'
     respond_to do|format|
       format.html #index.html.erb
     end

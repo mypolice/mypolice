@@ -2,7 +2,9 @@ class Admin::PolicesController < ApplicationController
      before_filter :authenticate_admin!
 
   def index
-    @polices = Police.all
+   # @polices = Police.all
+    @polices = Police.paginate :page=>params[:page], :per_page=>'10', :order=>'created_at DESC'
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @polices }

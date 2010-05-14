@@ -1,7 +1,9 @@
 class Admin::CategoriesController < ApplicationController
   before_filter :authenticate_admin!
   def index
-    @categories = Category.all
+   # @categories = Category.all
+    @categories = Category.paginate :page=>params[:page], :per_page=>'20', :order=>'created_at DESC'
+
     respond_to do|format|
       format.html
       format.xml { render :xml=>@categories}

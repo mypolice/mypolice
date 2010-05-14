@@ -8,4 +8,6 @@ class Post < ActiveRecord::Base
   scope :unapproved, where(:approved=>false)
   scope :anonymous, where(:use_id=>nil) 
   acts_as_taggable
+  cattr_reader :per_page
+  @@per_page =10
 end

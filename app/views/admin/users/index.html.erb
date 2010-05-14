@@ -1,6 +1,6 @@
 <h1>Listing users</h1>
-
+<%= will_paginate @policess %>
 <%= render :partial => @users %>
+<%= will_paginate @users %>
 
 
-<%= link_to 'New user', new_admin_user_path %>
