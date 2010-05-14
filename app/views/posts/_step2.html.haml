@@ -1,3 +1,5 @@
+=f.hidden_field(:title, :value=>@post.id)
+=f.hidden_field(:category_id, :value=>@post.category_id)
 .field
   =f.label(:body, "Stroy")
   =f.text_area :body 

@@ -1,3 +1,7 @@
+=f.hidden_field(:title, :value=>@post.title)
+=f.hidden_field(:category_id, :value=>@post.category_id)
+=f.hidden_field(:body, :value=>@post.body)
+=f.hidden_field(:suggestion, :value=>@post.suggestion)
 .field
   =f.label(:tag_list, "Tags(seperate with comma ',')") 
   =f.text_field :tag_list 

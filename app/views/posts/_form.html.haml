@@ -1,0 +1,5 @@
+=form_for(@post, :method=>"get") do |f|
+  = render "shared/error_message", :target => @post
+  = hidden_field_tag "current_step", "#{@current_step}" 
+  = render :partial=>"#{@current_step}", :locals => {:f =>f} 
+

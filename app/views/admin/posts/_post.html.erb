@@ -1,6 +1,6 @@
 <% div_for post do %>
   <h2><%= link_to_unless_current post.title, [:admin, post]%></h2>
-  <p>posted by <%= post.user.email %></p>
+  <p>posted by <%= post.user.nil? ? "anonymous" : post.user.email %></p>
   <p>Category:<%= post.category.name%></p>
   <p>Stroy:</p>
   <%= simple_format post.body %>

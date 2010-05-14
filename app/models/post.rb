@@ -6,6 +6,6 @@ class Post < ActiveRecord::Base
   belongs_to :category
   scope :approved, where(:approved=>true)
   scope :unapproved, where(:approved=>false)
-
+  scope :anonymous, where(:use_id=>nil) 
   acts_as_taggable
 end
