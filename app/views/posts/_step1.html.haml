@@ -1,9 +1,17 @@
 .field
   =f.label :title
   =f.text_field :title 
-.filed
+.field
   =f.label(:category_id,"Category")
   -category_array = Category.all.map{|c| [c.name,c.id]}
   =f.select(:category_id, options_for_select(category_array, @post.category_id))
+.field
+  =f.label :happened_on
+  =f.text_field :happened_on
+  
+.field
+  =f.label(:who_id,"Happened to whom")
+  -who_array = Who.all.map{|w|[w.name,w.id]}
+  =f.select(:who_id, options_for_select(who_array,@post.who_id))
 .action
   =f.submit

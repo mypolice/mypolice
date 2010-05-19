@@ -1,3 +1,0 @@
-page.insert_html :bottom, :responses, :partial=>@response
-page[@response].visual_effect :highlight
-page[:new_response].reset

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100511104846) do
+ActiveRecord::Schema.define(:version => 20100517134444) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -78,11 +78,9 @@ ActiveRecord::Schema.define(:version => 20100511104846) do
     t.boolean  "approved",    :default => false
     t.integer  "category_id"
     t.text     "suggestion"
+    t.integer  "who_id"
+    t.date     "happened_on"
   end
-
-  add_index "posts", ["approved"], :name => "index_posts_on_approved"
-  add_index "posts", ["category_id"], :name => "index_posts_on_category_id"
-  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "responses", :force => true do |t|
     t.integer  "post_id"
@@ -127,5 +125,11 @@ ActiveRecord::Schema.define(:version => 20100511104846) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "whos", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

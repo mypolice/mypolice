@@ -29,7 +29,7 @@ Mypolice::Application.routes.draw do |map|
         put :cheif, :on => :member
         put :uncheif, :on =>:member
     end
-    resources :responses, :users, :tags, :categories
+    resources :responses, :users, :tags, :categories, :whos
   end
 
   namespace :police do

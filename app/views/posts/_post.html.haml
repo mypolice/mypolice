@@ -1,0 +1,14 @@
+-div_for post do
+  %h2
+    =link_to_unless_current post.title, post
+  %p
+    posted by 
+    =post.user.nil? ? "anonymous" : post.user.email
+  %p Stroy:
+  =simple_format sanitize(post.body)
+  %p Suggestion:
+  = simple_format sanitize(post.suggestion)
+
+  %p Tags:
+  - post.tags.each do |tag|
+    = tag 

@@ -1,7 +1,9 @@
 =f.hidden_field(:title, :value=>@post.title)
 =f.hidden_field(:category_id, :value=>@post.category_id)
-=f.hidden_field(:body, :value=>@post.body)
-=f.hidden_field(:suggestion, :value=>@post.suggestion)
+=f.hidden_field(:who_id, :value=>@post.who_id)
+=f.hidden_field(:happened_on, :value=>@post.happened_on)
+=f.hidden_field(:body, :value=>sanitize(@post.body))
+=f.hidden_field(:suggestion, :value=>sanitize(@post.suggestion))
 .field
   =f.label(:tag_list, "Tags(seperate with comma ',')") 
   =f.text_field :tag_list 

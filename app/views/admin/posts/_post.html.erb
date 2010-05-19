@@ -3,9 +3,9 @@
   <p>posted by <%= post.user.nil? ? "anonymous" : post.user.email %></p>
   <p>Category:<%= post.category.name%></p>
   <p>Stroy:</p>
-  <%= simple_format post.body %>
+  <%= simple_format sanitize(post.body) %>
   <p>Suggestion:</p>
-  <%= simple_format post.suggestion %>
+  <%= simple_format sanitize(post.suggestion) %>
   <p>
   <% if post.approved %>
     <%= link_to 'unapproved', unapprove_admin_post_path(post), :method => :put %>|

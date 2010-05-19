@@ -4,8 +4,11 @@ class PostsController < ApplicationController
   #after_filter :save_partial_post_in_session,:only=>[:new,:create]
   
   def index
+    if params[:search]
+    @posts = Post.approved.paginate(:all, :conditions=>['name LIKE ?',"%#{params[:search]}%"])
+    else
     @posts = Post.approved.paginate :page =>params[:page],:per_page=>"10", :order =>'created_at DESC'
-
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
@@ -45,7 +48,6 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @current_step = params[:current_step]
         if @current_step == "step1"
-          @post.user = current_user if current_user.nil?
           @current_step = "step2" if valid_for_attributes(@post,[:title])
           respond_to do |format|
             format.html{render :action=> "new",:params => { :current_step => @current_step }}
@@ -56,6 +58,7 @@ class PostsController < ApplicationController
               format.html{render :action=> "new",:params => { :current_step => @current_step }}
             end
         elsif @current_step =="step3"
+          @post.user = current_user unless current_user.nil? 
           respond_to do |format|
             if @post.save
               format.html { redirect_to(posts_path, :notice => 'Thanks for your sharing, Please wait for approval') }

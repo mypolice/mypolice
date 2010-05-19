@@ -1,0 +1,25 @@
+-title @post.title
+=link_to "Back to All Posts", posts_path
+=render :partial => @post
+
+%h2 Responses
+#responses
+  =render :partial=>@post.responses
+  -if current_police
+    -form_for [@post, Response.new], :remote=>true do |f|
+      =f.label :boday, "New Response"
+      =f.text_area :body
+      =f.submit "Add Response"
+%h2 comments
+#comments
+  = render :partial => @post.comments.approved
+  -if current_user
+    -form_for [@post, Comment.new], :remote => true do |f| 
+      = f.label :body, "New Comment" 
+      = f.text_area :body 
+      = f.submit "Add Comment" 
+  -elsif !current_police
+    = link_to "Sign in ", new_user_session_path 
+    to add comments 
+
+

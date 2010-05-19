@@ -1,0 +1,6 @@
+%ul
+  -div_for who do
+    %li 
+      =link_to who.name, admin_who_path(who)
+      =link_to 'Edit', edit_admin_who_path(who)
+      =link_to 'Destory', [:admin, who], :method =>'delete', :confirm =>"Are you sure"
