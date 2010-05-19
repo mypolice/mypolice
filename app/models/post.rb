@@ -10,4 +10,11 @@ class Post < ActiveRecord::Base
   acts_as_taggable
   cattr_reader :per_page
   @@per_page =10
+
+  def self.search(search, page)
+    paginate :per_page => 10, :page => page,
+             :conditions => ['body like ?', "%#{search}%"], :order => 'created_at DESC'
+  end
+  
+  
 end
