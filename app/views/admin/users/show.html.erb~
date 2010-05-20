@@ -1,9 +1,0 @@
-<%= render :partial => @police %>
-
-
-<p>
-  <%= link_to 'See All polices', admin_polices_path %>
-</p>
-
-
-

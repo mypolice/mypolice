@@ -5,21 +5,27 @@
 %h2 Responses
 #responses
   =render :partial=>@post.responses
-  -if current_police
-    -form_for [@post, Response.new], :remote=>true do |f|
+-if current_police
+  -form_for [@post, Response.new], :remote=>true do |f|
+    %p   
       =f.label :boday, "New Response"
+    %p 
       =f.text_area :body
+    %p
       =f.submit "Add Response"
 %h2 comments
 #comments
   = render :partial => @post.comments.approved
-  -if current_user
-    -form_for [@post, Comment.new], :remote => true do |f| 
+-if current_user
+  -form_for [@post, Comment.new], :remote => true do |f| 
+    %p
       = f.label :body, "New Comment" 
+    %p
       = f.text_area :body 
+    %p
       = f.submit "Add Comment" 
-  -elsif !current_police
-    = link_to "Sign in ", new_user_session_path 
-    to add comments 
+-elsif !current_police
+  = link_to "Sign in ", new_user_session_path 
+  to add comments 
 
 

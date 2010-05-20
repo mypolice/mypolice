@@ -4,7 +4,7 @@ class CommentsControllerTest < ActionController::TestCase
   setup do
     @comment = comments(:one)
   end
-
+=begin
   test "should get index" do
     get :index
     assert_response :success
@@ -15,7 +15,7 @@ class CommentsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
-
+=end
   test "should create comment" do
     assert_difference('Comment.count') do
       post :create, :comment => @comment.attributes
@@ -23,7 +23,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     assert_redirected_to comment_path(assigns(:comment))
   end
-
+=begin
   test "should show comment" do
     get :show, :id => @comment.to_param
     assert_response :success
@@ -46,4 +46,5 @@ class CommentsControllerTest < ActionController::TestCase
 
     assert_redirected_to comments_path
   end
+=end
 end
