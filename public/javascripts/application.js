@@ -2,17 +2,8 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(document).ready(function(){
-  $("#new_comment").submit(function(){
-    $.post($(this).attr("action"),$(this).serialize(), null, "script");
-    return false;
-    });
+  $("#post_happened_on").datepicker({dateFormat:'yy-mm-dd'});    
+    $("#new_comment").validate();
+    $("#new_response").validate();
+    });   
 
-   $("#new_response").submit(function(){
-    $.post($(this).attr("action"),$(this).serialize(), null, "script");
-    return false;
-    });
-  });
-
-$(function() {
-  $("#post_happened_on").datepicker({dateFormat:'yy-mm-dd'});
-});

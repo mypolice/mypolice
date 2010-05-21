@@ -1,27 +1,18 @@
 class PostsController < ApplicationController
   before_filter :clear_step_errors
-  #before_filter :get_partial_post_from_session,:only=>[:new, :create]
-  #after_filter :save_partial_post_in_session,:only=>[:new,:create]
+  respond_to :html, :xml, :json
+  respond_to :atom, :only=>:index
   
   def index
      @posts = Post.approved.search(params[:search], params[:page])
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @posts }
-      format.json { render :json => @posts}
-      format.atom
-    end
+    respond_with(@post) 
   end
 
   # GET /posts/1
   # GET /posts/1.xml
   def show
     @post = Post.approved.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @post }
-    end
+    respond_with(@post)
   end
 
   # GET /posts/new
@@ -33,50 +24,28 @@ class PostsController < ApplicationController
     else
       @current_step = params[:current_step]
     end
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml { render :xml => @post }
-    end
+    respond_with(@post)
   end
  
-
-
-
-
   def create
     @post = Post.new(params[:post])
     @current_step = params[:current_step]
     case @current_step
        when "step1" then
         @current_step = 'step2' if valid_for_attributes(@post,[:title])
-        respond_to do |format|
+        respond_with(@post) do |format|
          format.html{render :action=> "new",:params => { :current_step => @current_step }}
         end
       when "step2" then
         @current_step = 'step3' if valid_for_attributes(@post,[:body])
-         respond_to do |format|
+         respond_with(@post) do |format|
          format.html{render :action=> "new",:params => { :current_step => @current_step }}
         end
-     #   if @current_step == "step1"
-      #    @current_step = "step2" if valid_for_attributes(@post,[:title])
-       #   respond_to do |format|
-        #    format.html{render :action=> "new",:params => { :current_step => @current_step }}
-         # end
-        #elsif @current_step=="step2"
-         #   @current_step = "step3" if valid_for_attributes(@post,[:body])
-          #  respond_to do |format|
-           #   format.html{render :action=> "new",:params => { :current_step => @current_step }}
-            #end
        when "step3" then
           @post.user = current_user unless current_user.nil? 
-          respond_to do |format|
-            if @post.save
-              format.html { redirect_to(posts_path, :notice => 'Thanks for your sharing, Please wait for approval') }
-              format.xml  { render :xml => @post, :status => :created, :location => @post }
-            else
-              format.html { render :action => "new" }
-              format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
-            end
+          flash[:notice] = "Thanks for your sharing, Please wait for approval" if @post.save
+          respond_with(@post) do |format|
+              format.html { redirect_to posts_path}
           end
         end
   end
