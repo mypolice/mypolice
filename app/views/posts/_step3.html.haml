@@ -1,11 +1,22 @@
-=f.hidden_field(:title, :value=>@post.title)
-=f.hidden_field(:category_id, :value=>@post.category_id)
-=f.hidden_field(:who_id, :value=>@post.who_id)
-=f.hidden_field(:happened_on, :value=>@post.happened_on)
-=f.hidden_field(:body, :value=>sanitize(@post.body))
-=f.hidden_field(:suggestion, :value=>sanitize(@post.suggestion))
-.field
-  =f.label(:tag_list, "Tags(seperate with comma ',')") 
-  =f.text_field :tag_list 
+%fieldset
+  =f.hidden_field(:title, :value=>@post.title)
+  =f.hidden_field(:category_id, :value=>@post.category_id)
+  =f.hidden_field(:who_id, :value=>@post.who_id)
+  =f.hidden_field(:happened_on, :value=>@post.happened_on)
+  =f.hidden_field(:body, :value=>sanitize(@post.body))
+  =f.hidden_field(:suggestion, :value=>sanitize(@post.suggestion))
+  .field
+    %p Please ass some related tags for your story
+    =f.label(:tag_list, "Tags(seperate with comma ',')") 
+    =f.text_field :tag_list 
+
+=fields_for :address do |a|
+  %fieldset
+    =a.hidden_field(:address_line1, :value=>@address.address_line1)
+    =a.hidden_field(:address_line2, :value=>@address.address_line2)
+    =a.hidden_field(:city, :value=>@address.city)
+    =a.hidden_field(:county, :value=>@address.county)
+    =a.hidden_field(:postcode, :value=>@address.postcode)
+    =a.hidden_field(:country, :value=>@address.country)
 .action
   =f.submit

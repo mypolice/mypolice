@@ -1,17 +1,38 @@
-.field
-  =f.label :title
-  =f.text_field :title 
-.field
-  =f.label(:category_id,"Category")
-  -category_array = Category.all.map{|c| [c.name,c.id]}
-  =f.select(:category_id, options_for_select(category_array, @post.category_id))
-.field
-  =f.label :happened_on
-  =f.text_field :happened_on
-  
-.field
-  =f.label(:who_id,"Happened to whom")
-  -who_array = Who.all.map{|w|[w.name,w.id]}
-  =f.select(:who_id, options_for_select(who_array,@post.who_id))
+%fieldset
+  .field
+    =f.label(:title, "Please tell us your story title")
+    =f.text_field :title 
+  .field
+    =f.label(:category_id,"Please choose the story category")
+    -category_array = Category.all.map{|c| [c.name,c.id]}
+    =f.select(:category_id, options_for_select(category_array, @post.category_id))
+  .field
+    =f.label(:happened_on, "Please tell us when it happened")
+    =f.text_field :happened_on
+  .field
+    =f.label(:who_id,"Please telle us it happened to whom")
+    -who_array = Who.all.map{|w|[w.name,w.id]}
+    =f.select(:who_id, options_for_select(who_array,@post.who_id))
+
+=fields_for :address do |a|
+  %fieldset
+    .field 
+      =a.label(:address_line1," Address Line 1")
+      =a.text_field :address_line1
+    .field 
+      =a.label(:address_line2, "Address Line 2")
+      =a.text_field :address_line2
+    .field 
+      =a.label(:city," Town/City")
+      =a.text_field :city
+    .field 
+      =a.label(:county," County")
+      =a.text_field :county
+    .field 
+      =a.label(:postcode," Postcode")
+      =a.text_field :postcode
+    .field 
+      =a.label(:country, "Country(Our serivce only available in UK now)")
+      =a.select(:country, options_for_select(["United Kingdom"]), {:disabled => true})
 .action
-  =f.submit
+  =f.submit 

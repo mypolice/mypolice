@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title("My great blog")
+  feed.title("MyPolice")
   feed.updated(@posts.first.created_at)
 
   @posts.each do |post|

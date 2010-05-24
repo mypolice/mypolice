@@ -9,7 +9,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100517134444) do
+ActiveRecord::Schema.define(:version => 20100524175550) do
+
+  create_table "addresses", :force => true do |t|
+    t.text "address_line1"
+    t.text "address_line2"
+    t.text "city"
+    t.text "county"
+    t.text "postcode"
+    t.text "country"
+  end
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -80,7 +89,10 @@ ActiveRecord::Schema.define(:version => 20100517134444) do
     t.text     "suggestion"
     t.integer  "who_id"
     t.date     "happened_on"
+    t.integer  "address_id"
   end
+
+  add_index "posts", ["address_id"], :name => "index_posts_on_address_id"
 
   create_table "responses", :force => true do |t|
     t.integer  "post_id"

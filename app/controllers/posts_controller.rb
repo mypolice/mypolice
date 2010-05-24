@@ -1,11 +1,15 @@
 class PostsController < ApplicationController
   before_filter :clear_step_errors
-  respond_to :html, :xml, :json
+  respond_to :html, :xml, :json ,:except=>:index
   respond_to :atom, :only=>:index
   
   def index
-     @posts = Post.approved.search(params[:search], params[:page])
-    respond_with(@post) 
+    @posts = Post.approved.search(params[:search], params[:page])
+    respond_to do |format|
+      format.html
+      format.xml{render :xml=>@posts}
+      format.atom
+    end
   end
 
   # GET /posts/1
@@ -20,6 +24,7 @@ class PostsController < ApplicationController
   def new
     if params[:current_step].nil?
       @post = Post.new
+      @address = Address.new
       @current_step ='step1'
     else
       @current_step = params[:current_step]
@@ -28,11 +33,12 @@ class PostsController < ApplicationController
   end
  
   def create
+    @address = Address.new(params[:address])
     @post = Post.new(params[:post])
     @current_step = params[:current_step]
     case @current_step
        when "step1" then
-        @current_step = 'step2' if valid_for_attributes(@post,[:title])
+        @current_step = 'step2' if valid_for_attributes(@post,[:title]) and @address.valid?
         respond_with(@post) do |format|
          format.html{render :action=> "new",:params => { :current_step => @current_step }}
         end
@@ -43,7 +49,11 @@ class PostsController < ApplicationController
         end
        when "step3" then
           @post.user = current_user unless current_user.nil? 
-          flash[:notice] = "Thanks for your sharing, Please wait for approval" if @post.save
+          if @post.save and @address.save
+            @post.address_id = @address.id
+            @post.save
+            flash[:notice] = "Thanks for your sharing, Please wait for approval"
+          end
           respond_with(@post) do |format|
               format.html { redirect_to posts_path}
           end

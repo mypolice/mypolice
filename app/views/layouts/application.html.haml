@@ -11,6 +11,7 @@
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application"
     = javascript_include_tag "http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js"
     = javascript_include_tag 'jquery.rails'
+    = auto_discovery_link_tag :atom, posts_path(:format=>:atom)
     = csrf_meta_tag 
   
 
@@ -25,4 +26,4 @@
         =content_tag :div, msg, :id=>"flash_#{name}"
 
       = yield 
-
+      -#%script{:src=>'http://cdn.wibiya.com/Toolbars/dir_0393/Toolbar_393982/Loader_393982.js',:type=>'text/javascript'}

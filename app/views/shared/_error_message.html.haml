@@ -1,10 +1,11 @@
--if target.errors.any?
-  #errorExplanation
-    %h2
-      = pluralize(target.errors.count, "error")
-      prohibited this record from being saved:
-    %ul
-      -target.errors.full_messages.each do |msg| 
-        %li 
-          = msg
+-target.each do |t|
+  -if t.errors.any?
+    #errorExplanation
+      %h2
+        = pluralize(t.errors.count, "error")
+        prohibited this record from being saved:
+      %ul
+        -t.errors.full_messages.each do |msg| 
+          %li 
+            = msg
 

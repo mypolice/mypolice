@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :responses, :dependent => :destroy
   belongs_to :user
+  has_one :address
   belongs_to :category
   scope :approved, where(:approved=>true)
   scope :unapproved, where(:approved=>false)
@@ -16,6 +17,6 @@ class Post < ActiveRecord::Base
     paginate :per_page => 10, :page => page,
              :conditions => ['body like ?', "%#{search}%"], :order => 'created_at DESC'
   end
-  
+ 
   
 end

@@ -1,4 +1,6 @@
 Mypolice::Application.routes.draw do |map|
+  resources :addresses
+
   resources :responses
 
   devise_for :polices
