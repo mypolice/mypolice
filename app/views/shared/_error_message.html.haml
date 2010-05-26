@@ -1,3 +1,7 @@
+-if target.class <= Array
+  -a_tartget = target
+-else 
+  -a_target =[target]
 -target.each do |t|
   -if t.errors.any?
     #errorExplanation

@@ -1,0 +1,7 @@
+-title "Stories by tag-#{@tag}"
+%p
+  = link_to 'See All Tags', tags_path 
+  = link_to 'Home', root_path
+= render :partial => @tag
+%h2 posts
+= render :partial => @posts

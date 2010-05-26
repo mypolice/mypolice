@@ -1,0 +1,21 @@
+-form_for([:admin,@post]) do |f|
+  = render "shared/error_message", :target => [@post]
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label(:category_id,"Category")
+    - category_array = Category.all.map{|c|[c.name,c.id]}
+    = f.select(:category_id, options_for_select(category_array, @post.category_id))
+  .field
+    = f.label :body
+    = f.text_area :body
+  .field
+    = f.label :suggestion
+    = f.text_area :suggestion
+  .field
+    = f.label(:tag_list,"tags")
+    = f.text_field :tag_list
+ 
+  .action
+    = f.submit 

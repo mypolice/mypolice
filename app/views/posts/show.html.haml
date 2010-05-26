@@ -7,7 +7,6 @@
   =render :partial=>@post.responses
 -if current_police
   -form_for [@post, Response.new], :remote=>true do |f|
-    =render "shared/error_message", :target=> @response
     %p   
       =f.label :boday, "New Response"
     %p 

@@ -6,7 +6,7 @@
   =f.hidden_field(:body, :value=>sanitize(@post.body))
   =f.hidden_field(:suggestion, :value=>sanitize(@post.suggestion))
   .field
-    %p Please ass some related tags for your story
+    %p Please add some related tags for your story
     =f.label(:tag_list, "Tags(seperate with comma ',')") 
     =f.text_field :tag_list 
 

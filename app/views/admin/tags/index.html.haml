@@ -1,0 +1,14 @@
+-title "Admin-Tags"
+%h1 Listing tags
+= link_to 'See All Tags', admin_tags_path
+= link_to 'Dashboard', admin_root_path
+
+-form_for [:admin, Tag.new] do |f|
+  %p
+    = f.label :name, "New tag" 
+    = f.text_field :name
+  %p
+    = f.submit "Add a new tag"
+
+= render :partial => @tags
+= will_paginate @tags

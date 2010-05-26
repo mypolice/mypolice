@@ -1,0 +1,7 @@
+-title "Police Dashbord"
+%h1 Police Dashboard
+-if !current_police.ischeif
+  %p
+    =link_to 'Add a new police', new_police_police_path
+=render :partial =>"posts/post", :collection => @posts
+-#=will_pagniate @posts

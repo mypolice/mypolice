@@ -1,0 +1,6 @@
+-title "Tags"
+%h1 Listing tags
+= link_to 'See All Tags', tags_path
+= link_to 'Dashboard', root_path
+= render :partial => @tags 
+= will_paginate @tags 

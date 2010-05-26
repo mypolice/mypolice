@@ -7,6 +7,11 @@
   <p>Suggestion:</p>
   <%= simple_format sanitize(post.suggestion) %>
   <p>
+  <p>Tags:</p>
+  <% post.tag_list.each do |tag| %>
+    <%= tag%>
+  <% end%>
+  
   <% if post.approved %>
     <%= link_to 'unapproved', unapprove_admin_post_path(post), :method => :put %>|
   <% else %>
