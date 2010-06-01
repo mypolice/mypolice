@@ -1,0 +1,14 @@
+%head
+  %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+  %title= yield(:title) 
+  = stylesheet_link_tag 'compiled/screen.css', :media =>'screen,projection'
+  = stylesheet_link_tag 'compiled/print.css', :media=>'print'
+  /[if lt IE 8]
+    =stylesheet_link_tag 'compiled/ie.css', :mdeia=>'screen,projection'
+  = stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"
+  = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application"
+  = javascript_include_tag "http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js"
+  = javascript_include_tag 'jquery.rails'
+  = auto_discovery_link_tag :atom, posts_path(:format=>:atom)
+  = csrf_meta_tag 
+

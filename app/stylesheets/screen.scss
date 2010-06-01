@@ -1,0 +1,48 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset";
+
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
+
+// Combine the partials into a single screen stylesheet.
+@import "partials/page";
+@import "partials/form";
+@import "partials/two_col";
+@import "partials/error";
+
+//inline list
+@import "compass/utilities/lists/inline-list";
+//sticky-footer
+@import "compass/layout/sticky-footer";
+@include sticky-footer(72px, "#layout" , "#layout_footer", "#footer");
+
+
+//color
+$bd_color: #dedede;
+$darkpurple: #634583;
+$lightpurple: #ccccff;
+$pink: #ffccff;
+$white:#fff;
+
+body{
+  background:$bd_color;
+  #container{
+    @include container;
+    background:#f2f2f2;
+  
+    #header{
+      @include column(24);
+      background:$white;
+    }
+    #footer{
+      background:$white;
+      }
+  }
+}
+
+ul.hmenu{
+  @include inline-list
+  }

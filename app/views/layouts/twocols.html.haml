@@ -3,17 +3,17 @@
 !!!Strict
 %html{:xmlns=>"http://www.w3.org/1999/xhtml"}
 
-  =render :partial=>"shared/head"
-  %body
+  = render :partial=>"shared/head"
+  %body.two-col
     #container
-      #layout
-        = render :partial =>"shared/header"
-        #content
-          -flash.each do |name, msg| 
-            =content_tag :div, msg, :id=>"flash_#{name}"
+      =render :partial =>"shared/header" 
+      #content
+        -flash.each do |name, msg| 
+          =content_tag :div, msg, :id=>"flash_#{name}"
 
-          = yield 
-        #layout_footer
-      #footer
+        = yield
+      #sidebar
+        %p "This is sidebar"
+      #footer 
         %p "This is a footer"
       -#%script{:src=>'http://cdn.wibiya.com/Toolbars/dir_0393/Toolbar_393982/Loader_393982.js',:type=>'text/javascript'}

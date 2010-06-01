@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_filter :clear_step_errors
   respond_to :html, :xml, :json ,:except=>:index
   respond_to :atom, :only=>:index
+  layout "twocols"
   
   def index
     @posts = Post.approved.search(params[:search], params[:page])
