@@ -1,0 +1,14 @@
+=div_for comment do
+  .commentbubble
+    -unless comment.approved
+      %p
+        This comment is waiting for approval.
+    %h3
+      Police Respones: Re:
+      =comment.post.title.titlecase
+    =simple_format sanitize(comment.body)
+    %p
+      Posted by 
+      =comment.user.email
+      =time_ago_in_words(comment.created_at)
+      ago

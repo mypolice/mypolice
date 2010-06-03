@@ -1,0 +1,9 @@
+=div_for post do
+  %p
+    =post.user.nil? ? "anonymous" : post.user.email
+    posted a story  
+    =link_to_unless_current post.title.titlecase, post
+    on
+    =time_ago_in_words(post.created_at)
+    ago
+ 

@@ -1,5 +1,21 @@
 -title  "Stories"
-%h1 Listing posts
-=link_to 'New Post', new_post_path
-=render :partial => @posts
-=will_paginate @posts
+
+#content
+  %h1 Stories: Most Recent
+  #posts
+    %a{:title=>"Tell us your story",:href=>new_post_path}
+      %img{:id =>"tellbutton", :title=>"Tell us your story", :alt=>"Tell us your story", :src=>"/images/tellusstorybuton.png"}
+    =render :partial => @posts
+    =will_paginate @posts
+
+=content_for :sidebar do
+  #latestresponses
+    %h3
+      Latest Responses:
+    =render :partial=>"home/response",:collection=>@responses
+  #tags
+    %h3
+      Tags
+  #map
+    %h3
+      Map

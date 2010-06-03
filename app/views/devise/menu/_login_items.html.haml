@@ -1,11 +1,11 @@
 -if current_role_name
   %li 
     =current_role.email
-  %li.purplelink
-    = link_to 'Logout', destroy_session_path(current_role_name)
+  %li
+    = link_to 'Logout', destroy_session_path(current_role_name), :class=>"purplelink"
 -else
-  %li.purplelink
-    = link_to 'Login', new_user_session_path 
+  %li
+    = link_to 'Login', new_user_session_path, :class=>"purplelink" 
 -#begin
   %li
     = link_to 'Admin Login', new_admin_session_path

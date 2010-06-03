@@ -1,0 +1,8 @@
+=div_for response do
+  %p
+    =response.police.name
+    posted a response for
+    =link_to_unless_current response.post.title.titlecase, response.post
+    on
+    =time_ago_in_words(response.created_at)
+    ago

@@ -1,4 +1,30 @@
 -title "Mypolice"
-= link_to 'See All Posts', posts_path
-= link_to 'See All Tags', tags_path
+%h1#mph1
+  MyPolice is an online feedback tool that enables the public and the police to have a conversation
+
+#mp_intro
+  %a{:title=>"Tell us your story",:href=>new_post_path}
+    %img{:id =>"tellbutton", :title=>"Tell us your story", :alt=>"Tell us your story", :src=>"/images/tellusstorybuton.png"}
+  %ul
+    %li
+      1.signin or post anonymously
+    %li
+      2.Tell us your story
+    %li 
+      3.Receive feedback
+#col1
+  %h2
+    Latest Members:
+  =render :partial=>"home/user",:collection=>@users 
+#col2
+  %h2
+    Latest Stories:
+  =render :partial=>"home/post", :collection=>@posts  
+  =link_to "View All Stories", posts_path,:class=>"purplelink",:id=>"homebt"
+      
+#col3
+  %h2
+    Latest Response:
+  =render :partial=>"home/response", :collection=>@responses
+  =link_to "View All Responses", posts_path,:class=>"purplelink",:id=>"homebt"
 

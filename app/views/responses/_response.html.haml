@@ -1,0 +1,11 @@
+=div_for response do
+  .responsebubble
+    %h3
+      Police Response: Re: 
+      =response.post.title.titlecase
+    =simple_format sanitize(response.body)
+    %p 
+      Posted by 
+      =response.police.name 
+      =time_ago_in_words(response.created_at)
+      ago

@@ -1,0 +1,8 @@
+=div_for user do
+  %p
+    =user.email
+    just joined mypolice
+    on
+    =time_ago_in_words(user.created_at)
+    ago
+

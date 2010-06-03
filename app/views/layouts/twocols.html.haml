@@ -7,12 +7,12 @@
   %body.two-col
     #container
       =render :partial =>"shared/header" 
-      #content
+      #contentwrapper
         -flash.each do |name, msg| 
           =content_tag :div, msg, :id=>"flash_#{name}"
 
         = yield
       #sidebar
-        %p "This is sidebar"
+        =yield :sidebar
       =render :partial=>"shared/footer"  
       -#%script{:src=>'http://cdn.wibiya.com/Toolbars/dir_0393/Toolbar_393982/Loader_393982.js',:type=>'text/javascript'}
