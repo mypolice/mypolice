@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_filter :clear_step_errors
   respond_to :html, :xml, :json ,:except=>:index
   respond_to :atom, :only=>:index
-  layout "twocols"
+  layout "twocols", :except=>:new
   
   def index
     @posts = Post.approved.search(params[:search], params[:page])
@@ -30,7 +30,9 @@ class PostsController < ApplicationController
     else
       @current_step = params[:current_step]
     end
-    respond_with(@post)
+    respond_with(@post) do |format|
+      format.html{render :action=>:new, :layout=>"application"}
+    end
   end
  
   def create
@@ -41,12 +43,12 @@ class PostsController < ApplicationController
        when "step1" then
         @current_step = 'step2' if valid_for_attributes(@post,[:title]) and @address.valid?
         respond_with(@post) do |format|
-         format.html{render :action=> "new",:params => { :current_step => @current_step }}
+         format.html{render :action=> "new",:layout=>"application", :params => { :current_step => @current_step }}
         end
       when "step2" then
         @current_step = 'step3' if valid_for_attributes(@post,[:body])
          respond_with(@post) do |format|
-         format.html{render :action=> "new",:params => { :current_step => @current_step }}
+         format.html{render :action=> "new", :layout=>"application",:params => { :current_step => @current_step }}
         end
        when "step3" then
           @post.user = current_user unless current_user.nil? 

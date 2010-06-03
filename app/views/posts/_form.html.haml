@@ -1,4 +1,10 @@
-=form_for(@post) do |f|
-  = render "shared/error_message", :target => [@post, @address]
-  = hidden_field_tag "current_step", "#{@current_step}" 
-  = render :partial=>"#{@current_step}", :locals => {:f =>f} 
+#newpost
+  #back_button
+    %a{:title=>"back", :href=>"#"} Back
+  #formcontent
+    =form_for(@post) do |f|
+      = render "shared/error_message", :target => [@post, @address]
+      = hidden_field_tag "current_step", "#{@current_step}" 
+      = render :partial=>"#{@current_step}", :locals => {:f =>f} 
+  #next_button
+    %a{:title=>"next", :href=>"#", :id=>"next"} Next

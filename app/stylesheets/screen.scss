@@ -13,11 +13,17 @@
 @import "partials/two_col";
 @import "partials/error";
 
+
 //inline list
-@import "compass/utilities/lists/inline-list";
+@import "compass/utilities/lists";
 //sticky-footer
 @import "compass/layout/sticky-footer";
-@include sticky-footer(72px, "#layout" , "#layout_footer", "#footer");
+@include sticky-footer(120px, "#layout" , "#layout_footer", "#footer");
+//border-radius
+@import "compass/css3";
+//form
+@import "blueprint/form";
+@import "blueprint/typography";
 
 
 //color
@@ -26,23 +32,174 @@ $darkpurple: #634583;
 $lightpurple: #ccccff;
 $pink: #ffccff;
 $white:#fff;
+$darkgrey:#808080;
 
+//margin
+$menurightmargin:1.25em;
+
+//layout
 body{
   background:$bd_color;
+  font-family:$blueprint-font-family;
+  font-size: $blueprint-font-size;
+  color:$darkgrey;
   #container{
     @include container;
-    background:#f2f2f2;
+    background:$lightpurple;
   
     #header{
       @include column(24);
       background:$white;
+      #logo {
+        @include column(8);
+        img{
+          padding:10px 10px 0;
+          }
+        }
+      #menu{
+        @include column(16,true);
+        #searchbox{
+          @include push(0);
+          margin:10px $menurightmargin 0 400px; 
+          }
+        }
     }
+    #maincontentwrapper{
+      @include column(24);
+      #maincontent{
+        padding:10px;
+        min-height:200px;
+        margin:0 auto;
+        }
+      }
     #footer{
       background:$white;
+      #footerlogo,#relatedlink, #legallink{
+        @include column(8);
+        @include no-bullets;
+        a{
+          font-weight:bold;
+          }
+        } 
+      #legallink{
+        @include column(8,last)
+        }
+      #copyright{
+        @include column(24,true);
+        }
       }
   }
 }
 
-ul.hmenu{
-  @include inline-list
+a{
+  color:$darkgrey;
   }
+
+//search
+#search{
+  border:1px solid $darkpurple;
+  margin-right:-10px;
+  padding:0;
+  width:169px;
+  padding: 5px;
+  color: $darkgrey;
+}
+#submitbutton{
+  background: $darkpurple;
+  color:$white;
+  font-weight:bold;
+  text-algin:center;
+  @include border-right-radius(5px);
+  padding:5px;
+  border:0 none;
+}
+
+// login information menu
+ul.hmenu{
+  @include inline-block;
+  @include no-bullets;
+  @include push(0);
+  margin: 10px $menurightmargin 10px 60px;
+  li{
+    @include inline-block;
+    }
+}
+
+li.purplelink{
+  background:$darkpurple;
+  @include inline-block;
+  padding:4px 10px;
+  @include border-radius(5px);
+  text-align:center;
+  width:80px;
+  a{
+    color:$white;
+    font-weight:bold;
+    text-decoration:none; 
+}
+}
+//menu tabs
+.tabs {
+  height:auto;
+  overflow:auto;
+  padding-left:0;
+  @include push(0);
+  margin:0 $menurightmargin 0 0;
+}
+
+* html .tabs { height:1%; /* fixing IE 6 */ }
+.tabs li {
+  float:left;
+  line-height:1.5;
+  list-style-type:none;
+  margin:0 0 0 0.5em;
+  padding:0;
+}
+.tabs li a {
+  background:$pink;
+  color:$darkgrey;
+  cursor:pointer;
+  display:block;
+  @include border-top-radius(5px);
+  float:left;
+  font-weight:bold;
+  padding:1em 2em;
+}
+.tabs li a.selected {
+  background:$lightpurple;
+  color:$white;
+  cursor:default;
+}
+.tabs li a, .tabs li a:focus, .tabs li a:hover {
+  text-decoration:none;
+}
+.tabs li a:focus, .tabs li a:hover {
+  color:#555;
+  outline:none;
+}
+.tabs li a.selected:focus, .tabs li a.selected:hover {
+  color:#fafafa;
+}
+
+// create a new post
+#newpost{
+  @include span(22);
+  margin:0 auto;
+  background:$white;
+  padding: 50px 10px;
+  overflow:hidden;
+  #back_button{
+    @include column(4);
+    text-align:center;
+    }
+  #formcontent{
+    @include column(14);
+    @include blueprint-form;
+    }
+  #next_button{
+    @include column(4,true);
+    text-align:center;
+    }
+}
+
+

@@ -11,6 +11,7 @@ gem 'acts-as-taggable-on', '2.0.4'
 gem 'haml'
 gem 'will_paginate', :git => "http://github.com/mislav/will_paginate.git", :branch => "rails3"
 gem 'compass','>=0.10.2'
+gem "simple-navigation"
 #gem 'declarative_authorization', :git => "git://github.com/yabawock/declarative_authorization.git", :branch => "rails3"
 # Use unicorn as the web server
 # gem 'unicorn'

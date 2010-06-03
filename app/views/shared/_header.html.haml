@@ -1,4 +1,18 @@
 #header
-  %ul.hmenu 
-    = render :partial =>"devise/menu/login_items"
-    = render :partial => "devise/menu/registration_items"
+  #logo
+    %a{:title=>"Mypolice", :href=>root_path}
+      %img{:title=>"Mypolicelogi", :src=>"/images/logo.jpg"}
+  #menu
+    %form{:action=>posts_path,:method=>'get',:id=>'searchbox'} 
+      %p
+        -if params[:search].nil?
+          = text_field_tag :search ,"Search Stories", {:onclick=>"if(this.defaultValue==this.value) this.value=''"}
+        -else
+          =text_field_tag :search, params[:search], {:onclick=>"if(this.defaultValue==this.value) this.value=''"}
+        =submit_tag "GO", :name=>nil, :id=>:submitbutton 
+    %ul.hmenu 
+      = render :partial =>"devise/menu/login_items"
+      = render :partial => "devise/menu/registration_items"
+    .tabs
+      = render_navigation
+    

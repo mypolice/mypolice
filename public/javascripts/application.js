@@ -5,5 +5,7 @@ $(document).ready(function(){
   $("#post_happened_on").datepicker({dateFormat:'yy-mm-dd', maxDate:new Date()});    
     $("#new_comment").validate();
     $("#new_response").validate();
-    });   
-
+    $("#next").click(function(){
+      $("#new_post").submit();
+      });
+    });

@@ -1,7 +1,7 @@
 Mypolice::Application.routes.draw do |map|
   resources :addresses
 
-  resources :responses
+ resources :responses
 
   devise_for :polices
 
@@ -40,22 +40,14 @@ Mypolice::Application.routes.draw do |map|
 
   
   devise_for :users  
-
-  get "home/index"
   
   match "/admin" => "admin/dashboard#index", :as => :admin_root
   match "/police" => "police/dashboard#index", :as => :police_root
- 
+   
   match '/police/profile/:id/' => 'police/polices#show', :as => :profile   
 
-  resource :admins do 
-    root :to => :admin_root 
-  end
-
-  resource :polices do
-    root :to => :police_root
-  end
-
+  match '/about'=>'about#index', :as =>:about_root
+  match '/tools'=>'tools#index', :as =>:tools_root
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
