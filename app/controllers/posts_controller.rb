@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.approved.search(params[:search], params[:page])
     @responses = Response.paginate :page=>1, :per_page=>'3', :order=>'created_at DESC'    
+    @tags = Post.tag_counts
     respond_to do |format|
       format.html
       format.xml{render :xml=>@posts}
@@ -20,6 +21,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.approved.find(params[:id])
     @responses = Response.paginate :page=>1, :per_page=>'3', :order=>'created_at DESC'        
+    @tags = Post.tag_counts
     respond_with(@post)
   end
 
@@ -27,17 +29,18 @@ class PostsController < ApplicationController
   # GET /posts/new.xml
   def new
     if params[:current_step].nil?
-      @post = Post.new
-      @address = Address.new
+      @post = Post.new(params[:post])
+      @address = Address.new(params[:address])
       @current_step ='step1'
     else
       @current_step = params[:current_step]
+      @post = Post.new(params[:post])
     end
     respond_with(@post) do |format|
       format.html{render :action=>:new, :layout=>"application"}
     end
   end
- 
+
   def create
     @address = Address.new(params[:address])
     @post = Post.new(params[:post])

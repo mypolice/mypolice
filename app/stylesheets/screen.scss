@@ -208,9 +208,72 @@ a.purplelink:visited{
 }
 
 // create a new post
+h2.newstory{
+  text-align:center;
+  margin:10px 0;
+  }
+#progress, #complete{
+  background:url("/images/progress.png") repeat scroll 0 0 transparent;
+  margin:0 auto;
+  position:relative;
+  width:520px;
+  
+  ul{
+    margin:0;
+    padding:0;
+      li{
+        list-style-type:none;
+        display:inline;
+        float:left;
+        width:88px;
+        text-align:center;
+        font-weight:bold;
+        line-height:1.5em;
+        padding: 0 0 10px 0;
+        }
+    }
+  
+  .step1{
+    width:19px;
+    }
+  .step2 {
+  width:111px;    
+    #marker{
+    background-position:-26px 0;
+    }
+  }
+  .step3{
+    width:200px;
+    #marker{
+     background-position:-52px 0; 
+      }
+  .step4{
+    width:293px;
+    #marker{
+      background-position:-78px 0;
+      }
+    }
+    }
+}
+#complete{
+  margin:1px 0 19px;
+  background-position:0 57px;
+  margin-top:0;
+  height:32px;
+  
+  #marker{
+   background:url("/images/markers.png");
+   height:32px;
+   position:absolute;
+   right:-26px;
+   top:0;
+   width:26px;
+   }
+}
+
 #newpost{
   @include span(22);
-  margin:0 auto;
+  margin:0px auto;
   background:$white;
   padding: 50px 10px;
   overflow:hidden;
@@ -327,7 +390,9 @@ a.purplelink:visited{
 #sidebar{
   h3{
       margin:0;
-      border-bottom:2px solid $darkpurple;}
+      border-bottom:2px solid $darkpurple;
+      padding:0 0 10px 0;
+      }
   #latestresponses{
     padding:50px 10px 10px 0; 
     p{
@@ -338,5 +403,23 @@ a.purplelink:visited{
   }
   #tags, #map{
     padding:10px 10px 10px 0;
+    a{
+      padding:5px;
+      }
+    .css1{font-size:1em;}
+    .css2{font-size:1.2em;}
+    .css3{font-size:1.4em;}
+    .css4{font-size:1.6em;}
   }
 }
+
+//login
+#blankbox{
+  background:$white;
+  margin:0 auto;
+  @include span(8);
+}
+
+.centerbox{
+  padding: 10px 30px;
+  }

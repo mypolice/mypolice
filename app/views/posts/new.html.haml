@@ -1,4 +1,27 @@
 -title "Add a new Story"
-%h1 New Story
-= render 'form' 
-= link_to 'Back', posts_path
+%h2.newstory Use the simple form below to tell us your story
+#progress
+  #complete{:class=>"#{@current_step}"}
+    #marker
+  %ul
+    %li
+      Sign in?
+    %li
+      Basic Details
+    %li
+      Location
+    %li
+      Your story
+    %li
+      Tags
+
+#newpost
+  #back_button
+    %a{:title=>"back", :href=>new_post_path} Back
+  #formcontent
+    =form_for(@post) do |f|
+      = render "shared/error_message", :target => [@post, @address]
+      = hidden_field_tag "current_step", "#{@current_step}" 
+      = render :partial=>"#{@current_step}", :locals => {:f =>f} 
+  #next_button
+    %a{:title=>"next", :href=>"#", :id=>"next"} Next

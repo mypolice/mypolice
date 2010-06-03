@@ -160,11 +160,11 @@ body.bp a:visited {
 }
 /* line 21, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 body.bp a:focus {
-  color: #dedede;
+  color: gray;
 }
 /* line 24, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 body.bp a:hover {
-  color: #dedede;
+  color: gray;
 }
 /* line 27, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 body.bp a:active {
@@ -732,11 +732,11 @@ body a:visited {
 }
 /* line 21, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 body a:focus {
-  color: #dedede;
+  color: gray;
 }
 /* line 24, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 body a:hover {
-  color: #dedede;
+  color: gray;
 }
 /* line 27, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 body a:active {
@@ -1174,14 +1174,89 @@ a.purplelink:visited {
 }
 
 /* line 211, ../../../app/stylesheets/screen.scss */
+h2.newstory {
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* line 215, ../../../app/stylesheets/screen.scss */
+#progress, #complete {
+  background: url("/images/progress.png") repeat scroll 0 0 transparent;
+  margin: 0 auto;
+  position: relative;
+  width: 520px;
+}
+/* line 221, ../../../app/stylesheets/screen.scss */
+#progress ul, #complete ul {
+  margin: 0;
+  padding: 0;
+}
+/* line 224, ../../../app/stylesheets/screen.scss */
+#progress ul li, #complete ul li {
+  list-style-type: none;
+  display: inline;
+  float: left;
+  width: 88px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 0 0 10px 0;
+}
+/* line 236, ../../../app/stylesheets/screen.scss */
+#progress .step1, #complete .step1 {
+  width: 19px;
+}
+/* line 239, ../../../app/stylesheets/screen.scss */
+#progress .step2, #complete .step2 {
+  width: 111px;
+}
+/* line 241, ../../../app/stylesheets/screen.scss */
+#progress .step2 #marker, #complete .step2 #marker {
+  background-position: -26px 0;
+}
+/* line 245, ../../../app/stylesheets/screen.scss */
+#progress .step3, #complete .step3 {
+  width: 200px;
+}
+/* line 247, ../../../app/stylesheets/screen.scss */
+#progress .step3 #marker, #complete .step3 #marker {
+  background-position: -52px 0;
+}
+/* line 250, ../../../app/stylesheets/screen.scss */
+#progress .step3 .step4, #complete .step3 .step4 {
+  width: 293px;
+}
+/* line 252, ../../../app/stylesheets/screen.scss */
+#progress .step3 .step4 #marker, #complete .step3 .step4 #marker {
+  background-position: -78px 0;
+}
+
+/* line 258, ../../../app/stylesheets/screen.scss */
+#complete {
+  margin: 1px 0 19px;
+  background-position: 0 57px;
+  margin-top: 0;
+  height: 32px;
+}
+/* line 264, ../../../app/stylesheets/screen.scss */
+#complete #marker {
+  background: url("/images/markers.png");
+  height: 32px;
+  position: absolute;
+  right: -26px;
+  top: 0;
+  width: 26px;
+}
+
+/* line 274, ../../../app/stylesheets/screen.scss */
 #newpost {
   width: 870px;
-  margin: 0 auto;
+  margin: 0px auto;
   background: white;
   padding: 50px 10px;
   overflow: hidden;
 }
-/* line 217, ../../../app/stylesheets/screen.scss */
+/* line 280, ../../../app/stylesheets/screen.scss */
 #newpost #back_button {
   display: inline;
   float: left;
@@ -1193,7 +1268,7 @@ a.purplelink:visited {
 * html #newpost #back_button {
   overflow-x: hidden;
 }
-/* line 221, ../../../app/stylesheets/screen.scss */
+/* line 284, ../../../app/stylesheets/screen.scss */
 #newpost #formcontent {
   display: inline;
   float: left;
@@ -1265,7 +1340,7 @@ a.purplelink:visited {
   width: 390px;
   height: 250px;
 }
-/* line 225, ../../../app/stylesheets/screen.scss */
+/* line 288, ../../../app/stylesheets/screen.scss */
 #newpost #next_button {
   display: inline;
   float: left;
@@ -1278,7 +1353,7 @@ a.purplelink:visited {
   overflow-x: hidden;
 }
 
-/* line 232, ../../../app/stylesheets/screen.scss */
+/* line 295, ../../../app/stylesheets/screen.scss */
 #tellbutton {
   position: absolute;
   margin: -20px 0 0 -100px;
@@ -1286,7 +1361,7 @@ a.purplelink:visited {
   cursor: pointer;
 }
 
-/* line 238, ../../../app/stylesheets/screen.scss */
+/* line 301, ../../../app/stylesheets/screen.scss */
 #posts {
   background: white;
   -moz-border-radius: 5px;
@@ -1299,50 +1374,50 @@ a.purplelink:visited {
   margin-top: 40px;
   overflow: hidden;
 }
-/* line 245, ../../../app/stylesheets/screen.scss */
+/* line 308, ../../../app/stylesheets/screen.scss */
 #posts .postbubble {
   border: 2px dashed #4f0083;
   padding: 10px;
   margin: 10px 0;
   overflow: hidden;
 }
-/* line 251, ../../../app/stylesheets/screen.scss */
+/* line 314, ../../../app/stylesheets/screen.scss */
 #posts #sharethis_0 {
   float: right;
   height: 17px;
   weight: auto;
   margin: -34px 0 0 0;
 }
-/* line 258, ../../../app/stylesheets/screen.scss */
+/* line 321, ../../../app/stylesheets/screen.scss */
 #posts #responses {
   width: 510px;
   float: right;
 }
-/* line 262, ../../../app/stylesheets/screen.scss */
+/* line 325, ../../../app/stylesheets/screen.scss */
 #posts #responses .responsebubble {
   border: 2px dashed #6c72e7;
   padding: 10px;
   margin: 10px 0;
 }
-/* line 269, ../../../app/stylesheets/screen.scss */
+/* line 332, ../../../app/stylesheets/screen.scss */
 #posts #comments {
   width: 510px;
   float: left;
 }
-/* line 273, ../../../app/stylesheets/screen.scss */
+/* line 336, ../../../app/stylesheets/screen.scss */
 #posts #comments .commentbubble {
   border: 2px dashed #cccccc;
   padding: 10px;
   margin: 10px 0;
 }
 
-/* line 282, ../../../app/stylesheets/screen.scss */
+/* line 345, ../../../app/stylesheets/screen.scss */
 #mph1 {
   margin: 30px 0;
   padding: 0 40px;
 }
 
-/* line 287, ../../../app/stylesheets/screen.scss */
+/* line 350, ../../../app/stylesheets/screen.scss */
 #mp_intro ul {
   background: url(/images/whatismp.png) no-repeat;
   width: 930px;
@@ -1350,7 +1425,7 @@ a.purplelink:visited {
   padding: 0;
   list-style: none;
 }
-/* line 293, ../../../app/stylesheets/screen.scss */
+/* line 356, ../../../app/stylesheets/screen.scss */
 #mp_intro ul li {
   color: white;
   float: left;
@@ -1362,46 +1437,79 @@ a.purplelink:visited {
   padding: 172px 0px 0;
 }
 
-/* line 307, ../../../app/stylesheets/screen.scss */
+/* line 370, ../../../app/stylesheets/screen.scss */
 #col1, #col2, #col3 {
   float: left;
   display: inline;
   width: 300px;
   margin: 5px;
 }
-/* line 312, ../../../app/stylesheets/screen.scss */
+/* line 375, ../../../app/stylesheets/screen.scss */
 #col1 h2, #col2 h2, #col3 h2 {
   margin: 0;
   border-bottom: 2px solid #4f0083;
 }
-/* line 315, ../../../app/stylesheets/screen.scss */
+/* line 378, ../../../app/stylesheets/screen.scss */
 #col1 p, #col2 p, #col3 p {
   padding: 10px;
   margin: 0;
   border-bottom: 1px dotted #4f0083;
 }
-/* line 320, ../../../app/stylesheets/screen.scss */
+/* line 383, ../../../app/stylesheets/screen.scss */
 #col1 #homebt, #col2 #homebt, #col3 #homebt {
   width: 150px;
   margin: 20px 0 10px 0;
 }
 
-/* line 328, ../../../app/stylesheets/screen.scss */
+/* line 391, ../../../app/stylesheets/screen.scss */
 #sidebar h3 {
   margin: 0;
   border-bottom: 2px solid #4f0083;
+  padding: 0 0 10px 0;
 }
-/* line 331, ../../../app/stylesheets/screen.scss */
+/* line 396, ../../../app/stylesheets/screen.scss */
 #sidebar #latestresponses {
   padding: 50px 10px 10px 0;
 }
-/* line 333, ../../../app/stylesheets/screen.scss */
+/* line 398, ../../../app/stylesheets/screen.scss */
 #sidebar #latestresponses p {
   padding: 10px;
   margin: 0;
   border-bottom: 1px dotted #4f0083;
 }
-/* line 339, ../../../app/stylesheets/screen.scss */
+/* line 404, ../../../app/stylesheets/screen.scss */
 #sidebar #tags, #sidebar #map {
   padding: 10px 10px 10px 0;
+}
+/* line 406, ../../../app/stylesheets/screen.scss */
+#sidebar #tags a, #sidebar #map a {
+  padding: 5px;
+}
+/* line 409, ../../../app/stylesheets/screen.scss */
+#sidebar #tags .css1, #sidebar #map .css1 {
+  font-size: 1em;
+}
+/* line 410, ../../../app/stylesheets/screen.scss */
+#sidebar #tags .css2, #sidebar #map .css2 {
+  font-size: 1.2em;
+}
+/* line 411, ../../../app/stylesheets/screen.scss */
+#sidebar #tags .css3, #sidebar #map .css3 {
+  font-size: 1.4em;
+}
+/* line 412, ../../../app/stylesheets/screen.scss */
+#sidebar #tags .css4, #sidebar #map .css4 {
+  font-size: 1.6em;
+}
+
+/* line 417, ../../../app/stylesheets/screen.scss */
+#blankbox {
+  background: white;
+  margin: 0 auto;
+  width: 310px;
+}
+
+/* line 423, ../../../app/stylesheets/screen.scss */
+.centerbox {
+  padding: 10px 30px;
 }

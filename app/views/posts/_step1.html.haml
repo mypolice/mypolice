@@ -1,7 +1,8 @@
 %fieldset
   .field
     =f.label(:title, "Please tell us your story title")
-    =f.text_field :title 
+    = mark_required(@post, :title)
+    =f.text_field :title, :value=>@post.title 
   .field
     =f.label(:category_id,"Please choose the story category")
     -category_array = Category.all.map{|c| [c.name,c.id]}
@@ -18,6 +19,7 @@
   %fieldset
     .field 
       =a.label(:address_line1," Address Line 1")
+      = mark_required(@address, :address_line1)
       =a.text_field :address_line1
     .field 
       =a.label(:address_line2, "Address Line 2")
@@ -30,6 +32,7 @@
       =a.text_field :county
     .field 
       =a.label(:postcode," Postcode")
+      = mark_required(@address, :postcode)
       =a.text_field :postcode
     .field 
       =a.label(:country, "Country(Our serivce only available in UK now)")
