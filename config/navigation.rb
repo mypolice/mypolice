@@ -26,6 +26,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :post, "Stories", posts_path
     primary.item :about, "About", about_root_path
     primary.item :tools, "Tools", tools_root_path
+    #primary.item :policedashboard, "Dashboard", police_root_path
     #Add an item to the primary navigation. The following params apply:
     # key - a symbol which uniquely defines your navigation item in the scope of the primary_navigation
     # name - will be displayed in the rendered navigation. This can also be a call to your I18n-framework.

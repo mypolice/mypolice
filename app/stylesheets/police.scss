@@ -2,7 +2,7 @@
 @import "blueprint/reset";
 
 // To configure blueprint, edit the partials/base.sass file.
-@import "partials/base";
+@import "partials/policebase";
 
 // Import all the default blueprint modules so that we can access their mixins.
 @import "blueprint";
@@ -28,8 +28,8 @@
 
 //color
 $bd_color: #f2f2f2;
-$darkpurple: #4f0083;
-$lightpurple: #ebe6f5;
+$darkpurple: #0696bd;
+$lightpurple: #e6f4f8;
 $pink: #deb5d3;
 $white:#fff;
 $darkgrey:#535353;
@@ -68,6 +68,7 @@ body{
         }
     }
     #maincontentwrapper{
+
       @include column(24);
       #maincontent{
         padding:10px;
@@ -169,12 +170,13 @@ a.purplelink:visited{
   margin:0 $menurightmargin 0 0;
   ul{
     margin:0;
+    @include span(20);
     }
 }
 
 * html .tabs { height:1%; /* fixing IE 6 */ }
 .tabs li {
-  float:left;
+  float:right;
   line-height:1.5;
   list-style-type:none;
   margin:0 0 0 0.5em;
@@ -207,90 +209,42 @@ a.purplelink:visited{
   color:$darkgrey;
 }
 
-// create a new post
-h2.newstory{
-  text-align:center;
-  margin:10px 0;
-  }
-#progress, #complete{
-  background:url("/images/progress.png") repeat scroll 0 0 transparent;
-  margin:0 auto;
-  position:relative;
-  width:520px;
-  
-  ul{
-    margin:0;
-    padding:0;
-      li{
-        list-style-type:none;
-        display:inline;
-        float:left;
-        width:88px;
-        text-align:center;
-        font-weight:bold;
-        line-height:1.5em;
-        padding: 0 0 10px 0;
-        }
-    }
-  
-  .step1{
-    width:19px;
-    }
-  .step2 {
-  width:111px;    
-    #marker{
-    background-position:-26px 0;
-    }
-  }
-  .step3{
-    width:200px;
-    #marker{
-     background-position:-52px 0; 
-      }
-  .step4{
-    width:293px;
-    #marker{
-      background-position:-78px 0;
-      }
-    }
-    }
-}
-#complete{
-  margin:1px 0 19px;
-  background-position:0 57px;
-  margin-top:0;
-  height:32px;
-  
-  #marker{
-   background:url("/images/markers.png");
-   height:32px;
-   position:absolute;
-   right:-26px;
-   top:0;
-   width:26px;
-   }
-}
-
-#newpost{
-  @include span(22);
-  margin:0px auto;
+//police dashboard
+.contentblock{
+  padding:10px;
+  @include border-radius(5px);
   background:$white;
-  padding: 50px 10px;
+  margin:10px 0;
   overflow:hidden;
-  #back_button{
-    @include column(4);
-    text-align:center;
+  a.purplelink{
+      width:200px;
+      float:right;
     }
-  #formcontent{
-    @include column(14);
-    @include blueprint-form;
-    }
-  #next_button{
-    @include column(4,true);
-    text-align:center;
-    }
-}
+  }
 
+//police dashboard sidebar
+#sidebarwrapper{
+  padding:10px 10px 10px 0;
+  }
+.sidebarblock{
+  @include border-radius(5px);
+  border:1px solid $darkpurple;
+  background:$white;
+  margin:10px 0;
+  h3.title{
+    padding: 5px 10px;
+    border-bottom:1px solid $darkpurple;
+    margin:0;
+    }
+  .sidebarcontent{
+    padding:10px;
+    ul{
+      margin:0 0 10px 0;
+      padding:0;
+      list-style-type:none;
+      }
+    }
+  }
 //posts page
 #tellbutton{
   position:absolute;
@@ -304,7 +258,7 @@ h2.newstory{
   padding:10px;
   margin-top:40px;
   overflow:hidden;
-
+}
   .postbubble{
     border:2px dashed $darkpurple;
     padding:10px;
@@ -321,25 +275,23 @@ h2.newstory{
   #responses{
     @include span(13);
     float:right; 
-    
+   } 
     .responsebubble{
       border:2px dashed $responsebubble;
       padding:10px;
       margin:10px 0;
       }
-  }
 
   #comments{
     @include span(13);
     float:left;
-
+}
     .commentbubble{
       border:2px dashed $commentbubble;
       padding:10px;
       margin:10px 0;
       }
-    }
-}
+
 
 //homepage
 #mph1{
@@ -387,12 +339,12 @@ h2.newstory{
 }
 
 //sidebar
-#sidebar{
-  h3{
+ h3.sidebar{
       margin:0;
       border-bottom:2px solid $darkpurple;
       padding:0 0 10px 0;
       }
+#sidebar{
   #latestresponses{
     padding:50px 10px 10px 0; 
     p{

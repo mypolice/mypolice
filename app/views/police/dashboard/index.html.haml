@@ -1,7 +1,61 @@
 -title "Police Dashbord"
-%h1 Police Dashboard
+%h2 
+  Overview: 
+  %a Your Area
+.contentblock
+  -tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag,css_class|
+    =link_to tag.name, tag_path(tag),:class=>css_class
+%h2
+  Stories:
+  =link_to "Most Recent", posts_path 
+.contentblock
+  =render :partial =>"posts/post", :collection => @posts
+  =link_to "View All Stories", posts_path, :class=>'purplelink'
+.contentblock
+  =render :partial =>"responses/response", :collection=>@responses
+  =link_to "View All Responses", responses_path, :class=>'purplelink'
+
+=content_for :sidebar do
+  #sidebarwrapper
+    .sidebarblock
+      %h3.title
+        Control Panel
+      .sidebarcontent
+        %ul
+          %li
+            Your area 
+            =link_to "Govanhill"
+          %li
+            =link_to "Stories in My area", posts_path 
+          %li
+            =link_to "My Responses"
+        %ul
+          %li
+            =link_to "Manage Setting"
+          -if !current_police.ischeif
+            %li
+              =link_to "Add a new police", new_police_police_path
+          %li
+            =link_to "Help"
+          %li
+            =link_to "FAQ's"
+    .sidebarblock
+      %h3.title
+        Analyse Date
+      .sidebarcontent
+        %p
+          Data: Kinfe Stories
+        %img{:src=>"/images/dataanalyse.png"}
+        =link_to "View More", :class=>'purplelink'
+    
+    .sidebarblock
+      %h3.title
+        Analyse Date
+      .sidebarcontent
+        %img{:src=>"/images/map.png"}
+
+  
 -if !current_police.ischeif
   %p
     =link_to 'Add a new police', new_police_police_path
-=render :partial =>"posts/post", :collection => @posts
 -#=will_pagniate @posts

@@ -646,7 +646,7 @@ html, body {
   height: 170px;
 }
 
-/* line 42, ../../../app/stylesheets/screen.scss */
+/* line 42, ../../../app/stylesheets/police.scss */
 body {
   background: #f2f2f2;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -854,19 +854,19 @@ body .quiet {
 body .loud {
   color: #535353;
 }
-/* line 49, ../../../app/stylesheets/screen.scss */
+/* line 49, ../../../app/stylesheets/police.scss */
 body #container {
   width: 950px;
   margin: 0 auto;
   overflow: hidden;
   display: inline-block;
-  background: #ebe6f5;
+  background: #e6f4f8;
 }
 /* line 8, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/general/_hacks.scss */
 body #container {
   display: block;
 }
-/* line 53, ../../../app/stylesheets/screen.scss */
+/* line 53, ../../../app/stylesheets/police.scss */
 body #container #header {
   display: inline;
   float: left;
@@ -878,7 +878,7 @@ body #container #header {
 * html body #container #header {
   overflow-x: hidden;
 }
-/* line 56, ../../../app/stylesheets/screen.scss */
+/* line 56, ../../../app/stylesheets/police.scss */
 body #container #header #logo {
   display: inline;
   float: left;
@@ -889,11 +889,11 @@ body #container #header #logo {
 * html body #container #header #logo {
   overflow-x: hidden;
 }
-/* line 58, ../../../app/stylesheets/screen.scss */
+/* line 58, ../../../app/stylesheets/police.scss */
 body #container #header #logo img {
   padding: 10px 10px 0;
 }
-/* line 62, ../../../app/stylesheets/screen.scss */
+/* line 62, ../../../app/stylesheets/police.scss */
 body #container #header #menu {
   display: inline;
   float: left;
@@ -904,7 +904,7 @@ body #container #header #menu {
 * html body #container #header #menu {
   overflow-x: hidden;
 }
-/* line 64, ../../../app/stylesheets/screen.scss */
+/* line 64, ../../../app/stylesheets/police.scss */
 body #container #header #menu #searchbox {
   display: inline;
   float: right;
@@ -912,7 +912,7 @@ body #container #header #menu #searchbox {
   margin: 0 0px 1.5em 0px;
   margin: 10px 10px 0 400px;
 }
-/* line 70, ../../../app/stylesheets/screen.scss */
+/* line 70, ../../../app/stylesheets/police.scss */
 body #container #maincontentwrapper {
   display: inline;
   float: left;
@@ -923,25 +923,25 @@ body #container #maincontentwrapper {
 * html body #container #maincontentwrapper {
   overflow-x: hidden;
 }
-/* line 72, ../../../app/stylesheets/screen.scss */
+/* line 73, ../../../app/stylesheets/police.scss */
 body #container #maincontentwrapper #maincontent {
   padding: 10px;
   min-height: 200px;
   margin: 0 auto;
 }
-/* line 78, ../../../app/stylesheets/screen.scss */
+/* line 79, ../../../app/stylesheets/police.scss */
 body #container #footer {
   background: white;
 }
-/* line 80, ../../../app/stylesheets/screen.scss */
+/* line 81, ../../../app/stylesheets/police.scss */
 body #container #footer ul {
   padding: 10px 0;
 }
-/* line 82, ../../../app/stylesheets/screen.scss */
+/* line 83, ../../../app/stylesheets/police.scss */
 body #container #footer ul li {
   line-height: 2em;
 }
-/* line 86, ../../../app/stylesheets/screen.scss */
+/* line 87, ../../../app/stylesheets/police.scss */
 body #container #footer #footerlogo, body #container #footer #relatedlink, body #container #footer #legallink {
   display: inline;
   float: left;
@@ -959,15 +959,15 @@ body #container #footer #footerlogo li, body #container #footer #relatedlink li,
   list-style-type: none;
   margin-left: 0px;
 }
-/* line 89, ../../../app/stylesheets/screen.scss */
+/* line 90, ../../../app/stylesheets/police.scss */
 body #container #footer #footerlogo a, body #container #footer #relatedlink a, body #container #footer #legallink a {
   font-weight: bold;
 }
-/* line 92, ../../../app/stylesheets/screen.scss */
+/* line 93, ../../../app/stylesheets/police.scss */
 body #container #footer #footerlogo img, body #container #footer #relatedlink img, body #container #footer #legallink img {
   padding: 10px;
 }
-/* line 96, ../../../app/stylesheets/screen.scss */
+/* line 97, ../../../app/stylesheets/police.scss */
 body #container #footer #legallink {
   display: inline;
   float: left;
@@ -978,7 +978,7 @@ body #container #footer #legallink {
 * html body #container #footer #legallink {
   overflow-x: hidden;
 }
-/* line 99, ../../../app/stylesheets/screen.scss */
+/* line 100, ../../../app/stylesheets/police.scss */
 body #container #footer #copyright {
   display: inline;
   float: left;
@@ -991,14 +991,14 @@ body #container #footer #copyright {
   overflow-x: hidden;
 }
 
-/* line 107, ../../../app/stylesheets/screen.scss */
+/* line 108, ../../../app/stylesheets/police.scss */
 a {
   color: #535353;
 }
 
-/* line 112, ../../../app/stylesheets/screen.scss */
+/* line 113, ../../../app/stylesheets/police.scss */
 #search {
-  border: 1px solid #4f0083;
+  border: 1px solid #0696bd;
   margin-right: -10px;
   padding: 0;
   width: 169px;
@@ -1006,9 +1006,9 @@ a {
   color: #535353;
 }
 
-/* line 120, ../../../app/stylesheets/screen.scss */
+/* line 121, ../../../app/stylesheets/police.scss */
 #submitbutton {
-  background: #4f0083;
+  background: #0696bd;
   color: white;
   font-weight: bold;
   text-algin: center;
@@ -1028,7 +1028,7 @@ a {
   border: 0 none;
 }
 
-/* line 131, ../../../app/stylesheets/screen.scss */
+/* line 132, ../../../app/stylesheets/police.scss */
 ul.hmenu {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -1049,7 +1049,7 @@ ul.hmenu li {
   list-style-type: none;
   margin-left: 0px;
 }
-/* line 136, ../../../app/stylesheets/screen.scss */
+/* line 137, ../../../app/stylesheets/police.scss */
 ul.hmenu li {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -1059,9 +1059,9 @@ ul.hmenu li {
   *vertical-align: auto;
 }
 
-/* line 141, ../../../app/stylesheets/screen.scss */
+/* line 142, ../../../app/stylesheets/police.scss */
 a.purplelink {
-  background: #4f0083;
+  background: #0696bd;
   display: -moz-inline-box;
   -moz-box-orient: vertical;
   display: inline-block;
@@ -1085,17 +1085,17 @@ a.purplelink {
   cursor: pointer;
 }
 
-/* line 156, ../../../app/stylesheets/screen.scss */
+/* line 157, ../../../app/stylesheets/police.scss */
 a.purplelink:active {
   color: white;
 }
 
-/* line 159, ../../../app/stylesheets/screen.scss */
+/* line 160, ../../../app/stylesheets/police.scss */
 a.purplelink:visited {
   color: white;
 }
 
-/* line 164, ../../../app/stylesheets/screen.scss */
+/* line 165, ../../../app/stylesheets/police.scss */
 .tabs {
   height: auto;
   overflow: auto;
@@ -1106,20 +1106,21 @@ a.purplelink:visited {
   margin: 0 0px 1.5em 0px;
   margin: 0 10px 0 0;
 }
-/* line 170, ../../../app/stylesheets/screen.scss */
+/* line 171, ../../../app/stylesheets/police.scss */
 .tabs ul {
   margin: 0;
+  width: 790px;
 }
 
-/* line 175, ../../../app/stylesheets/screen.scss */
+/* line 177, ../../../app/stylesheets/police.scss */
 * html .tabs {
   height: 1%;
   /* fixing IE 6 */
 }
 
-/* line 176, ../../../app/stylesheets/screen.scss */
+/* line 178, ../../../app/stylesheets/police.scss */
 .tabs li {
-  float: left;
+  float: right;
   line-height: 1.5;
   list-style-type: none;
   margin: 0 0 0 0.5em;
@@ -1127,7 +1128,7 @@ a.purplelink:visited {
   font-size: 18px;
 }
 
-/* line 184, ../../../app/stylesheets/screen.scss */
+/* line 186, ../../../app/stylesheets/police.scss */
 .tabs li a {
   background: #deb5d3;
   color: #535353;
@@ -1151,209 +1152,82 @@ a.purplelink:visited {
   display: block;
 }
 
-/* line 195, ../../../app/stylesheets/screen.scss */
+/* line 197, ../../../app/stylesheets/police.scss */
 .tabs li a.selected {
-  background: #ebe6f5;
+  background: #e6f4f8;
 }
 
-/* line 198, ../../../app/stylesheets/screen.scss */
+/* line 200, ../../../app/stylesheets/police.scss */
 .tabs li a, .tabs li a:focus, .tabs li a:hover {
   text-decoration: none;
 }
 
-/* line 201, ../../../app/stylesheets/screen.scss */
+/* line 203, ../../../app/stylesheets/police.scss */
 .tabs li a:focus, .tabs li a:hover {
   color: #535353;
-  background: #ebe6f5;
+  background: #e6f4f8;
   outline: none;
 }
 
-/* line 206, ../../../app/stylesheets/screen.scss */
+/* line 208, ../../../app/stylesheets/police.scss */
 .tabs li a.selected:focus, .tabs li a.selected:hover {
   color: #535353;
 }
 
-/* line 211, ../../../app/stylesheets/screen.scss */
-h2.newstory {
-  text-align: center;
-  margin: 10px 0;
-}
-
-/* line 215, ../../../app/stylesheets/screen.scss */
-#progress, #complete {
-  background: url("/images/progress.png") repeat scroll 0 0 transparent;
-  margin: 0 auto;
-  position: relative;
-  width: 520px;
-}
-/* line 221, ../../../app/stylesheets/screen.scss */
-#progress ul, #complete ul {
-  margin: 0;
-  padding: 0;
-}
-/* line 224, ../../../app/stylesheets/screen.scss */
-#progress ul li, #complete ul li {
-  list-style-type: none;
-  display: inline;
-  float: left;
-  width: 88px;
-  text-align: center;
-  font-weight: bold;
-  line-height: 1.5em;
-  padding: 0 0 10px 0;
-}
-/* line 236, ../../../app/stylesheets/screen.scss */
-#progress .step1, #complete .step1 {
-  width: 19px;
-}
-/* line 239, ../../../app/stylesheets/screen.scss */
-#progress .step2, #complete .step2 {
-  width: 111px;
-}
-/* line 241, ../../../app/stylesheets/screen.scss */
-#progress .step2 #marker, #complete .step2 #marker {
-  background-position: -26px 0;
-}
-/* line 245, ../../../app/stylesheets/screen.scss */
-#progress .step3, #complete .step3 {
-  width: 200px;
-}
-/* line 247, ../../../app/stylesheets/screen.scss */
-#progress .step3 #marker, #complete .step3 #marker {
-  background-position: -52px 0;
-}
-/* line 250, ../../../app/stylesheets/screen.scss */
-#progress .step3 .step4, #complete .step3 .step4 {
-  width: 293px;
-}
-/* line 252, ../../../app/stylesheets/screen.scss */
-#progress .step3 .step4 #marker, #complete .step3 .step4 #marker {
-  background-position: -78px 0;
-}
-
-/* line 258, ../../../app/stylesheets/screen.scss */
-#complete {
-  margin: 1px 0 19px;
-  background-position: 0 57px;
-  margin-top: 0;
-  height: 32px;
-}
-/* line 264, ../../../app/stylesheets/screen.scss */
-#complete #marker {
-  background: url("/images/markers.png");
-  height: 32px;
-  position: absolute;
-  right: -26px;
-  top: 0;
-  width: 26px;
-}
-
-/* line 274, ../../../app/stylesheets/screen.scss */
-#newpost {
-  width: 870px;
-  margin: 0px auto;
+/* line 213, ../../../app/stylesheets/police.scss */
+.contentblock {
+  padding: 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
   background: white;
-  padding: 50px 10px;
+  margin: 10px 0;
   overflow: hidden;
 }
-/* line 280, ../../../app/stylesheets/screen.scss */
-#newpost #back_button {
-  display: inline;
-  float: left;
-  margin-right: 10px;
-  width: 150px;
-  text-align: center;
-}
-/* line 138, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html #newpost #back_button {
-  overflow-x: hidden;
-}
-/* line 284, ../../../app/stylesheets/screen.scss */
-#newpost #formcontent {
-  display: inline;
-  float: left;
-  margin-right: 10px;
-  width: 550px;
-}
-/* line 138, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html #newpost #formcontent {
-  overflow-x: hidden;
-}
-/* line 18, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent label {
-  font-weight: bold;
-}
-/* line 19, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent fieldset {
-  padding: 1.4em;
-  margin: 0 0 1.5em 0;
-}
-/* line 20, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent legend {
-  font-weight: bold;
-  font-size: 1.2em;
-}
-/* line 25, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent input.text, #newpost #formcontent input.title, #newpost #formcontent input[type=text], #newpost #formcontent input[type=password] {
-  margin: 0.5em 0;
-  background-color: white;
-  padding: 5px;
-}
-/* line 26, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent input.title {
-  font-size: 1.5em;
-}
-/* line 30, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent input[type=checkbox], #newpost #formcontent input.checkbox, #newpost #formcontent input[type=radio], #newpost #formcontent input.radio {
-  position: relative;
-  top: 0.25em;
-}
-/* line 32, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent textarea {
-  margin: 0.5em 0;
-  padding: 5px;
-}
-/* line 33, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent select {
-  margin: 0.5em 0;
-}
-/* line 57, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent fieldset {
-  border: 1px solid #cccccc;
-}
-/* line 60, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent input.text, #newpost #formcontent input.title, #newpost #formcontent input[type=text], #newpost #formcontent input[type=password],
-#newpost #formcontent textarea, #newpost #formcontent select {
-  border: 1px solid #bbbbbb;
-}
-/* line 62, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent input.text:focus, #newpost #formcontent input.title:focus, #newpost #formcontent input[type=text]:focus, #newpost #formcontent input[type=password]:focus,
-#newpost #formcontent textarea:focus, #newpost #formcontent select:focus {
-  border: 1px solid #666666;
-}
-/* line 46, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent input.text, #newpost #formcontent input.title, #newpost #formcontent input[type=text], #newpost #formcontent input[type=password] {
-  width: 300px;
-}
-/* line 48, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-#newpost #formcontent textarea {
-  width: 390px;
-  height: 250px;
-}
-/* line 288, ../../../app/stylesheets/screen.scss */
-#newpost #next_button {
-  display: inline;
-  float: left;
-  margin-right: 0;
-  width: 150px;
-  text-align: center;
-}
-/* line 138, ../../../../../../../Ruby19/lib/ruby/gems/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html #newpost #next_button {
-  overflow-x: hidden;
+/* line 219, ../../../app/stylesheets/police.scss */
+.contentblock a.purplelink {
+  width: 200px;
+  float: right;
 }
 
-/* line 295, ../../../app/stylesheets/screen.scss */
+/* line 226, ../../../app/stylesheets/police.scss */
+#sidebarwrapper {
+  padding: 10px 10px 10px 0;
+}
+
+/* line 229, ../../../app/stylesheets/police.scss */
+.sidebarblock {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #0696bd;
+  background: white;
+  margin: 10px 0;
+}
+/* line 234, ../../../app/stylesheets/police.scss */
+.sidebarblock h3.title {
+  padding: 5px 10px;
+  border-bottom: 1px solid #0696bd;
+  margin: 0;
+}
+/* line 239, ../../../app/stylesheets/police.scss */
+.sidebarblock .sidebarcontent {
+  padding: 10px;
+}
+/* line 241, ../../../app/stylesheets/police.scss */
+.sidebarblock .sidebarcontent ul {
+  margin: 0 0 10px 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* line 249, ../../../app/stylesheets/police.scss */
 #tellbutton {
   position: absolute;
   margin: -20px 0 0 -100px;
@@ -1361,7 +1235,7 @@ h2.newstory {
   cursor: pointer;
 }
 
-/* line 301, ../../../app/stylesheets/screen.scss */
+/* line 255, ../../../app/stylesheets/police.scss */
 #posts {
   background: white;
   -moz-border-radius: 5px;
@@ -1374,50 +1248,56 @@ h2.newstory {
   margin-top: 40px;
   overflow: hidden;
 }
-/* line 308, ../../../app/stylesheets/screen.scss */
-#posts .postbubble {
-  border: 2px dashed #4f0083;
+
+/* line 262, ../../../app/stylesheets/police.scss */
+.postbubble {
+  border: 2px dashed #0696bd;
   padding: 10px;
   margin: 10px 0;
   overflow: hidden;
 }
-/* line 314, ../../../app/stylesheets/screen.scss */
-#posts #sharethis_0 {
+
+/* line 268, ../../../app/stylesheets/police.scss */
+#sharethis_0 {
   float: right;
   height: 17px;
   weight: auto;
   margin: -34px 0 0 0;
 }
-/* line 321, ../../../app/stylesheets/screen.scss */
-#posts #responses {
+
+/* line 275, ../../../app/stylesheets/police.scss */
+#responses {
   width: 510px;
   float: right;
 }
-/* line 325, ../../../app/stylesheets/screen.scss */
-#posts #responses .responsebubble {
+
+/* line 279, ../../../app/stylesheets/police.scss */
+.responsebubble {
   border: 2px dashed #6c72e7;
   padding: 10px;
   margin: 10px 0;
 }
-/* line 332, ../../../app/stylesheets/screen.scss */
-#posts #comments {
+
+/* line 285, ../../../app/stylesheets/police.scss */
+#comments {
   width: 510px;
   float: left;
 }
-/* line 336, ../../../app/stylesheets/screen.scss */
-#posts #comments .commentbubble {
+
+/* line 289, ../../../app/stylesheets/police.scss */
+.commentbubble {
   border: 2px dashed #cccccc;
   padding: 10px;
   margin: 10px 0;
 }
 
-/* line 345, ../../../app/stylesheets/screen.scss */
+/* line 297, ../../../app/stylesheets/police.scss */
 #mph1 {
   margin: 30px 0;
   padding: 0 40px;
 }
 
-/* line 350, ../../../app/stylesheets/screen.scss */
+/* line 302, ../../../app/stylesheets/police.scss */
 #mp_intro ul {
   background: url(/images/whatismp.png) no-repeat;
   width: 930px;
@@ -1425,7 +1305,7 @@ h2.newstory {
   padding: 0;
   list-style: none;
 }
-/* line 356, ../../../app/stylesheets/screen.scss */
+/* line 308, ../../../app/stylesheets/police.scss */
 #mp_intro ul li {
   color: white;
   float: left;
@@ -1437,79 +1317,80 @@ h2.newstory {
   padding: 172px 0px 0;
 }
 
-/* line 370, ../../../app/stylesheets/screen.scss */
+/* line 322, ../../../app/stylesheets/police.scss */
 #col1, #col2, #col3 {
   float: left;
   display: inline;
   width: 300px;
   margin: 5px;
 }
-/* line 375, ../../../app/stylesheets/screen.scss */
+/* line 327, ../../../app/stylesheets/police.scss */
 #col1 h2, #col2 h2, #col3 h2 {
   margin: 0;
-  border-bottom: 2px solid #4f0083;
+  border-bottom: 2px solid #0696bd;
 }
-/* line 378, ../../../app/stylesheets/screen.scss */
+/* line 330, ../../../app/stylesheets/police.scss */
 #col1 p, #col2 p, #col3 p {
   padding: 10px;
   margin: 0;
-  border-bottom: 1px dotted #4f0083;
+  border-bottom: 1px dotted #0696bd;
 }
-/* line 383, ../../../app/stylesheets/screen.scss */
+/* line 335, ../../../app/stylesheets/police.scss */
 #col1 #homebt, #col2 #homebt, #col3 #homebt {
   width: 150px;
   margin: 20px 0 10px 0;
 }
 
-/* line 391, ../../../app/stylesheets/screen.scss */
-#sidebar h3 {
+/* line 342, ../../../app/stylesheets/police.scss */
+h3.sidebar {
   margin: 0;
-  border-bottom: 2px solid #4f0083;
+  border-bottom: 2px solid #0696bd;
   padding: 0 0 10px 0;
 }
-/* line 396, ../../../app/stylesheets/screen.scss */
+
+/* line 348, ../../../app/stylesheets/police.scss */
 #sidebar #latestresponses {
   padding: 50px 10px 10px 0;
 }
-/* line 398, ../../../app/stylesheets/screen.scss */
+/* line 350, ../../../app/stylesheets/police.scss */
 #sidebar #latestresponses p {
   padding: 10px;
   margin: 0;
-  border-bottom: 1px dotted #4f0083;
+  border-bottom: 1px dotted #0696bd;
 }
-/* line 404, ../../../app/stylesheets/screen.scss */
+/* line 356, ../../../app/stylesheets/police.scss */
 #sidebar #tags, #sidebar #map {
   padding: 10px 10px 10px 0;
 }
-/* line 406, ../../../app/stylesheets/screen.scss */
+/* line 358, ../../../app/stylesheets/police.scss */
 #sidebar #tags a, #sidebar #map a {
   padding: 5px;
 }
-/* line 409, ../../../app/stylesheets/screen.scss */
+/* line 361, ../../../app/stylesheets/police.scss */
 #sidebar #tags .css1, #sidebar #map .css1 {
   font-size: 1em;
 }
-/* line 410, ../../../app/stylesheets/screen.scss */
+/* line 362, ../../../app/stylesheets/police.scss */
 #sidebar #tags .css2, #sidebar #map .css2 {
   font-size: 1.2em;
 }
-/* line 411, ../../../app/stylesheets/screen.scss */
+/* line 363, ../../../app/stylesheets/police.scss */
 #sidebar #tags .css3, #sidebar #map .css3 {
   font-size: 1.4em;
 }
-/* line 412, ../../../app/stylesheets/screen.scss */
+/* line 364, ../../../app/stylesheets/police.scss */
 #sidebar #tags .css4, #sidebar #map .css4 {
   font-size: 1.6em;
 }
 
-/* line 417, ../../../app/stylesheets/screen.scss */
+/* line 369, ../../../app/stylesheets/police.scss */
 #blankbox {
   background: white;
   margin: 0 auto;
   width: 310px;
 }
 
-/* line 423, ../../../app/stylesheets/screen.scss */
+/* line 375, ../../../app/stylesheets/police.scss */
 .centerbox {
   padding: 10px 30px;
 }

@@ -1,7 +1,7 @@
 #header
   #logo
     %a{:title=>"Mypolice", :href=>root_path}
-      %img{:title=>"Mypolicelogo", :src=>"/images/logo.png"}
+      %img{:title=>"Mypolicelogi", :src=>"/images/policelogo.png"}
   #menu
     %form{:action=>posts_path,:method=>'get',:id=>'searchbox'} 
       %p
@@ -14,5 +14,6 @@
       = render :partial =>"devise/menu/login_items"
       = render :partial => "devise/menu/registration_items"
     .tabs
-      = render_navigation
-    
+      %ul
+        %li
+          =link_to "Police Dashboard", police_root_path, :class=>"selected"

@@ -1,5 +1,5 @@
 <%= form_for([:admin,@police]) do |f| %>
-  <%= render "shared/error_message", :target => @police %>
+  <%= render "shared/error_message", :target =>[@police] %>
   <div class="field">
     <p><%= f.label :email %></p>
   <p><%= f.text_field :email %></p>

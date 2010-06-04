@@ -1,26 +1,39 @@
--title "Sign in as " << resource_name
-#blankbox
-  .centerbox
-    %h2
-      = "Sign in as " << resource_name
+-if (admin_signed_in? or police_signed_in? or user_signed_in?)
+  -title "You have already logined"
+  #blankbox
+    .centerbox
+      %p
+        You have already logined as
+        =current_role_name
+        =current_role.email
+      %p
+        if you want to login with a different account, please logout first!
+      =link_to 'Logout', destroy_session_path(current_role_name), :class=>"purplelink" 
 
-    =form_for(resource, :as=> resource_name, :url => session_path(resource_name)) do |f|
-      = render "shared/error_message", :target => [resource] 
-      %p
-        = f.label :email
-      %p
-        = f.text_field :email
-      %p
-        = f.label :password
-      %p
-        = f.password_field :password
+-else
+  -title "Sign in as " << resource_name
+  #blankbox
+    .centerbox
+      %h2
+        = "Sign in as " << resource_name
 
-      -if devise_mapping.rememberable?
+      =form_for(resource, :as=> resource_name, :url => session_path(resource_name)) do |f|
+        = render "shared/error_message", :target => [resource] 
         %p
-          = f.check_box :remember_me  
-          = f.label :remember_me
-      %p
-        = f.submit "Sign in"
+          = f.label :email
+        %p
+          = f.text_field :email
+        %p
+          = f.label :password
+        %p
+          = f.password_field :password
 
-    = render :partial => "devise/shared/links"
+        -if devise_mapping.rememberable?
+          %p
+            = f.check_box :remember_me  
+            = f.label :remember_me
+        %p
+          = f.submit "Sign in"
+
+      = render :partial => "devise/shared/links"
 
