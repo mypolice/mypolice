@@ -26,17 +26,6 @@
 @import "blueprint/typography";
 
 
-//color
-$bd_color: #f2f2f2;
-$darkpurple: #0696bd;
-$lightpurple: #e6f4f8;
-$pink: #deb5d3;
-$white:#fff;
-$darkgrey:#535353;
-$commentbubble:#cccccc;
-$responsebubble:#6c72e7;
-//margin
-$menurightmargin:10px;
 
 //layout
 body{
@@ -260,11 +249,21 @@ a.purplelink:visited{
   overflow:hidden;
 }
   .postbubble{
-    border:2px dashed $darkpurple;
+    border:2px dashed $postbubble;
     padding:10px;
     margin:10px 0;
     overflow:hidden;
     }
+
+    span.triangle{
+    background:url("/images/bubble-triangle.png") no-repeat;
+    display:block;
+    width:32px;
+    height:41px; 
+    float:right;
+    margin: -14px 54px 0 0;
+    }
+
   #sharethis_0{
     float:right;
     height:17px;

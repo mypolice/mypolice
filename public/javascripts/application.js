@@ -8,4 +8,5 @@ $(document).ready(function(){
     $("#next").click(function(){
       $("#new_post").submit();
       });
+    $("#new_post").formToWizard();
     });

@@ -30,7 +30,9 @@ body.two-col {
   #sidebar {
     // One third of the grid columns, rounding down. With 24 cols, this is 8.
     $sidebar-columns: floor($blueprint-grid-columns / 3);
-    @include column($sidebar-columns,true); }
+    @include column($sidebar-columns,true); 
+    }
+
   #contentwrapper {
     // Two thirds of the grid columns, rounding up.
     // With 24 cols, this is 16.
@@ -38,7 +40,7 @@ body.two-col {
     // true means it's the last column in the row
     @include column($content-columns); 
     #content{
-      padding:10px;
+      padding:10px 10px 10px $leftpadding;
       }
     } }
     

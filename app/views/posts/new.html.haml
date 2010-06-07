@@ -14,14 +14,18 @@
       Your story
     %li
       Tags
+/=render :partial=>"form"
 
 #newpost
   #back_button
-    %a{:title=>"back", :href=>new_post_path} Back
-  #formcontent
+    %a{:title=>"back", :href=>new_post_path,:class=>"leftarrow"}
+      Back
+
+  #formcontent  
     =form_for(@post) do |f|
       = render "shared/error_message", :target => [@post, @address]
       = hidden_field_tag "current_step", "#{@current_step}" 
       = render :partial=>"#{@current_step}", :locals => {:f =>f} 
+  
   #next_button
-    %a{:title=>"next", :href=>"#", :id=>"next"} Next
+    %a{:title=>"next", :href=>"#", :id=>"next", :class=>"rightarrow" } Next

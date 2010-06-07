@@ -7,7 +7,10 @@
     %img{:id =>"tellbutton", :title=>"Tell us your story", :alt=>"Tell us your story", :src=>"/images/tellusstorybuton.png"}
   %ul
     %li
-      1.signin or post anonymously
+      1.
+      =link_to "Sign in",new_user_session_path
+      or 
+      =link_to "post anonymously", new_post_path
     %li
       2.Tell us your story
     %li 

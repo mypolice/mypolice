@@ -16,6 +16,8 @@
         on
         =time_ago_in_words(@post.created_at)
         ago
+    %span.triangle
+
     %p
       -if @post.responses.count > 1
         =link_to "#{@post.responses.count} Responses", @post
@@ -56,15 +58,15 @@
 
 
 =content_for :sidebar do
-  #latestresponses
+  #latestresponses.sideblock
     %h3
       Latest Responses:
     =render :partial=>"home/response",:collection=>@responses
-  #tags
+  #tags.sideblock
     %h3
       Tags
     -tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag,css_class|
       =link_to tag.name, tag_path(tag),:class=>css_class
-  #map
+  #map.sideblock
     %h3
       Map

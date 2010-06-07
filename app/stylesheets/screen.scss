@@ -26,18 +26,6 @@
 @import "blueprint/typography";
 
 
-//color
-$bd_color: #f2f2f2;
-$darkpurple: #4f0083;
-$lightpurple: #ebe6f5;
-$pink: #deb5d3;
-$white:#fff;
-$darkgrey:#535353;
-$commentbubble:#cccccc;
-$responsebubble:#6c72e7;
-//margin
-$menurightmargin:10px;
-
 //layout
 body{
   @include blueprint-typography;
@@ -56,7 +44,7 @@ body{
       #logo {
         @include column(4);
         img{
-          padding:10px 10px 0;
+          padding:10px $leftpadding 0;
           }
         }
       #menu{
@@ -70,7 +58,7 @@ body{
     #maincontentwrapper{
       @include column(24);
       #maincontent{
-        padding:10px;
+        padding:10px $rightpadding;
         min-height:200px;
         margin:0 auto;
         }
@@ -277,24 +265,46 @@ h2.newstory{
   background:$white;
   padding: 50px 10px;
   overflow:hidden;
+  a{
+    color:$darkpurple;
+    font-size:18px;
+    font-weight:bold;
+    text-decoration:none;    
+    outline:none;
+    }
   #back_button{
     @include column(4);
-    text-align:center;
     }
+   .rightarrow{
+      background:url("/images/arrow.png") no-repeat;
+      width:56px;
+      float:left;
+      padding:120px 0 0 0px;
+      text-align:center;
+      margin-top:30px;
+      }
+    .leftarrow{
+      background:url("/images/leftarrow.png") no-repeat;
+      width:56px;
+      float:right;
+      padding:120px 0px 0 0;
+      text-align:center;
+      margin-top:30px;
+      }
+   
   #formcontent{
     @include column(14);
     @include blueprint-form;
     }
   #next_button{
     @include column(4,true);
-    text-align:center;
     }
 }
 
 //posts page
 #tellbutton{
   position:absolute;
-  margin:-20px 0 0 -100px;
+  margin:-35px 0 0 -105px;
   display:block;
   cursor:pointer;  
 }
@@ -304,13 +314,26 @@ h2.newstory{
   padding:10px;
   margin-top:40px;
   overflow:hidden;
+  
+  .post, .response, .comment{
+    margin: 0 0 40px 0;
+    }
 
   .postbubble{
-    border:2px dashed $darkpurple;
+    border:2px dashed $postbubble;
     padding:10px;
-    margin:10px 0;
-    overflow:hidden;
+    margin:10px 0 10px 0;
+    overflow:hidden;  
+  }
+  span.triangle{
+    background:url("/images/bubble-triangle.png") no-repeat;
+    display:block;
+    width:32px;
+    height:41px; 
+    float:right;
+    margin: -14px 54px 0 0;
     }
+
   #sharethis_0{
     float:right;
     height:17px;
@@ -327,6 +350,14 @@ h2.newstory{
       padding:10px;
       margin:10px 0;
       }
+    span.triangle{
+    background:url("/images/response-triangle.png") no-repeat;
+    display:block;
+    width:32px;
+    height:41px; 
+    float:right;
+    margin: 8px 54px 0 0;
+    }
   }
 
   #comments{
@@ -338,6 +369,15 @@ h2.newstory{
       padding:10px;
       margin:10px 0;
       }
+
+    span.triangle{
+    background:url("/images/comment-triangle.png") no-repeat;
+    display:block;
+    width:32px;
+    height:41px; 
+    float:right;
+    margin: 8px 54px 0 0;
+    }
     }
 }
 
@@ -362,7 +402,9 @@ h2.newstory{
       text-align:center;
       width:310px;
       padding:172px 0px 0;
-
+    a{
+      color:$white;
+      }
       }
   }
 }
@@ -370,7 +412,7 @@ h2.newstory{
 #col1, #col2,#col3{
   float:left;
   display:inline;
-  width:300px;
+  width:292px;
   margin:5px;
   h2{
     margin:0;
@@ -379,6 +421,7 @@ h2.newstory{
     padding: 10px;
     margin:0;
     border-bottom:1px dotted $darkpurple;
+    height:30px;
     }
   #homebt{
     width:150px;
@@ -388,13 +431,16 @@ h2.newstory{
 
 //sidebar
 #sidebar{
+  margin:102px 0 0 0;
   h3{
       margin:0;
       border-bottom:2px solid $darkpurple;
       padding:0 0 10px 0;
       }
+  .sideblock{
+    padding:10px $rightpadding 10px 0;
+    }
   #latestresponses{
-    padding:50px 10px 10px 0; 
     p{
       padding: 10px;
       margin:0;
@@ -402,7 +448,6 @@ h2.newstory{
     }
   }
   #tags, #map{
-    padding:10px 10px 10px 0;
     a{
       padding:5px;
       }
@@ -422,4 +467,15 @@ h2.newstory{
 
 .centerbox{
   padding: 10px 30px;
+  }
+
+.sortby{
+  margin:0 0 5px 0;
+  ul{
+    @include inline-list;
+  li{
+    font-size:18px;
+    padding:0 0 0 5px;
+    }
+  }
   }

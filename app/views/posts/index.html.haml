@@ -1,6 +1,15 @@
 -title  "Stories"
 
 #content
+  .sortby
+    %ul
+      %li
+        Sort by:
+      %li
+        Most Recent /
+      %li
+        Oldest
+        
   %h1 Stories: Most Recent
   #posts
     %a{:title=>"Tell us your story",:href=>new_post_path}
@@ -9,15 +18,15 @@
     =will_paginate @posts
 
 =content_for :sidebar do
-  #latestresponses
+  #latestresponses.sideblock
     %h3.sidebar
       Latest Responses:
     =render :partial=>"home/response",:collection=>@responses
-  #tags
+  #tags.sideblock
     %h3.sidebar
       Tags
     -tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag,css_class|
       =link_to tag.name, tag_path(tag),:class=>css_class
-  #map
+  #map.sideblock
     %h3.sidebar
       Map

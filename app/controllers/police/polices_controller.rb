@@ -1,7 +1,6 @@
 class Police::PolicesController < ApplicationController
   before_filter :authenticate_police!
   layout "police"
-
   def show
     @police = Police.find(params[:id])
     respond_to do |format|

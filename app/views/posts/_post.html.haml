@@ -9,6 +9,7 @@
       on
       =time_ago_in_words(post.created_at)
       ago
+  %span.triangle
   %p
     -if post.responses.count > 1
       =link_to "#{post.responses.count} Responses", post
@@ -19,7 +20,6 @@
       =link_to "#{post.comments.approved.count} Comments", post
     -else
       =link_to "#{post.comments.approved.count} Comment", post
-  
 
 
     -#begin
