@@ -1,0 +1,27 @@
+-title "Add a new Story"
+%h2.newstory Use the simple form below to tell us your story
+#progress
+  #complete.fifth
+    #marker
+  %ul
+    %li.first
+      Sign in?
+    %li.second
+      Basic Details
+    %li.third
+      Location
+    %li.forth
+      Your story
+    %li.fifth
+      Tags
+#newpost
+  =form_for(@post) do |f| 
+    #back_button.action
+    #formcontent
+      %h2
+        Thanks! Your Story has been submitted and should appewa on the site shortly. In the meantime, explore the other
+        =link_to "Stories", posts_path
+        on MyPolice
+    #next_button.action
+   
+

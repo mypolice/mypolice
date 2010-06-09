@@ -1,11 +1,9 @@
 <% div_for police do %>
   <p>Email <%= police.email %></p>
-  <p>Sign in Counts<%= police.sign_in_count %></p>
-  <p>Last Sign in up <%= police.last_sign_in_ip %></p>
   <% if police.ischeif %>
-    <%= link_to 'remove him as cheif ', uncheif_admin_police_path(police), :method => :put %>|
+    <%= link_to 'remove him as cheif ', uncheif_admin_police_path(police), :method => :police %>|
   <% else %>
-    <%= link_to 'set him as cheif', cheif_admin_police_path(police), :method => :put %>|
+    <%= link_to 'set him as cheif', cheif_admin_police_path(police), :method => :police %>|
   <% end %>
 
   <%= link_to 'Edit', edit_admin_police_path(police) %> |

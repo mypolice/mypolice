@@ -17,9 +17,9 @@
     <td><%= link_to 'Edit', edit_admin_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', [:admin, comment], :confirm => 'Are you sure?', :method => :delete %></td>
    <% if comment.approved %>
-     <td> <%= link_to 'Unapproved', unapprove_admin_comment_path(comment), :method =>:put %> </td>
+     <td> <%= link_to 'Unapproved', unapprove_admin_comment_path(comment), :method =>:post %> </td>
    <% else %>
-     <td> <%= link_to 'Approved', approve_admin_comment_path(comment), :method =>:put%> </td>
+     <td> <%= link_to 'Approved', approve_admin_comment_path(comment), :method =>:postt%> </td>
   <% end %>
   </tr>
 <% end %>

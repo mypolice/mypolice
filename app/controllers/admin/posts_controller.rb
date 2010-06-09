@@ -50,7 +50,7 @@ class Admin::PostsController < ApplicationController
   def approve
     @post = Post.find(params[:id])
     @post.update_attribute :approved, true
-    flash[:notice] = "approved"
+    flash[:notice] = @post.title << " has been approved"
     respond_to do |format|
       format.html {redirect_to(admin_posts_url)}
     end

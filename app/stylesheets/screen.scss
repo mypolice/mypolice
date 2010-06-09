@@ -25,6 +25,17 @@
 @import "blueprint/form";
 @import "blueprint/typography";
 
+//remove outline
+* {
+    outline: none;
+}
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner,select::-moz-focus-inner {
+    border: none;
+}
 
 //layout
 body{
@@ -111,7 +122,7 @@ a{
   font-weight:bold;
   text-algin:center;
   @include border-right-radius(5px);
-  padding:5px;
+  padding:6px;
   border:0 none;
 }
 
@@ -201,10 +212,10 @@ h2.newstory{
   margin:10px 0;
   }
 #progress, #complete{
-  background:url("/images/progress.png") repeat scroll 0 0 transparent;
+  background:url("/images/progressbar.png") no-repeat scroll 0 0 transparent;
   margin:0 auto;
   position:relative;
-  width:520px;
+  width:738px;
   
   ul{
     margin:0;
@@ -213,49 +224,65 @@ h2.newstory{
         list-style-type:none;
         display:inline;
         float:left;
-        width:88px;
-        text-align:center;
         font-weight:bold;
         line-height:1.5em;
         padding: 0 0 10px 0;
-        }
+         }
+        li.first{
+        width:155px;  
+          }
+        li.second{
+         width:188px; 
+          }
+        li.third{
+        width:170px;  
+          }
+        li.forth{
+         width:190px; 
+          }
+        li.fifth{  
+          }
     }
   
-  .step1{
-    width:19px;
+  .first{
     }
-  .step2 {
-  width:111px;    
+  .second {    
     #marker{
-    background-position:-26px 0;
+    background-position:-39px 0;
+    left:175px;
     }
   }
-  .step3{
-    width:200px;
+  .third{
     #marker{
-     background-position:-52px 0; 
-      }
-  .step4{
-    width:293px;
-    #marker{
-      background-position:-78px 0;
+    left:349px;
+    background-position:-76px 0;
       }
     }
+  .forth{
+    #marker{
+    left:524px;
+    background-position:-115px 0;    
+      }
+    }
+  .fifth{
+    #marker{
+    left:698px;
+    background-position:-152px 0;    
+      }
     }
 }
 #complete{
   margin:1px 0 19px;
-  background-position:0 57px;
   margin-top:0;
-  height:32px;
+  height:41px;
   
   #marker{
-   background:url("/images/markers.png");
-   height:32px;
+   background:url("/images/marker.png") no-repeat;
+   height:38px;
    position:absolute;
-   right:-26px;
    top:0;
-   width:26px;
+   margin:1px;
+   width:38px;
    }
 }
 
@@ -263,56 +290,92 @@ h2.newstory{
   @include span(22);
   margin:0px auto;
   background:$white;
-  padding: 50px 10px;
+  padding:10px;
   overflow:hidden;
-  a{
-    color:$darkpurple;
-    font-size:18px;
-    font-weight:bold;
-    text-decoration:none;    
-    outline:none;
+
+  #new_post{
+    height:100%;
+    float:left;
+    display:table-cell;
+    vertical-aligin:middle;
     }
+
   #back_button{
-    @include column(4);
+    @include column(3);
+    display: inline;
+    margin-right:50px;
+    min-height:20px;
     }
-   .rightarrow{
-      background:url("/images/arrow.png") no-repeat;
+  .navigation_button{
       width:56px;
       float:left;
       padding:120px 0 0 0px;
       text-align:center;
-      margin-top:30px;
+      margin-top:80px;
+      cursor:pointer;
+      border:none;
+      color:$darkpurple;
+      font-family:$blueprint-font-family;
+      font-size:14px;
+      font-weight:bold;
+      text-decoration:none;
       }
-    .leftarrow{
+    #post_submit{
+      background:url("/images/arrow.png") no-repeat;
+      }
+     #backbutton{
       background:url("/images/leftarrow.png") no-repeat;
-      width:56px;
       float:right;
-      padding:120px 0px 0 0;
-      text-align:center;
-      margin-top:30px;
-      }
-   
+       }
   #formcontent{
     @include column(14);
     @include blueprint-form;
+    @include blueprint-form-borders($unfocused_border_color,$focused_border_color,$fieldset_border_color);
+    text-align:center;
+    vertical-align:middle;
+    h2{
+      margin:76px 0;
+      }
+    select{
+      width:312px;
+      padding:5px;
+      background:$darkpurple;
+      color:$white;
+      }
     }
   #next_button{
-    @include column(4,true);
+    display: inline;  
+    @include column(3,true);
+    margin-left:40px;
+    min-height:20px;
     }
 }
 
+
+.error{
+background-color:#F3E6E6;
+    border-color: #C80000;
+    border-style: solid;
+    border-width: 2px;
+    padding: 5px;
+    margin:0 0 0 5px;
+  }
+
+label.error{
+  color:red;
+  }
 //posts page
 #tellbutton{
   position:absolute;
   margin:-35px 0 0 -105px;
   display:block;
   cursor:pointer;  
+
 }
 #posts{
   background:$white;
   @include border-radius(5px);
   padding:10px;
-  margin-top:40px;
   overflow:hidden;
   
   .post, .response, .comment{
@@ -431,7 +494,6 @@ h2.newstory{
 
 //sidebar
 #sidebar{
-  margin:102px 0 0 0;
   h3{
       margin:0;
       border-bottom:2px solid $darkpurple;
@@ -470,7 +532,12 @@ h2.newstory{
   }
 
 .sortby{
-  margin:0 0 5px 0;
+  @include column(24);
+  padding:10px;
+  h1{
+    padding:0 5px;
+    margin:0;
+    }
   ul{
     @include inline-list;
   li{

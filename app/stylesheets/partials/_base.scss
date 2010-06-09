@@ -20,6 +20,7 @@ $link_hover_color:#808080;
 $blueprint-font-family: Arial, sans-serif;
 
 
+
 //color
 $bd_color: #f2f2f2;
 $darkpurple: #4f0083;
@@ -35,4 +36,9 @@ $menurightmargin:20px;
 //padding layout
 $leftpadding:20px;
 $rightpadding:20px;
+                                        
 
+//form
+$unfocused_border_color:$darkpurple;
+$focused_border_color:#dedede;
+$fieldset_border_color:$white;

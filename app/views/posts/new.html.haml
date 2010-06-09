@@ -1,26 +1,27 @@
 -title "Add a new Story"
 %h2.newstory Use the simple form below to tell us your story
 #progress
-  #complete{:class=>"#{@current_step}"}
+  #complete
     #marker
   %ul
-    %li
+    %li.first
       Sign in?
-    %li
+    %li.second
       Basic Details
-    %li
+    %li.third
       Location
-    %li
+    %li.forth
       Your story
-    %li
+    %li.fifth
       Tags
-/=render :partial=>"form"
-
-#newpost
+=render :partial=>"form"
+= javascript_include_tag "newpost"
+-#begin
+  #newpost
   #back_button
     %a{:title=>"back", :href=>new_post_path,:class=>"leftarrow"}
       Back
-
+    
   #formcontent  
     =form_for(@post) do |f|
       = render "shared/error_message", :target => [@post, @address]
@@ -29,3 +30,4 @@
   
   #next_button
     %a{:title=>"next", :href=>"#", :id=>"next", :class=>"rightarrow" } Next
+-#end

@@ -1,6 +1,6 @@
 -title  "Stories"
 
-#content
+=content_for :sortby do
   .sortby
     %ul
       %li
@@ -8,9 +8,12 @@
       %li
         Most Recent /
       %li
-        Oldest
-        
-  %h1 Stories: Most Recent
+        Oldest     
+    %h1 Stories: Most Recent
+
+//yield
+#content
+  
   #posts
     %a{:title=>"Tell us your story",:href=>new_post_path}
       %img{:id =>"tellbutton", :title=>"Tell us your story", :alt=>"Tell us your story", :src=>"/images/tellusstorybuton.png"}

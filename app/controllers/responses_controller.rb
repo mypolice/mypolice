@@ -1,6 +1,8 @@
 class ResponsesController < ApplicationController
   before_filter :authenticate_police!, :only => [:create]
-  
+  def new
+    @reponse = Response.new
+  end
 
   def create
     @post = Post.find(params[:post_id])
@@ -11,6 +13,8 @@ class ResponsesController < ApplicationController
         flash[:notice] = "Thanks for your response!"
         format.html{ redirect_to @post}
         format.js
+      else
+        redirect_to root_path
       end
     end
   end

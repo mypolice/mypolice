@@ -1,5 +1,5 @@
 class Response < ActiveRecord::Base
-  validates :body, :presence=>true, :length=>{:minimum=>10}
+  validates :body, :presence=>true
   belongs_to :post
   belongs_to :police
 end

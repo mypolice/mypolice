@@ -1,4 +1,18 @@
 -title @post.title.titlecase
+
+=content_for :sortby do
+  .sortby
+    %ul
+      %li
+        Sort by:
+      %li
+        Most Recent /
+      %li
+        Oldest     
+    %h1 
+      Story:
+      =@post.title.titlecase
+
 /=link_to "Back to All @posts", @posts_path
 #content
   #posts
@@ -31,11 +45,12 @@
       %script{:type=>"text/javascript",:src=>"http://w.sharethis.com/button/sharethis.js#publisher=534a6efc-b729-4f7e-9b27-b0751fe00183&amp;type=website&amp;style=vertical&amp;@post_services=email%2Cfacebook%2Ctwitter%2Cgbuzz%2Cmyspace%2Cdigg%2Csms%2Cwindows_live%2Cdelicious%2Cstumbleupon%2Creddit%2Cgoogle_bmarks%2Clinkedin%2Cbebo%2Cybuzz%2Cblogger%2Cyahoo_bmarks%2Cmixx%2Ctechnorati%2Cfriendfeed%2Cpropeller%2Cwordpress%2Cnewsvine"}
       
     #responses
+      = error_messages_for :response
       =render :partial=>@post.responses
       -if current_police
         -form_for [@post, Response.new], :remote=>true do |f|
           %p   
-            =f.label :boday, "New Response"
+            =f.label :body, "New Response"
           %p 
             =f.text_area :body, :class=>"required"
           %p
@@ -52,7 +67,7 @@
             = f.text_area :body, :class=>"required" 
           %p
             = f.submit "Add Comment" 
-      -elsif !current_police
+      -elsif !current_user
       = link_to "Sign in ", new_user_session_path 
       to add comments 
 

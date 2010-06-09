@@ -1,5 +1,5 @@
 <%= form_for([:admin,@comment]) do |f| %>
-<%= render "shared/error_message", :target => @comment %>
+<%= render "shared/error_message", :target => [@comment] %>
   <div class="field">
     <%= f.label :body %><br />
     <%= f.text_area :body %>
@@ -7,4 +7,4 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-
+<%=end%>

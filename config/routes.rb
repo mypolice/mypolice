@@ -16,20 +16,20 @@ Mypolice::Application.routes.draw do |map|
 
   namespace :admin do 
     resources :posts do  
-        put :approve, :on => :member
-        put :unapprove, :on => :member
+        post :approve, :on => :member
+        post :unapprove, :on => :member
         get :approved, :on => :collection
         get :unapproved, :on => :collection
       end
     resources :comments do  
-        put :approve, :on => :member
-        put :unapprove, :on => :member
+        post :approve, :on => :member
+        post :unapprove, :on => :member
         get :approved, :on => :collection
         get :unapproved, :on => :collection
       end
     resources :polices do
-        put :cheif, :on => :member
-        put :uncheif, :on =>:member
+        post :cheif, :on => :member
+        post :uncheif, :on =>:member
     end
     resources :responses, :users, :tags, :categories, :whos
   end

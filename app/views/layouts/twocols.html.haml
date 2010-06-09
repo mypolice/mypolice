@@ -7,10 +7,10 @@
   %body.two-col
     #container
       =render :partial =>"shared/header" 
+      =yield :sortby     
       #contentwrapper
         -flash.each do |name, msg| 
           =content_tag :div, msg, :id=>"flash_#{name}"
-
         = yield
       #sidebar
         =yield :sidebar

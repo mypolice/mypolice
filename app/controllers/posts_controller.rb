@@ -27,6 +27,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   # GET /posts/new.xml
+=begin
   def new
     if params[:current_step].nil?
       @post = Post.new(params[:post])
@@ -67,6 +68,29 @@ class PostsController < ApplicationController
               format.html { redirect_to posts_path}
           end
         end
+  end
+=end
+
+  def new
+    @post = Post.new
+    @address = Address.new
+    respond_with(@post) do |format|
+      format.html{render :action=>:new, :layout=>"application"}
+    end      
+  end
+
+  def create
+    @post = Post.new(params[:post]) 
+    @address = Address.new(params[:address])
+    if @post.save and @address.save
+      @post.address_id = @address.id
+      @post.save
+      #flash[:notice] = "successfully created Story"
+      params[:post]=params[:address]=nil
+      render "thankyou", :layout=>"application"
+    else
+      render :action=>"new", :layout=>"application"
+    end
   end
 
 
