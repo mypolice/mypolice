@@ -3,6 +3,8 @@
     =current_role.email
   %li
     = link_to 'Logout', destroy_session_path(current_role_name), :class=>"purplelink"
+  %li
+    = link_to 'Dashboard', current_role_name, :class=>"purplelink" unless current_role.is_a?(User)
 -else
   %li
     = link_to 'Login', new_user_session_path, :class=>"purplelink" 

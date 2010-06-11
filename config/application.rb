@@ -36,10 +36,11 @@ module Mypolice
     #   g.template_engine :erb
     #   g.test_framework  :test_unit, :fixture => true
     # end
-
+    
+    config.encoding = "utf-8"
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters << :password
-    config.secret_token = '95d47ac7584daf06f4bf81d9cb1de177a718771a5977691296a01e33f8424481da4d78bbb644e9918480d1c0056b6099e1db3385da08fd5d530d6d4cf974d25e'
-    
+    config.secret_token = '1b67174d7d57f89557ea8a803078464d39584720a7d32b519eb11c342a7a6f77ed42068410fbbdb28916022916e206428e781ecc78a46e9c34f94cea99e55047'
+    config.session_store :cookie_store, :key=>"_mypolice_session"
   end
 end

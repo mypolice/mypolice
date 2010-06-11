@@ -2,6 +2,10 @@
   .postbubble
     %h3
       =link_to_unless_current post.title.titlecase, post
+    -if params[:controller] == "police/dashboard"
+      %p 
+        =link_to "Flag"
+        =link_to "Forward"
     =simple_format sanitize(post.body[0,500])
     %p
       posted by 
@@ -9,6 +13,8 @@
       on
       =time_ago_in_words(post.created_at)
       ago
+
+    
   %span.triangle
   %p
     -if post.responses.count > 1

@@ -67,9 +67,9 @@
             = f.text_area :body, :class=>"required" 
           %p
             = f.submit "Add Comment" 
-      -elsif !current_user
-      = link_to "Sign in ", new_user_session_path 
-      to add comments 
+      -elsif !current_user and !current_police and !current_admin 
+        = link_to "Sign in ", new_user_session_path 
+        to add comments 
 
 
 =content_for :sidebar do

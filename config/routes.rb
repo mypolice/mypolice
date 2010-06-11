@@ -1,7 +1,7 @@
 Mypolice::Application.routes.draw do |map|
   resources :addresses
 
- resources :responses
+  resources :responses
 
   devise_for :polices
 
@@ -38,7 +38,6 @@ Mypolice::Application.routes.draw do |map|
     resources :polices
   end
 
-  
   devise_for :users  
   
   match "/admin" => "admin/dashboard#index", :as => :admin_root
@@ -105,5 +104,6 @@ Mypolice::Application.routes.draw do |map|
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+
   root :to =>"home#index"
 end

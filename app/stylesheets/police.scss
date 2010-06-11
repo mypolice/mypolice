@@ -271,27 +271,23 @@ a.purplelink:visited{
     margin:-34px 0 0 0 ;
     }  
 
-  #responses{
-    @include span(13);
-    float:right; 
-   } 
+  .response{
+    margin:0px 0 40px 0;
     .responsebubble{
       border:2px dashed $responsebubble;
       padding:10px;
       margin:10px 0;
       }
+    span.triangle{
+      background:url("/images/response-triangle.png") no-repeat;
+      display:block;
+      width:32px;
+      height:41px; 
+      float:right;
+      margin: 8px 54px 0 0;
+    }
 
-  #comments{
-    @include span(13);
-    float:left;
 }
-    .commentbubble{
-      border:2px dashed $commentbubble;
-      padding:10px;
-      margin:10px 0;
-      }
-
-
 //homepage
 #mph1{
   margin:30px 0;
