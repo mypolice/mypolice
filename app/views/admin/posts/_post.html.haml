@@ -1,0 +1,26 @@
+=div_for post do 
+  %h3
+    \[
+    =post.category.name
+    \]
+    = link_to_unless_current post.title, [:admin, post]
+  %p
+    posted by 
+    = post.user.nil? ? "anonymous" : post.user.email
+  =simple_format sanitize(post.body)
+  -unless post.suggestion.empty?
+    %h3 Suggestion
+    =simple_format sanitize(post.suggestion)
+  %p Tags
+  %p
+    =post.tag_list.each do |tag|
+      = tag
+  %p
+    -if post.approved
+      =link_to 'unapproved', unapprove_admin_post_path(post), :method => :post 
+    -else
+      = link_to 'approved', approve_admin_post_path(post), :method => :post 
+    |
+    = link_to 'Edit', edit_admin_post_path(post)
+    |
+    = link_to 'Destroy', [:admin, post], :method => :delete, :confirm => "Are you sure?"

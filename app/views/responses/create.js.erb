@@ -1,4 +1,5 @@
 $('#flash_notice').remove();
 $("#new_response").before('<div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div>')
 $("#new_response").before("<%= escape_javascript(render @response) %>");
+$("#responses_<%=@post.id%>").html("<%=pluralize(@post.responses.count, 'Response')%>");
 $("#new_response")[0].reset()

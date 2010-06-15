@@ -1,0 +1,9 @@
+-title "Police #{@police.name}'s page"
+= render :partial => @police 
+%p
+  = link_to 'See All Polices', police_polices_path
+-if current_police.ischeif
+  %p
+    = link_to 'Add a new police', new_police_police_path 
+
+

@@ -1,22 +1,31 @@
 =div_for post do
   .postbubble
     %h3
+      \[
+      =post.category.name
+      \]
       =link_to_unless_current post.title.titlecase, post
     -if params[:controller] == "police/dashboard"
       %p 
         =link_to "Flag"
         =link_to "Forward"
+        =link_to "Reponses" , post_path(post)<<"#new_response" 
     =simple_format sanitize(post.body[0,500])
-    %p
-      posted by 
-      =post.user.nil? ? "anonymous" : post.user.email
+    -unless post.suggestion.empty?
+      %h3 Suggestion
+      =simple_format sanitize(post.suggestion[0,100])
+    
+      Posted by
+      %strong
+        =post.user.nil? ? "anonymous" : post.user.email
       on
-      =time_ago_in_words(post.created_at)
+      %strong
+        =time_ago_in_words(post.created_at)
       ago
 
     
   %span.triangle
-  %p
+  .postrelated
     -if post.responses.count > 1
       =link_to "#{post.responses.count} Responses", post
     -else
@@ -28,10 +37,4 @@
       =link_to "#{post.comments.approved.count} Comment", post
 
 
-    -#begin
-      %p Tags:
-      -post.tag_list.each do |tag|
-        = tag
-    -#end
-  -#%script{:type=>"text/javascript",:src=>"http://w.sharethis.com/button/sharethis.js#publisher=534a6efc-b729-4f7e-9b27-b0751fe00183&amp;type=website&amp;style=vertical&amp;post_services=email%2Cfacebook%2Ctwitter%2Cgbuzz%2Cmyspace%2Cdigg%2Csms%2Cwindows_live%2Cdelicious%2Cstumbleupon%2Creddit%2Cgoogle_bmarks%2Clinkedin%2Cbebo%2Cybuzz%2Cblogger%2Cyahoo_bmarks%2Cmixx%2Ctechnorati%2Cfriendfeed%2Cpropeller%2Cwordpress%2Cnewsvine"} 
  

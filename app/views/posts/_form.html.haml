@@ -14,7 +14,7 @@
           -else
             You can either 
             =link_to "sign-in", new_user_session_path
-            (if you are already a memeber),
+            (if you are already a member),
             =link_to "Create a new profile", new_user_registration_path
             or create a story anonymously
       %fieldset.step#second
@@ -30,7 +30,18 @@
             %td=f.select(:who_id, options_for_select(who_array,@post.who_id))
           %tr.field
             %td=f.label(:happened_on,"When it happened")
-            %td=f.text_field :happened_on
+            /%td=f.text_field :happened_on
+            %td
+              =select_year(0,:start_year=>Time.now.year,:end_year=>Time.now.year-50, :field_name=>:happened_on_year, :prompt => "What year? Don't worry if you can't remember")
+          %tr.field
+            %td
+            %td
+              =select_month(0,:field_name=>:happened_on_month, :prompt=>"What month? Don't worry if you can't remember")
+          %tr.field
+            %td
+            %td
+              =select_day(0, :field_name=>:happened_on_day, :prompt=>"What day? Don't worry if you can't remember")
+            /%td= date_select("post","happened_on", :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' })
           %tr.field
             %td=f.label(:category_id,"Category of story")
             -category_array = Category.all.map{|c| [c.name,c.id]}
@@ -66,34 +77,30 @@
                 = mark_required(@address, :postcode)
               %td=a.text_field :postcode
             %tr.field 
-              %td=a.label(:country, "Country(Our serivce only available in UK now)")
+              %td=a.label(:country, "Country(Our serivce is only available in the UK)")
               %td=a.select(:country, options_for_select(["United Kingdom"]), {:disabled => true})
 
       %fieldset.step#forth
-        %h3
-          Please tell us your story
-        %table
-          %tr.field
+        %table.story
+          %tr
             %td
-              =f.label(:body, "Story")
-              = mark_required(@post, :body)
+              =f.label(:body,"Please tell us your story")
+              =f.text_area :body
+          %tr
             %td
-              =f.text_area :body 
-          %tr.field
-            %td
-              =f.label(:suggestion,"Your suggestions")
-            %td
+              =f.label(:suggestion, "Please give us a suggestion about how this experience could be improved")
               =f.text_area :suggestion
       
       %fieldset.step#fifth
         %h3 Please add some keywords to describe your story
         .field
           %p
-            =f.label(:tag_list, "Tags(seperate with comma ',')") 
+            =f.label(:tag_list, "Tags (Please seperate each word with a comma)") 
           %p
             =f.text_field :tag_list 
-        %p
-          You story is now ready to be submitted, Please click submit arrow to submit
+        %h3
+          You story is now ready to be submitted, please click the submit button to contitue
+        =f.submit 
     #next_button.action
-      =f.submit :value=>"Next",:class=>"navigation_button"
+      =f.submit :value=>"Next",:class=>"navigation_button submitstory"
    

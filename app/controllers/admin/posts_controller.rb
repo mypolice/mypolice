@@ -2,7 +2,7 @@ class Admin::PostsController < ApplicationController
   before_filter :authenticate_admin!
 
   def index
-    @posts = Post.paginate :all, :page=>params[:page], :per_page=>'2', :order =>'created_at DESC'
+    @posts = Post.paginate :all, :page=>params[:page], :per_page=>'10', :order =>'created_at DESC'
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }

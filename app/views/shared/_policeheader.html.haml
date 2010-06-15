@@ -14,6 +14,10 @@
       = render :partial =>"devise/menu/login_items"
       = render :partial => "devise/menu/registration_items"
     .tabs
+      =render_navigation
+    -#begin
       %ul
         %li
           =link_to "Police Dashboard", police_root_path, :class=>"selected"
+        %li
+          =link_to "Help"

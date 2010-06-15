@@ -1,5 +1,8 @@
 class ResponsesController < ApplicationController
   before_filter :authenticate_police!, :only => [:create]
+  def index
+    @responses = Response.all
+  end
   def new
     @reponse = Response.new
   end

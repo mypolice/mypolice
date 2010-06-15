@@ -81,6 +81,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post]) 
+    @post.happened_on_year = params[:date]['happened_on_year'].to_i;
+    @post.happened_on_month = params[:date]['happened_on_month'].to_i;
+    @post.happened_on_day = params[:date]['happened_on_day'].to_i;
     @address = Address.new(params[:address])
     if @post.save and @address.save
       @post.address_id = @address.id

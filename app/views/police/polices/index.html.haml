@@ -1,0 +1,9 @@
+-title "Polices list"
+%h1
+  Listing polices
+-if current_police.ischeif
+  %p
+    = link_to 'New police', new_police_police_path
+= render :partial => @polices
+= will_paginate @polices
+

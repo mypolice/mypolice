@@ -47,7 +47,7 @@ Mypolice::Application.routes.draw do |map|
 
   match '/about'=>'about#index', :as =>:about_root
   match '/tools'=>'tools#index', :as =>:tools_root
-
+  match 'police/help'=>"police/help#index", :as=>:police_help_root
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

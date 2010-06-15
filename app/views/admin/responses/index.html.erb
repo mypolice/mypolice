@@ -11,7 +11,7 @@
 
 <% @responses.each do |response| %>
   <tr>
-    <td><%= response.post_id %></td>
+    <td><%= response.post.title %></td>
     <td><%= response.body %></td>
     <td><%= link_to 'Show', [:admin, response] %></td>
     <td><%= link_to 'Edit', edit_admin_response_path(response) %></td>

@@ -1,0 +1,21 @@
+= form_for([:police,@police]) do |f| 
+  = render "shared/error_message", :target => [@police] 
+  .field
+    %p
+      =f.label :email
+    %p
+      = f.text_field :email
+  .field
+    %p
+      =f.label :name
+    %p
+      = f.text_field :name
+  
+  .field
+    %p
+      = f.label :password
+    %p
+      = f.password_field :password
+
+  .actions
+    = f.submit 

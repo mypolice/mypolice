@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"
+!!!Strict
+%html{:xmlns=>"http://www.w3.org/1999/xhtml"}
+
+  = render :partial=>"shared/policehead"
+  %body
+    #container
+      #layout
+        =render :partial =>"shared/policeheader" 
+        #maincontentwrapper
+          #maincontent
+            -flash.each do |name, msg| 
+              =content_tag :div, msg, :id=>"flash_#{name}"
+            = yield
+        #layout_footer
+      =render :partial=>"shared/policefooter"  
+      -#%script{:src=>'http://cdn.wibiya.com/Toolbars/dir_0393/Toolbar_393982/Loader_393982.js',:type=>'text/javascript'}

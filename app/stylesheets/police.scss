@@ -159,13 +159,12 @@ a.purplelink:visited{
   margin:0 $menurightmargin 0 0;
   ul{
     margin:0;
-    @include span(20);
     }
 }
 
 * html .tabs { height:1%; /* fixing IE 6 */ }
 .tabs li {
-  float:right;
+  float:left;
   line-height:1.5;
   list-style-type:none;
   margin:0 0 0 0.5em;
@@ -263,7 +262,9 @@ a.purplelink:visited{
     float:right;
     margin: -14px 54px 0 0;
     }
-
+  .post, .response, .comment{
+    margin: 0 0 30px 0;
+    }
   #sharethis_0{
     float:right;
     height:17px;

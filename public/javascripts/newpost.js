@@ -2,14 +2,14 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(document).ready(function(){
-    // new story
+    // add postcode validation
     $.validator.addMethod("postcode",
         function(value,element){
       return this.optional(element)||/^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$/i.test(value);},
       "Please enter valid postcode");
-
+    //initial the process bar
     $("#complete").addClass("first");
-
+    //update the process bar
     function updateSteps(fields){
       var length = fields.length;
       if (length >0){
@@ -17,13 +17,18 @@ $(document).ready(function(){
       $("#complete").addClass(fields[length-1]); 
      }
     }
+    //formwizard configure
     $("#new_post").formwizard({
-      historyEnabled:false,
+      historyEnabled:true,
       formPluginEnabled:true,
       validationEnabled:true,
       focusFirstInpur:true,
       afterNext:function(wizardData){
         updateSteps(wizardData.activatedSteps);
+        var l = wizardData.activatedSteps.length
+        if($.inArray("fifth",wizardData.activatedSteps)>0){
+        $("#next_button").hide();
+        }
       },
       afterBack:function(wizardData){
         updateSteps(wizardData.activatedSteps);        
@@ -69,4 +74,24 @@ $(document).ready(function(){
         resetForm:true
       }
       );
+
+      //date
+      $("#date_happened_on_month").hide();
+      $("#date_happened_on_day").hide();
+      $("#date_happened_on_year").change(function(){
+          if ($(this).val()){
+            $("#date_happened_on_month").show();}
+          else{
+            $("#date_happened_on_month").hide();
+            $("#date_happened_on_day").hide();
+          }
+          });
+      $("#date_happened_on_month").change(function(){
+          if($(this).val()){
+            $("#date_happened_on_day").show();
+          }
+          else{
+            $("#date_happened_on_day").hide();
+          }
+          });
     });

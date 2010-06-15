@@ -32,7 +32,7 @@
         %ul
           %li
             =link_to "Manage Setting"
-          -if !current_police.ischeif
+          -if current_police.ischeif
             %li
               =link_to "Add a new police", new_police_police_path
           %li
@@ -51,7 +51,7 @@
     
     .sidebarblock
       %h3.title
-        Analyse Date
+        Explore Your Area 
       .sidebarcontent
         %img{:src=>"/images/map.png"}
 

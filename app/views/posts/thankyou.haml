@@ -15,13 +15,14 @@
     %li.fifth
       Tags
 #newpost
+  =debug(@post)
   =form_for(@post) do |f| 
     #back_button.action
     #formcontent
       %h2
         Thanks! Your Story has been submitted and should appewa on the site shortly. In the meantime, explore the other
         =link_to "Stories", posts_path
-        on MyPolice
+        on MyPolice. We will send you an email when your story goes live
     #next_button.action
    
 

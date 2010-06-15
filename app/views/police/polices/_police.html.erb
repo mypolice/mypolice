@@ -1,9 +1,0 @@
-<% div_for police do %>
-  <p>Email <%= police.email %></p>
-  <p>Sign in Counts<%= police.sign_in_count %></p>
-  <p>Last Sign in up <%= police.last_sign_in_ip %></p>
-  <%= link_to 'Edit', edit_police_police_path if police == current_police%> |
-  <%= link_to 'Destroy', [:police, police], :method => :delete, :confirm => "Are you sure?" %>|
-  </p>
-<%end%>
-

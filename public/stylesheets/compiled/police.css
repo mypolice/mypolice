@@ -565,30 +565,31 @@ body.two-col #contentwrapper #content {
 
 /* line 9, ../../../app/stylesheets/partials/_error.scss */
 #flash_notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
+  /* background-color: #CFC;
+   border: solid 1px #6C6;*/
+  background-color: #fff;
 }
 
-/* line 14, ../../../app/stylesheets/partials/_error.scss */
+/* line 15, ../../../app/stylesheets/partials/_error.scss */
 #flash_alert {
-  background-color: #FCC;
+  background-color: #CFC;
   border: solid 1px #C66;
 }
 
-/* line 19, ../../../app/stylesheets/partials/_error.scss */
+/* line 21, ../../../app/stylesheets/partials/_error.scss */
 #flash_error {
   background-color: #FCC;
   border: solid 1px #C66;
 }
 
-/* line 25, ../../../app/stylesheets/partials/_error.scss */
+/* line 27, ../../../app/stylesheets/partials/_error.scss */
 .fieldWithErrors {
   padding: 2px;
   background-color: red;
   display: table;
 }
 
-/* line 32, ../../../app/stylesheets/partials/_error.scss */
+/* line 34, ../../../app/stylesheets/partials/_error.scss */
 #errorExplanation {
   width: 400px;
   border: 2px solid #CF0000;
@@ -598,7 +599,7 @@ body.two-col #contentwrapper #content {
   background-color: #f0f0f0;
 }
 
-/* line 41, ../../../app/stylesheets/partials/_error.scss */
+/* line 43, ../../../app/stylesheets/partials/_error.scss */
 #errorExplanation h2 {
   text-align: left;
   font-weight: bold;
@@ -609,19 +610,19 @@ body.two-col #contentwrapper #content {
   color: #fff;
 }
 
-/* line 51, ../../../app/stylesheets/partials/_error.scss */
+/* line 53, ../../../app/stylesheets/partials/_error.scss */
 #errorExplanation p {
   color: #333;
   margin-bottom: 0;
   padding: 8px;
 }
 
-/* line 57, ../../../app/stylesheets/partials/_error.scss */
+/* line 59, ../../../app/stylesheets/partials/_error.scss */
 #errorExplanation ul {
   margin: 2px 24px;
 }
 
-/* line 61, ../../../app/stylesheets/partials/_error.scss */
+/* line 63, ../../../app/stylesheets/partials/_error.scss */
 #errorExplanation ul li {
   font-size: 12px;
   list-style: disc;
@@ -866,7 +867,7 @@ body #container {
   margin: 0 auto;
   overflow: hidden;
   display: inline-block;
-  background: #ebe6f5;
+  background: #e6f4f8;
 }
 /* line 8, ../../../../../.bundle/ruby/1.9.1/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/general/_hacks.scss */
 body #container {
@@ -1004,7 +1005,7 @@ a {
 
 /* line 102, ../../../app/stylesheets/police.scss */
 #search {
-  border: 1px solid #4f0083;
+  border: 1px solid #0695bc;
   margin-right: -10px;
   padding: 0;
   width: 169px;
@@ -1014,7 +1015,7 @@ a {
 
 /* line 110, ../../../app/stylesheets/police.scss */
 #submitbutton {
-  background: #4f0083;
+  background: #0695bc;
   color: white;
   font-weight: bold;
   text-algin: center;
@@ -1067,7 +1068,7 @@ ul.hmenu li {
 
 /* line 131, ../../../app/stylesheets/police.scss */
 a.purplelink {
-  background: #4f0083;
+  background: #0695bc;
   display: -moz-inline-box;
   -moz-box-orient: vertical;
   display: inline-block;
@@ -1115,18 +1116,17 @@ a.purplelink:visited {
 /* line 160, ../../../app/stylesheets/police.scss */
 .tabs ul {
   margin: 0;
-  width: 790px;
 }
 
-/* line 166, ../../../app/stylesheets/police.scss */
+/* line 165, ../../../app/stylesheets/police.scss */
 * html .tabs {
   height: 1%;
   /* fixing IE 6 */
 }
 
-/* line 167, ../../../app/stylesheets/police.scss */
+/* line 166, ../../../app/stylesheets/police.scss */
 .tabs li {
-  float: right;
+  float: left;
   line-height: 1.5;
   list-style-type: none;
   margin: 0 0 0 0.5em;
@@ -1134,7 +1134,7 @@ a.purplelink:visited {
   font-size: 18px;
 }
 
-/* line 175, ../../../app/stylesheets/police.scss */
+/* line 174, ../../../app/stylesheets/police.scss */
 .tabs li a {
   background: #deb5d3;
   color: #535353;
@@ -1158,29 +1158,29 @@ a.purplelink:visited {
   display: block;
 }
 
-/* line 186, ../../../app/stylesheets/police.scss */
+/* line 185, ../../../app/stylesheets/police.scss */
 .tabs li a.selected {
-  background: #ebe6f5;
+  background: #e6f4f8;
 }
 
-/* line 189, ../../../app/stylesheets/police.scss */
+/* line 188, ../../../app/stylesheets/police.scss */
 .tabs li a, .tabs li a:focus, .tabs li a:hover {
   text-decoration: none;
 }
 
-/* line 192, ../../../app/stylesheets/police.scss */
+/* line 191, ../../../app/stylesheets/police.scss */
 .tabs li a:focus, .tabs li a:hover {
   color: #535353;
-  background: #ebe6f5;
+  background: #e6f4f8;
   outline: none;
 }
 
-/* line 197, ../../../app/stylesheets/police.scss */
+/* line 196, ../../../app/stylesheets/police.scss */
 .tabs li a.selected:focus, .tabs li a.selected:hover {
   color: #535353;
 }
 
-/* line 202, ../../../app/stylesheets/police.scss */
+/* line 201, ../../../app/stylesheets/police.scss */
 .contentblock {
   padding: 10px;
   -moz-border-radius: 5px;
@@ -1193,18 +1193,18 @@ a.purplelink:visited {
   margin: 10px 0;
   overflow: hidden;
 }
-/* line 208, ../../../app/stylesheets/police.scss */
+/* line 207, ../../../app/stylesheets/police.scss */
 .contentblock a.purplelink {
   width: 200px;
   float: right;
 }
 
-/* line 215, ../../../app/stylesheets/police.scss */
+/* line 214, ../../../app/stylesheets/police.scss */
 #sidebarwrapper {
   padding: 10px 10px 10px 0;
 }
 
-/* line 218, ../../../app/stylesheets/police.scss */
+/* line 217, ../../../app/stylesheets/police.scss */
 .sidebarblock {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1212,28 +1212,28 @@ a.purplelink:visited {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  border: 1px solid #4f0083;
+  border: 1px solid #0695bc;
   background: white;
   margin: 10px 0;
 }
-/* line 223, ../../../app/stylesheets/police.scss */
+/* line 222, ../../../app/stylesheets/police.scss */
 .sidebarblock h3.title {
   padding: 5px 10px;
-  border-bottom: 1px solid #4f0083;
+  border-bottom: 1px solid #0695bc;
   margin: 0;
 }
-/* line 228, ../../../app/stylesheets/police.scss */
+/* line 227, ../../../app/stylesheets/police.scss */
 .sidebarblock .sidebarcontent {
   padding: 10px;
 }
-/* line 230, ../../../app/stylesheets/police.scss */
+/* line 229, ../../../app/stylesheets/police.scss */
 .sidebarblock .sidebarcontent ul {
   margin: 0 0 10px 0;
   padding: 0;
   list-style-type: none;
 }
 
-/* line 238, ../../../app/stylesheets/police.scss */
+/* line 237, ../../../app/stylesheets/police.scss */
 #tellbutton {
   position: absolute;
   margin: -20px 0 0 -100px;
@@ -1241,7 +1241,7 @@ a.purplelink:visited {
   cursor: pointer;
 }
 
-/* line 244, ../../../app/stylesheets/police.scss */
+/* line 243, ../../../app/stylesheets/police.scss */
 #posts {
   background: white;
   -moz-border-radius: 5px;
@@ -1255,7 +1255,7 @@ a.purplelink:visited {
   overflow: hidden;
 }
 
-/* line 251, ../../../app/stylesheets/police.scss */
+/* line 250, ../../../app/stylesheets/police.scss */
 .postbubble {
   border: 2px dashed #6600cc;
   padding: 10px;
@@ -1263,7 +1263,7 @@ a.purplelink:visited {
   overflow: hidden;
 }
 
-/* line 258, ../../../app/stylesheets/police.scss */
+/* line 257, ../../../app/stylesheets/police.scss */
 span.triangle {
   background: url("/images/bubble-triangle.png") no-repeat;
   display: block;
@@ -1273,7 +1273,12 @@ span.triangle {
   margin: -14px 54px 0 0;
 }
 
-/* line 267, ../../../app/stylesheets/police.scss */
+/* line 265, ../../../app/stylesheets/police.scss */
+.post, .response, .comment {
+  margin: 0 0 30px 0;
+}
+
+/* line 268, ../../../app/stylesheets/police.scss */
 #sharethis_0 {
   float: right;
   height: 17px;
@@ -1281,17 +1286,17 @@ span.triangle {
   margin: -34px 0 0 0;
 }
 
-/* line 274, ../../../app/stylesheets/police.scss */
+/* line 275, ../../../app/stylesheets/police.scss */
 .response {
   margin: 0px 0 40px 0;
 }
-/* line 276, ../../../app/stylesheets/police.scss */
+/* line 277, ../../../app/stylesheets/police.scss */
 .response .responsebubble {
   border: 2px dashed #8f87c5;
   padding: 10px;
   margin: 10px 0;
 }
-/* line 281, ../../../app/stylesheets/police.scss */
+/* line 282, ../../../app/stylesheets/police.scss */
 .response span.triangle {
   background: url("/images/response-triangle.png") no-repeat;
   display: block;
@@ -1301,13 +1306,13 @@ span.triangle {
   margin: 8px 54px 0 0;
 }
 
-/* line 292, ../../../app/stylesheets/police.scss */
+/* line 293, ../../../app/stylesheets/police.scss */
 #mph1 {
   margin: 30px 0;
   padding: 0 40px;
 }
 
-/* line 297, ../../../app/stylesheets/police.scss */
+/* line 298, ../../../app/stylesheets/police.scss */
 #mp_intro ul {
   background: url(/images/whatismp.png) no-repeat;
   width: 930px;
@@ -1315,7 +1320,7 @@ span.triangle {
   padding: 0;
   list-style: none;
 }
-/* line 303, ../../../app/stylesheets/police.scss */
+/* line 304, ../../../app/stylesheets/police.scss */
 #mp_intro ul li {
   color: white;
   float: left;
@@ -1327,80 +1332,80 @@ span.triangle {
   padding: 172px 0px 0;
 }
 
-/* line 317, ../../../app/stylesheets/police.scss */
+/* line 318, ../../../app/stylesheets/police.scss */
 #col1, #col2, #col3 {
   float: left;
   display: inline;
   width: 300px;
   margin: 5px;
 }
-/* line 322, ../../../app/stylesheets/police.scss */
+/* line 323, ../../../app/stylesheets/police.scss */
 #col1 h2, #col2 h2, #col3 h2 {
   margin: 0;
-  border-bottom: 2px solid #4f0083;
+  border-bottom: 2px solid #0695bc;
 }
-/* line 325, ../../../app/stylesheets/police.scss */
+/* line 326, ../../../app/stylesheets/police.scss */
 #col1 p, #col2 p, #col3 p {
   padding: 10px;
   margin: 0;
-  border-bottom: 1px dotted #4f0083;
+  border-bottom: 1px dotted #0695bc;
 }
-/* line 330, ../../../app/stylesheets/police.scss */
+/* line 331, ../../../app/stylesheets/police.scss */
 #col1 #homebt, #col2 #homebt, #col3 #homebt {
   width: 150px;
   margin: 20px 0 10px 0;
 }
 
-/* line 337, ../../../app/stylesheets/police.scss */
+/* line 338, ../../../app/stylesheets/police.scss */
 h3.sidebar {
   margin: 0;
-  border-bottom: 2px solid #4f0083;
+  border-bottom: 2px solid #0695bc;
   padding: 0 0 10px 0;
 }
 
-/* line 343, ../../../app/stylesheets/police.scss */
+/* line 344, ../../../app/stylesheets/police.scss */
 #sidebar #latestresponses {
   padding: 50px 10px 10px 0;
 }
-/* line 345, ../../../app/stylesheets/police.scss */
+/* line 346, ../../../app/stylesheets/police.scss */
 #sidebar #latestresponses p {
   padding: 10px;
   margin: 0;
-  border-bottom: 1px dotted #4f0083;
+  border-bottom: 1px dotted #0695bc;
 }
-/* line 351, ../../../app/stylesheets/police.scss */
+/* line 352, ../../../app/stylesheets/police.scss */
 #sidebar #tags, #sidebar #map {
   padding: 10px 10px 10px 0;
 }
-/* line 353, ../../../app/stylesheets/police.scss */
+/* line 354, ../../../app/stylesheets/police.scss */
 #sidebar #tags a, #sidebar #map a {
   padding: 5px;
 }
-/* line 356, ../../../app/stylesheets/police.scss */
+/* line 357, ../../../app/stylesheets/police.scss */
 #sidebar #tags .css1, #sidebar #map .css1 {
   font-size: 1em;
 }
-/* line 357, ../../../app/stylesheets/police.scss */
+/* line 358, ../../../app/stylesheets/police.scss */
 #sidebar #tags .css2, #sidebar #map .css2 {
   font-size: 1.2em;
 }
-/* line 358, ../../../app/stylesheets/police.scss */
+/* line 359, ../../../app/stylesheets/police.scss */
 #sidebar #tags .css3, #sidebar #map .css3 {
   font-size: 1.4em;
 }
-/* line 359, ../../../app/stylesheets/police.scss */
+/* line 360, ../../../app/stylesheets/police.scss */
 #sidebar #tags .css4, #sidebar #map .css4 {
   font-size: 1.6em;
 }
 
-/* line 364, ../../../app/stylesheets/police.scss */
+/* line 365, ../../../app/stylesheets/police.scss */
 #blankbox {
   background: white;
   margin: 0 auto;
   width: 310px;
 }
 
-/* line 370, ../../../app/stylesheets/police.scss */
+/* line 371, ../../../app/stylesheets/police.scss */
 .centerbox {
   padding: 10px 30px;
 }

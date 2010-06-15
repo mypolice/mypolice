@@ -1,15 +1,21 @@
 -title  "Stories"
 
 =content_for :sortby do
-  .sortby
-    %ul
-      %li
-        Sort by:
-      %li
-        Most Recent /
-      %li
-        Oldest     
-    %h1 Stories: Most Recent
+  -if params[:controller] == "posts"
+    .sortby
+      %ul
+        %li
+          Sort by:
+        %li
+          Most Recent /
+        %li
+          Oldest     
+      %h1 Stories: Most Recent
+  -if params[:controller] == "tags"
+    .sortby
+      %h1
+        Tag:
+        =@tag
 
 //yield
 #content
@@ -33,3 +39,5 @@
   #map.sideblock
     %h3.sidebar
       Map
+    .sidecontent 
+      %img{:src=>"/images/map.png"}
