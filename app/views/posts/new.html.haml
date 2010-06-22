@@ -1,5 +1,12 @@
 -title "Add a new Story"
 %h2.newstory Use the simple form below to tell us your story
+
+%div{:style=>"display:none"}
+  #addresslookup
+    %input{:id=>"address" , :value=>"Glasgow", :type=>"textbox"}
+    %input{:type=>"button",:value=>"seach on map", :id=>"geocode"}
+    %input{:type=>"button",:value=>"save address", :id=>"saveaddress"}
+    #map_canvas    
 #progress
   #complete
     #marker
@@ -16,6 +23,7 @@
       Tags
 =render :partial=>"form"
 = javascript_include_tag "newpost"
+= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false&region=GB"
 -#begin
   #newpost
   #back_button

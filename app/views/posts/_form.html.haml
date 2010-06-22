@@ -52,33 +52,32 @@
       =fields_for :address do |a|
         %fieldset.step#third
           %h3
-            Please tell us where your story took place    
+            Please tell us where your story took plac
+          %a{:id=>'gmap', :href=>'#addresslookup'}
+            Find it on map
           %table
             %tr.field 
-              %td
-                =a.label(:address_line1," Address Line")
-                = mark_required(@address, :address_line1)
-              %td
-                =a.text_field :address_line1, :class=>"required"
-            %tr.field 
-              %td=a.label(:address_line2, "Address Line 2")
-              %td=a.text_field :address_line2
-            %tr.field 
-              %td
-                =a.label(:city," Town/City")
-                = mark_required(@address, :city)  
-              %td=a.text_field :city, :class=>"required"
+              %td=a.label(:country, "Country(Our serivce is only available in the UK)")
+              %td=a.select(:country, options_for_select(["United Kingdom"]), {:disabled => true})
             %tr.field 
               %td=a.label(:county," County")
               %td=a.text_field :county
             %tr.field 
               %td
-                =a.label(:postcode," Postcode")
-                = mark_required(@address, :postcode)
-              %td=a.text_field :postcode
+                =a.label(:city," Town/City")
+              %td=a.text_field :city
+            %tr.fields 
+              %td=a.label(:address_line2, "Street Name")
+              %td=a.text_field :address_line2
+           
             %tr.field 
-              %td=a.label(:country, "Country(Our serivce is only available in the UK)")
-              %td=a.select(:country, options_for_select(["United Kingdom"]), {:disabled => true})
+              %td
+                =a.label(:address_line1," Street Number/House Name")
+              %td
+                =a.text_field :address_line1
+            %tr.field 
+              %td=a.label(:postcode," Postcode")
+              %td=a.text_field :postcode
 
       %fieldset.step#forth
         %table.story

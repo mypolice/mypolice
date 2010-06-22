@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"
+!!!Strict
+%html{:xmlns=>"http://www.w3.org/1999/xhtml"}
+
+  = render :partial=>"shared/head"
+  %body
+    #container
+      #layout
+        =render :partial =>"shared/header" 
+        =yield :sortby     
+      #maincontentwrapper
+        #maincontent
+          -flash.each do |name, msg| 
+            =content_tag :div, msg, :id=>"flash_#{name}"
+          = yield
+          =yield :sidebar
+        #layout_footer
+      =render :partial=>"shared/footer"  
+      -#%script{:src=>'http://cdn.wibiya.com/Toolbars/dir_0393/Toolbar_393982/Loader_393982.js',:type=>'text/javascript'}

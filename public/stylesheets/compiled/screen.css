@@ -1517,7 +1517,7 @@ label.error {
   width: 32px;
   height: 41px;
   float: right;
-  margin: -14px 54px 0 0;
+  margin: -12px 54px 0 0;
 }
 /* line 421, ../../../app/stylesheets/screen.scss */
 #posts .postrelated {
@@ -1714,4 +1714,15 @@ label.error {
 .sortby ul li {
   font-size: 18px;
   padding: 0 0 0 5px;
+}
+
+/* line 580, ../../../app/stylesheets/screen.scss */
+#map_canvas {
+  width: 600px;
+  height: 400px;
+}
+
+/* line 584, ../../../app/stylesheets/screen.scss */
+.hide {
+  display: none;
 }

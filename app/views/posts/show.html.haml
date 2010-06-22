@@ -2,13 +2,6 @@
 
 =content_for :sortby do
   .sortby
-    %ul
-      %li
-        Sort by:
-      %li
-        Most Recent /
-      %li
-        Oldest     
     %h1 
       Story:
       =@post.title.titlecase
@@ -37,7 +30,7 @@
       \/
       =link_to pluralize(@post.comments.approved.count, 'Comment'), @post, :id=>"Comments_#{@post.id}"
       %script{:type=>"text/javascript",:src=>"http://w.sharethis.com/button/sharethis.js#publisher=534a6efc-b729-4f7e-9b27-b0751fe00183&amp;type=website&amp;style=vertical&amp;@post_services=email%2Cfacebook%2Ctwitter%2Cgbuzz%2Cmyspace%2Cdigg%2Csms%2Cwindows_live%2Cdelicious%2Cstumbleupon%2Creddit%2Cgoogle_bmarks%2Clinkedin%2Cbebo%2Cybuzz%2Cblogger%2Cyahoo_bmarks%2Cmixx%2Ctechnorati%2Cfriendfeed%2Cpropeller%2Cwordpress%2Cnewsvine"}
-      
+   
     #responses
       = error_messages_for :response
       =render :partial=>@post.responses
@@ -67,15 +60,15 @@
 
 
 =content_for :sidebar do
-  #latestresponses.sideblock
-    %h3
-      Latest Responses:
-    =render :partial=>"home/response",:collection=>@responses
-  #tags.sideblock
-    %h3
-      Tags
-    -tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag,css_class|
-      =link_to tag.name, tag_path(tag),:class=>css_class
+  -if @post.tags.length>0
+    #tags.sideblock
+      %h3
+        Tags
+    .sidecontent
+      -@post.tags.each do |tag|
+        =link_to tag.name, tag_path(tag)
   #map.sideblock
     %h3
-      Map
+      Where it took place
+    .sidecontent
+      %img{:src=>"/images/map.png"}

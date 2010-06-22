@@ -44,10 +44,10 @@ $(document).ready(function(){
                 "post[body]":{
                       required:true,
                       minlength:100
-                },
-                "address[postcode]":{
-                      required:true,
-                      postcode:true
+                //},
+              //  "address[postcode]":{
+                  //    required:true,
+                    //  postcode:true
                 }
            },
           errorElement:"div",
@@ -94,4 +94,141 @@ $(document).ready(function(){
             $("#date_happened_on_day").hide();
           }
           });
+    
+      //maps
+var geocoder;
+var map;
+var marker;
+var infowindow = new google.maps.InfoWindow();
+var streetName="";
+var postcode="";
+var city="";
+var county ="";
+var streetNumber="";
+var island="";
+  
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(55.86, -4.260);
+    var myOptions = {
+      zoom: 8,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    //^[a-zA-Z\s]+ regular  
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        marker = new google.maps.Marker({
+        position: latlng, 
+        map: map,
+        draggable:true,
+        });
+     google.maps.event.addListener(marker, 'dragend',positionchange);
+}
+
+    function positionchange(){
+      var ll = marker.position;
+      geocoder.geocode({'latLng':ll}, function(results, status){
+        if(status==google.maps.GeocoderStatus.OK){
+        infowindow.setContent(results[0].formatted_address);
+        infowindow.open(map,marker);
+        map.setCenter(results[0].geometry.location);
+        $("#address").val(results[0].formatted_address);
+        getaddress(results[0].address_components); 
+        }else{
+        alert("Geocoder failed dur to:" + status);
+        }        
+        });
+    }
+    
+  $("#geocode").click(function(){
+      codeAddress();
+      }
+      );
+  $("#saveaddress").click(function(){
+      $('#address_address_line1').val(streetNumber);
+      $('#address_county').val(county+","+island);
+      $('#address_city').val(city);
+      $('#address_address_line2').val(streetName);
+      $('#address_postcode').val(postcode);
+      $.fancybox.close();
+      });
+
+  function codeAddress() {
+    marker.setMap(null); 
+    var address = document.getElementById("address").value;
+    if (geocoder) {
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+              marker = new google.maps.Marker({
+              map: map, 
+              position: results[0].geometry.location,
+              draggable:true
+          });
+
+        infowindow.setContent(results[0].formatted_address);
+        infowindow.open(map,marker);
+        getaddress(results[0].address_components);
+         google.maps.event.addListener(marker, 'dragend',positionchange);
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
+  }
+
+    function getaddress(components){
+      for (var i=0;i<components.length;i++){
+        switch(components[i].types[0]){
+          case "street_number":
+            streetNumber = components[i].long_name;
+          break;
+          case "route":
+            streetName=components[i].long_name;
+          break;
+          case "administrative_area_level_3":
+            city = components[i].long_name;
+          break;
+          case "administrative_area_level_2":
+            county = components[i].long_name;
+          break;
+          case "administrative_area_level_1":
+            island = components[i].long_name;
+          break;
+          case "country":
+            country = components[i].long_name;
+            if(country!="United Kingdom")
+              alert("Sorry, Our serivce is only available in the UK");
+          break;
+          case "postal_code":
+            postcode = components[i].long_name;
+          break;
+        }
+    }
+      
+  }
+$("#gmap").click(function(){
+  initialize();
+    });
+$("a#gmap").fancybox({
+    'hideOnContentClick':false,
+    'hideOnOverlayClick':false,
+    'width':800,
+    'height':600,
+    'autoDimensions':true
+    });
+//Address form display
+/*
+$("#address_county").change(function(){
+  $("#address_city").parent().parent().removeClass("hide"); 
+});
+$("#address_city").change(function(){
+  $("#address_address_line2").parent().parent().removeClass("hide"); 
+});
+$("#address_address_line2").change(function(){
+  $("#address_address_line1").parent().parent().removeClass("hide"); 
+});
+
+*/
+
     });
