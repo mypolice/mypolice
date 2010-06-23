@@ -208,8 +208,10 @@ var island="";
       
   }
 $("#gmap").click(function(){
-  initialize();
-    });
+  if(map==undefined){
+    alert(map);
+    initialize();
+    }   });
 $("a#gmap").fancybox({
     'hideOnContentClick':false,
     'hideOnOverlayClick':false,
