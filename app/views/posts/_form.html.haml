@@ -18,21 +18,41 @@
             =link_to "Create a new profile", new_user_registration_path
             or create a story anonymously
       %fieldset.step#second
+        %h3
+          Story details
         %table
           %tr.field
             %td
-              =f.label(:title, "Story title")
+              =f.label(:title, "We want you to give your story title")
               =mark_required(@post, :title)
-            %td=f.text_field :title, :value=>@post.title
+              %a.tooltip
+                Example
+                %span.classic
+                  "Police really cared" "Neighbourhood chaos"
+            %td
+              =f.text_field :title, :value=>@post.title
+             
           %tr.field
-            %td=f.label(:who_id,"Who it happened to")
+            %td
+              =f.label(:who_id,"Who did it happen to?")
+              %a.tooltip
+                help
+                %span.classic
+                  Is this story about you or a friend?
             -who_array = Who.all.map{|w|[w.name,w.id]}
-            %td=f.select(:who_id, options_for_select(who_array,@post.who_id))
+            %td
+              =f.select(:who_id, options_for_select(who_array,@post.who_id))
           %tr.field
-            %td=f.label(:happened_on,"When it happened")
+            %td
+              =f.label(:happened_on,"When did it happend?")
+              %a.tooltip
+                help
+                %span.classic
+                  If you can remember the exact date, that's great, but if not, the year would be good.
             /%td=f.text_field :happened_on
             %td
               =select_year(0,:start_year=>Time.now.year,:end_year=>Time.now.year-50, :field_name=>:happened_on_year, :prompt => "What year? Don't worry if you can't remember")
+             
           %tr.field
             %td
             %td
@@ -43,7 +63,12 @@
               =select_day(0, :field_name=>:happened_on_day, :prompt=>"What day? Don't worry if you can't remember")
             /%td= date_select("post","happened_on", :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' })
           %tr.field
-            %td=f.label(:category_id,"Category of story")
+            %td
+              =f.label(:category_id,"Category")
+              %a.tooltip
+                help
+                %span.classic
+                  We want to know what kind of story this is
             -category_array = Category.all.map{|c| [c.name,c.id]}
             %td=f.select(:category_id, options_for_select(category_array, @post.category_id))
        
@@ -52,8 +77,14 @@
       =fields_for :address do |a|
         %fieldset.step#third
           %h3
-            Please tell us where your story took plac
-          %a{:id=>'gmap', :href=>'#addresslookup'}
+            Choosing the location
+          %p
+            Please tell us Where did this happen?
+            %a.tooltip
+              Why
+              %span.classic
+                The more information you tell us, the better.  We will never reveal an exact street address online, it's just so we can make our data as accurate as possible.  Tell us what city or town this happened in, the name of the area, the street name, and finally the postcode. if you can't remember some of the details or are unsure of the area, try clicking our map button and using a pointer to tell us where it happened.
+          %a{:id=>'gmap', :href=>'#addresslookup',:title=>"fintitonmap"}
             Find it on map
           %table
             %tr.field 
@@ -80,21 +111,35 @@
               %td=a.text_field :postcode
 
       %fieldset.step#forth
-        %table.story
-          %tr
-            %td
-              =f.label(:body,"Please tell us your story")
-              =f.text_area :body
-          %tr
-            %td
-              =f.label(:suggestion, "Please give us a suggestion about how this experience could be improved")
-              =f.text_area :suggestion
+        %h3 
+          Telling us your story 
+        %p
+          =f.label(:body,"We want you to tell us your story. Tell us the details - how did you feel? what happened? No swear words or names please. ")
+          %a.tooltip
+            Example
+            %span.classic
+              "I went into the police station after taking a week to find the courage to go and report an assault that happened to me.  I couldn't phone because I just couldn't find the confidence!  I am 16 years old and am absolutely appalled with the way I was treated.  When I was reporting the crime I was left to wait for two hours and never received any emotional advice or support.  It is only since I found a charity that can help me with this type of experience that I feel able to come forward about this ordeal.  I decided not to press charges because I didn't want the process to be similar to how I was treated in the police station.  I think if more woman are treated this way then less will come forward with reports on assaults."
+        %p
+          =f.text_area :body
+        %p
+          =f.label(:suggestion, "We would like you to tell us a suggestion on how the situation could/could have been improved.")
+          %a.tooltip
+            Example
+            %span.classic
+              I would like to see your staff trained more to deal with this type of situation and perhaps a special number I can phone before I go, or some kind of way for me to meet up with someone to report the assault without having to visit the station.  I think a station should have someone on at all times who can deal with someone like me who has gone through an experience similar to mine.
+        %p
+          =f.text_area :suggestion
       
       %fieldset.step#fifth
-        %h3 Please add some keywords to describe your story
+        %h3 Adding Tags
         .field
           %p
-            =f.label(:tag_list, "Tags (Please seperate each word with a comma)") 
+            =f.label(:tag_list, "We want you to add 'tags' to your story (Please seperate each word with a comma)")
+            %a.tooltip
+              Help
+              %span.classic
+                These are just descriptive words that help to categorise your story ( kind of like internet bookmarks ). For example, if your story is about a burglary at your house you might use the tags, burglary, theft, home, criminal, lost.
+              
           %p
             =f.text_field :tag_list 
         %h3

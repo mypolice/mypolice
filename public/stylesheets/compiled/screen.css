@@ -1340,7 +1340,6 @@ h2.newstory {
   float: left;
   margin-right: 10px;
   width: 550px;
-  text-align: center;
   vertical-align: middle;
 }
 /* line 138, ../../../../../.bundle/ruby/1.9.1/gems/compass-0.10.2/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
@@ -1422,15 +1421,16 @@ h2.newstory {
 #newpost #formcontent textarea:focus, #newpost #formcontent select:focus {
   border: 1px solid #dedede;
 }
-/* line 343, ../../../app/stylesheets/screen.scss */
+/* line 342, ../../../app/stylesheets/screen.scss */
 #newpost #formcontent h2 {
   margin: 76px 0;
   font-weight: bold;
 }
-/* line 347, ../../../app/stylesheets/screen.scss */
+/* line 346, ../../../app/stylesheets/screen.scss */
 #newpost #formcontent h3 {
   font-weight: bold;
   font-size: 24px;
+  text-align: center;
 }
 /* line 351, ../../../app/stylesheets/screen.scss */
 #newpost #formcontent select {
@@ -1725,4 +1725,97 @@ label.error {
 /* line 584, ../../../app/stylesheets/screen.scss */
 .hide {
   display: none;
+}
+
+/* line 589, ../../../app/stylesheets/screen.scss */
+.tooltip {
+  border-bottom: 1px dotted #000;
+  color: #000;
+  outline: none;
+  cursor: help;
+  position: relative;
+}
+/* line 595, ../../../app/stylesheets/screen.scss */
+.tooltip span {
+  margin-left: -999em;
+  position: absolute;
+}
+
+/* line 600, ../../../app/stylesheets/screen.scss */
+.tooltip:hover span {
+  font-family: Calibri, Tahoma, Geneva, sans-serif;
+  position: absolute;
+  left: 1em;
+  top: 2em;
+  z-index: 100000;
+  margin-left: 0;
+  width: 250px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  line-height: 1.5em;
+}
+
+/* line 612, ../../../app/stylesheets/screen.scss */
+.tooltip:hover img {
+  border: 0;
+  margin: -10px 0 0 -55px;
+  float: left;
+  position: absolute;
+}
+
+/* line 618, ../../../app/stylesheets/screen.scss */
+.tooltip:hover em {
+  font-family: Candara, Tahoma, Geneva, sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+  padding: 0.2em 0 0.6em 0;
+}
+
+/* line 625, ../../../app/stylesheets/screen.scss */
+.classic {
+  padding: 0.8em 1em;
+}
+
+/* line 626, ../../../app/stylesheets/screen.scss */
+.custom {
+  padding: 0.5em 0.8em 0.8em 2em;
+}
+
+/* line 627, ../../../app/stylesheets/screen.scss */
+* html a:hover {
+  background: transparent;
+}
+
+/* line 628, ../../../app/stylesheets/screen.scss */
+.classic {
+  background: #E9ECF5;
+  border: 1px solid #0F2F8D;
+  color: #000;
+  /*-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=85)"; 
+	filter: alpha(opacity=85);		
+  opacity:0.85*/
+}
+
+/* line 633, ../../../app/stylesheets/screen.scss */
+.critical {
+  background: #FFCCAA;
+  border: 1px solid #FF3334;
+}
+
+/* line 634, ../../../app/stylesheets/screen.scss */
+.help {
+  background: #9FDAEE;
+  border: 1px solid #2BB0D7;
+}
+
+/* line 635, ../../../app/stylesheets/screen.scss */
+.info {
+  background: #9FDAEE;
+  border: 1px solid #2BB0D7;
+}
+
+/* line 636, ../../../app/stylesheets/screen.scss */
+.warning {
+  background: #FFFFAA;
+  border: 1px solid #FFAD33;
 }
