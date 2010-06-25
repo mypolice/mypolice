@@ -592,6 +592,7 @@ label.error{
   outline:none;
   cursor:help;
   position:relative;
+  text-decoration: none;
   span{
     margin-left:-999em;
     position:absolute;
@@ -604,8 +605,9 @@ label.error{
   top: 2em;
   z-index: 100000;
   margin-left: 0;
-  width: 250px;
-  -moz-border-radius:5px 5px 5px 5px;
+  width: 350px;
+  border-radius: 5px 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1); -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
   //-moz-box-shadow:5px 5px rgba(0, 0, 0, 0.1);
   line-height:1.5em;
 }

@@ -1734,14 +1734,15 @@ label.error {
   outline: none;
   cursor: help;
   position: relative;
+  text-decoration: none;
 }
-/* line 595, ../../../app/stylesheets/screen.scss */
+/* line 596, ../../../app/stylesheets/screen.scss */
 .tooltip span {
   margin-left: -999em;
   position: absolute;
 }
 
-/* line 600, ../../../app/stylesheets/screen.scss */
+/* line 601, ../../../app/stylesheets/screen.scss */
 .tooltip:hover span {
   font-family: Calibri, Tahoma, Geneva, sans-serif;
   position: absolute;
@@ -1749,12 +1750,17 @@ label.error {
   top: 2em;
   z-index: 100000;
   margin-left: 0;
-  width: 250px;
-  -moz-border-radius: 5px 5px 5px 5px;
+  width: 350px;
+  border-radius: 5px 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
   line-height: 1.5em;
 }
 
-/* line 612, ../../../app/stylesheets/screen.scss */
+/* line 614, ../../../app/stylesheets/screen.scss */
 .tooltip:hover img {
   border: 0;
   margin: -10px 0 0 -55px;
@@ -1762,7 +1768,7 @@ label.error {
   position: absolute;
 }
 
-/* line 618, ../../../app/stylesheets/screen.scss */
+/* line 620, ../../../app/stylesheets/screen.scss */
 .tooltip:hover em {
   font-family: Candara, Tahoma, Geneva, sans-serif;
   font-size: 1.2em;
@@ -1771,22 +1777,22 @@ label.error {
   padding: 0.2em 0 0.6em 0;
 }
 
-/* line 625, ../../../app/stylesheets/screen.scss */
+/* line 627, ../../../app/stylesheets/screen.scss */
 .classic {
   padding: 0.8em 1em;
 }
 
-/* line 626, ../../../app/stylesheets/screen.scss */
+/* line 628, ../../../app/stylesheets/screen.scss */
 .custom {
   padding: 0.5em 0.8em 0.8em 2em;
 }
 
-/* line 627, ../../../app/stylesheets/screen.scss */
+/* line 629, ../../../app/stylesheets/screen.scss */
 * html a:hover {
   background: transparent;
 }
 
-/* line 628, ../../../app/stylesheets/screen.scss */
+/* line 630, ../../../app/stylesheets/screen.scss */
 .classic {
   background: #E9ECF5;
   border: 1px solid #0F2F8D;
@@ -1796,25 +1802,25 @@ label.error {
   opacity:0.85*/
 }
 
-/* line 633, ../../../app/stylesheets/screen.scss */
+/* line 635, ../../../app/stylesheets/screen.scss */
 .critical {
   background: #FFCCAA;
   border: 1px solid #FF3334;
 }
 
-/* line 634, ../../../app/stylesheets/screen.scss */
+/* line 636, ../../../app/stylesheets/screen.scss */
 .help {
   background: #9FDAEE;
   border: 1px solid #2BB0D7;
 }
 
-/* line 635, ../../../app/stylesheets/screen.scss */
+/* line 637, ../../../app/stylesheets/screen.scss */
 .info {
   background: #9FDAEE;
   border: 1px solid #2BB0D7;
 }
 
-/* line 636, ../../../app/stylesheets/screen.scss */
+/* line 638, ../../../app/stylesheets/screen.scss */
 .warning {
   background: #FFFFAA;
   border: 1px solid #FFAD33;

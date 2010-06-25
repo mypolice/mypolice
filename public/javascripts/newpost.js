@@ -17,21 +17,25 @@ $(document).ready(function(){
       $("#complete").addClass(fields[length-1]); 
      }
     }
+
+
     //formwizard configure
     $("#new_post").formwizard({
-      historyEnabled:true,
+      historyEnabled:false,
       formPluginEnabled:true,
       validationEnabled:true,
-      focusFirstInpur:true,
+      focusFirstInput:true,
       afterNext:function(wizardData){
         updateSteps(wizardData.activatedSteps);
-        var l = wizardData.activatedSteps.length
-        if($.inArray("fifth",wizardData.activatedSteps)>0){
-        $("#next_button").hide();
+        if($("#new_post").formwizard("state").isLastStep){
+          $("#next_button").hide();
         }
       },
       afterBack:function(wizardData){
-        updateSteps(wizardData.activatedSteps);        
+        updateSteps(wizardData.activatedSteps);   
+        if(!$("#new_post").formwizard("state").isLastStep){
+          $("#next_button").show();
+        }       
       }
       },
       {
@@ -43,13 +47,18 @@ $(document).ready(function(){
                       },
                 "post[body]":{
                       required:true,
-                      minlength:100
+                      minlength:140
+
                 //},
               //  "address[postcode]":{
                   //    required:true,
                     //  postcode:true
                 }
            },
+        messages:{
+                 "post[body]":"More than 140 characters would be great",
+                 "post[title]":"4-140 characters would be great"
+                 },
           errorElement:"div",
           //wrapper:"div",
           //errorLabelContainer: ".message",
@@ -66,9 +75,7 @@ $(document).ready(function(){
         success:function(data){
               updateSteps([]);
               $("#formcontent").empty();
-              $('#next_button').empty();
-              $('#back_button').empty();
-              $("#formcontent").append("<h2> Thanks! Your Story has been submitted and should appear on the site shortly. In the meantime, explore the other <a href='/posts'>Stories</a> on MyPolice</h2>");
+              $("#formcontent").append("<h2> Thanks! Your Story is now being moderated and should appear on the site shortly. In the meantime, explore the other <a href='/posts'>Stories</a> on MyPolice</h2>");
 
                 },
         resetForm:true
@@ -209,7 +216,6 @@ var island="";
   }
 $("#gmap").click(function(){
   if(map==undefined){
-    alert(map);
     initialize();
     }   });
 $("a#gmap").fancybox({
@@ -232,5 +238,16 @@ $("#address_address_line2").change(function(){
 });
 
 */
-
+function charactercount(){
+   var charLength=$('#post_body').val().length;
+    //display count
+    $('span#charCount').html(charLength);
+}
+charactercount();
+$('#post_body').bind('keyup', function(event){charactercount();})
+  .bind('mouseover', function(event){setTimeout(function(){charactercount();},10);})
+  .bind('paste',function(event){setTimeout(function(){charactercount();},10);});
+/*$("#post_body").counter({
+  count:'up'
+    });*/
     });
