@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.approved.search(params[:search], params[:page])
     @responses = Response.paginate :page=>1, :per_page=>'3', :order=>'created_at DESC'    
-    @tags = Post.tag_counts
+    @tags = Post.approved.tag_counts
     respond_to do |format|
       format.html
       format.xml{render :xml=>@posts}
@@ -23,52 +23,7 @@ class PostsController < ApplicationController
     respond_with(@post)
   end
 
-  # GET /posts/new
-  # GET /posts/new.xml
-=begin
-  def new
-    if params[:current_step].nil?
-      @post = Post.new(params[:post])
-      @address = Address.new(params[:address])
-      @current_step ='step1'
-    else
-      @current_step = params[:current_step]
-      @post = Post.new(params[:post])
-    end
-    respond_with(@post) do |format|
-      format.html{render :action=>:new, :layout=>"application"}
-    end
-  end
-
-  def create
-    @address = Address.new(params[:address])
-    @post = Post.new(params[:post])
-    @current_step = params[:current_step]
-    case @current_step
-       when "step1" then
-        @current_step = 'step2' if valid_for_attributes(@post,[:title]) and @address.valid?
-        respond_with(@post) do |format|
-         format.html{render :action=> "new",:layout=>"application", :params => { :current_step => @current_step }}
-        end
-      when "step2" then
-        @current_step = 'step3' if valid_for_attributes(@post,[:body])
-         respond_with(@post) do |format|
-         format.html{render :action=> "new", :layout=>"application",:params => { :current_step => @current_step }}
-        end
-       when "step3" then
-          @post.user = current_user unless current_user.nil? 
-          if @post.save and @address.save
-            @post.address_id = @address.id
-            @post.save
-            flash[:notice] = "Thanks for your sharing, Please wait for approval"
-          end
-          respond_with(@post) do |format|
-              format.html { redirect_to posts_path}
-          end
-        end
-  end
-=end
-
+    
   def new
     @post = Post.new
     @address = Address.new

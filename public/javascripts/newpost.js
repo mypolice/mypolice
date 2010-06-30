@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     //formwizard configure
     $("#new_post").formwizard({
-      historyEnabled:false,
+      historyEnabled:true,
       formPluginEnabled:true,
       validationEnabled:true,
       focusFirstInput:true,
@@ -238,6 +238,7 @@ $("#address_address_line2").change(function(){
 });
 
 */
+//character count
 function charactercount(){
    var charLength=$('#post_body').val().length;
     //display count
@@ -247,7 +248,175 @@ charactercount();
 $('#post_body').bind('keyup', function(event){charactercount();})
   .bind('mouseover', function(event){setTimeout(function(){charactercount();},10);})
   .bind('paste',function(event){setTimeout(function(){charactercount();},10);});
-/*$("#post_body").counter({
-  count:'up'
-    });*/
+
+
+//autocomplete
+//var availableTags = ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby", "python", "c", "scala", "groovy", "haskell", "perl"];
+		function split(val) {
+			return val.split(/,\s*/);
+		}
+		function extractLast(term) {
+			return split(term).pop();
+		}
+var cache = {};		
+		$("#post_tag_list").autocomplete({
+			minLength: 0,
+      source: function(request, response){
+      if ( request.term in cache ) {
+					response( cache[ request.term ] );
+					return;
+				}
+      
+      $.ajax({
+        url:'/tags.json',
+        dataType:"json",
+        data: request,
+        success:function(data){
+          
+        response($.map(data,function(item){
+            return {
+              label:item.name,
+              value:item.name
+            }
+            }));    
+          
+          }
+        })
+      },
+      /*
+      source:function(request,response){
+        $.getJSON(
+          '/tags.json',{term:extractLast(request.term)},response($.map(data,function(item){
+              alert(item.name);
+              return value:item.name
+              }))
+          );
+      },*/
+			focus: function() {
+				// prevent value inserted on focus
+				return false;
+			},
+			select: function(event, ui) {
+				var terms = split( this.value );
+				// remove the current input
+				terms.pop();
+				// add the selected item
+				terms.push( ui.item.value );
+				// add placeholder to get the comma-and-space at the end
+				terms.push("");
+				this.value = terms.join(", ");
+				return false;
+			}
+		});
+
+    $("#easeofcontactingratingbar").slider({
+          value:0,
+          min:0,
+          max:6,
+          step:1,
+          slide:function(event,ui){
+            $("#easeofcontactingrating").val(ui.value);
+            }
+          });
+          $("#easeofcontactingrating").val($("easeofcontactingratingbar").slider("value"));
+        $("#arrvieratingbar").slider({
+          value:0,
+          min:0,
+          max:6,
+          step:1,
+          slide:function(event,ui){
+            $("#arriveratingvalue").val(ui.value);
+            }
+          });
+          $("#arriveratingvalue").val($("#arrvieratingbar").slider("value"));
+          $("#actionratingbar").slider({
+          value:0,
+          min:0,
+          max:6,
+          step:1,
+          slide:function(event,ui){
+            $("#actionrating").val(ui.value);
+            }
+          });
+          $("#actionrating").val($("#actionratingbar").slider("value"));
+           $("#arrvieratingbar").slider({
+          value:0,
+          min:0,
+          max:6,
+          step:1,
+          slide:function(event,ui){
+            $("#arriveratingvalue").val(ui.value);
+            }
+          });
+          $("#arriveratingvalue").val($("#arrvieratingbar").slider("value"));
+          $("#keepinformratingbar").slider({
+          value:0,
+          min:0,
+          max:6,
+          step:1,
+          slide:function(event,ui){
+            $("#keepinformrating").val(ui.value);
+            }
+          });
+          $("#keepinformrating").val($("#keepinformratingbar").slider("value"));
+                     $("#arrvieratingbar").slider({
+          value:0,
+          min:0,
+          max:6,
+          step:1,
+          slide:function(event,ui){
+            $("#arriveratingvalue").val(ui.value);
+            }
+          });
+          $("#arriveratingvalue").val($("#arrvieratingbar").slider("value"));
+          $("#treatmentratingbar").slider({
+          value:0,
+          min:0,
+          max:6,
+          step:1,
+          slide:function(event,ui){
+            $("#treatmentrating").val(ui.value);
+            }
+          });
+          $("#treatmentrating").val($("#treatmentratingbar").slider("value"));
+           $("#wholeratingbar").slider({
+          value:0,
+          min:0,
+          max:6,
+          step:1,
+          slide:function(event,ui){
+            $("#wholerating").val(ui.value);
+            }
+          });
+          $("#wholerating").val($("#wholeratingbar").slider("value"));
+
+          //question flow
+          //init
+          if ($('input:radio[name=contact]:checked').val()=="Yes"){
+            $("#q12, #q13,#q14,#q15,#q2,#q3,#q4,#q5").removeClass('hide');}
+          $("input:radio[name=contact]").change(function(){
+          if ($('input:radio[name=contact]:checked').val()=="Yes"){
+            $("#q12, #q13,#q14,#q15,#q2,#q3,#4,#5").removeClass('hide');
+             $("input:radio[name=isreported]").change(function(){
+                if ($('input:radio[name=isreported]:checked').val()=="Yes"){
+                  $("#q16,#q17").removeClass('hide');
+                }else{
+                $("#q16,#q17").addClass('hide');
+                }
+               });
+             $("input:radio[name=anyocontact]").change(function(){
+                if ($('input:radio[name=anyocontact]:checked').val()=="Yes"){
+                  $(".q31").removeClass('hide');
+                }
+                else{
+                 $(".q31").addClass('hide');
+                }
+               })
+            
+          } else{
+            //$("#post_submit").click();
+             $("#q12, #q13, #q14,#q15,#q2,#q3,#q4,#q5").addClass('hide');
+          }
+          });
     });
+

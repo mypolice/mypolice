@@ -236,16 +236,18 @@ h2.newstory{
         padding: 0 0 10px 0;
          }
         li.first{
-        width:155px;  
+        width:170px;  
+        position:relative;
+        left:-15px;
           }
         li.second{
-         width:188px; 
+         width:171px; 
           }
         li.third{
-        width:170px;  
+        width:171px;  
           }
         li.forth{
-         width:190px; 
+         width:180px; 
           }
         li.fifth{  
           }
@@ -349,17 +351,21 @@ h2.newstory{
       text-align:center;
       }
     select{
-      width:312px;
+      width:314px;
       padding:5px;
       background:$darkpurple;
       color:$white;
       }
+    select.short{
+      width:88px;}
       textarea{
         width:495px;
         margin:0 0 20px 0;
-        background:url("/images/input-bg.png")!important
+        background:url("/images/input-bg.png")!important;
         }
-
+      input{
+        background:url("/images/input-bg.png")!important;
+        }
       table .story{
         text-algin:top;
         }
