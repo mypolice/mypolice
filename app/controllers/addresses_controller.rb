@@ -1,5 +1,6 @@
 class AddressesController < ApplicationController
   # GET /addresses
+  before_filter :authenticate_admin!, :except=>["new","create"]
   # GET /addresses.xml
   def index
     @addresses = Address.all

@@ -137,7 +137,6 @@
             %tr.field#q11
               %td
                 =label_tag "Did you make contact with police"
-              %td
                 =radio_button_tag 'contact', 'Yes'
                 =label_tag 'contact_Yes','Yes'
                 =radio_button_tag 'contact', 'No'
@@ -145,7 +144,6 @@
             %tr.field.hide#q12
               %td
                 =label_tag :contactway,"How did you contact the police?"
-              %td
                 %select{:name=>"contactway",:id=>"contactway"}
                   %option By telephone call(not 999)
                   %option By personal visit to a police station
@@ -156,13 +154,16 @@
             %tr.hide#q13
               %td
                 =label_tag :easeofcontactingrating, "Were you satisfied or dissatisfied with the ease of contacting someone who could asset you?"
-              %td
+                %span#easeofcontactingratingvalue.orange  Neither satisfied nor dissatisfied
                 %input{:type=>"text",:id=>"easeofcontactingrating",:class=>"hide"}
                 #easeofcontactingratingbar
+                %ul
+                  %li Completely satisfied
+                  %li.star1 Completely dissatisfied
+               
             %tr.hide#q14
               %td
                 =label_tag :afterreport,"After the detail were reported. how was the incident dealt with?"
-              %td
                 %select{:name=>"afterreport",:id=>"afterreport"}
                   %option Entirely over the phone
                   %option By an officer or other member of police staff
@@ -170,7 +171,6 @@
             %tr.hide#q15
               %td
                 =label_tag :isreported,"Were you told when you reported the crime how long it would be before someone would attend?"
-              %td
                 =radio_button_tag 'isreported', 'Yes'
                 =label_tag 'isreported_Yes','Yes'
                 =radio_button_tag 'isreported', 'No'
@@ -180,7 +180,6 @@
             %tr.hide#q16
               %td
                 =label_tag :howlongarrive, "How long did it take for them to arrive?"
-              %td
                 %select{:name=>"howlongarrive", :id=>"howlongarrive"}
                   %option As soon as they could
                   %option Within 10 minutes
@@ -193,7 +192,6 @@
             %tr.hide#q17
               %td
                 =label_tag :howlongarrive, "How long did it take for them to arrive?"
-              %td
                 %select{:name=>"howlongarrive", :id=>"howlongarrive"}
                   %option Within 10 minutes
                   %option Within 1 hour
@@ -206,9 +204,13 @@
             %tr.hide#q18
               %td
                 =label_tag :arriverating,"How satisfied or dissatisfied were you with the time it took for the police to arrive?"
-              %td
-                %input{:type=>"text",:id=>"arriveratingvalue",:class=>"hide"}
-                  #arrvieratingbar
+                %span#arriveratingvalue.orange Neither satisfied nor dissatisfied
+                %input{:type=>"text",:id=>"arriverating",:class=>"hide"}
+                #arriveratingbar
+                %ul
+                  %li Completely satisfied
+                  %li.star1 Completely dissatisfied
+
             
         %fieldset.hide#q2
           %legend Police Actions to deal with the incident
@@ -264,10 +266,12 @@
             %tr
               %td
                 =label_tag :actionrating, "Were you satisfied or dissatisfied with the ease of contacting someone who could asset you?"
-            %tr
-              %td
+                %span#actionratingvalue.orange Neither satisfied nor dissatisfied
                 %input{:type=>"text",:id=>"actionrating",:class=>"hide"}
                 #actionratingbar
+                %ul
+                  %li Completely satisfied
+                  %li.star1 Completely dissatisfied
 
 
                  
@@ -280,7 +284,7 @@
                 Have had any contact with the police about thisincident since your report and the initial police response? (Thos contact could have been over the phone, face-to-face, by letter or by other means)
             %tr
               %td
-                =radio_button_tag 'anyocontact', "Yes"
+                =radio_button_tag 'anycontact', "Yes"
                 =label_tag 'anycontact_Yes', "Yes"
                 =radio_button_tag 'anycontact', "No"
                 =label_tag 'anycontact_No', "No"
@@ -332,10 +336,12 @@
             %tr
               %td
                 =label_tag :keepinformrating, "Were you satisfied or dissatisfied with the ease of contacting someone who could asset you?"
-            %tr
-              %td
+                %span#keepinformratingvalue.orange Neither satisfied nor dissatisfied
                 %input{:type=>"text",:id=>"keepinformrating",:class=>"hide"}
                 #keepinformratingbar
+                %ul
+                  %li Completely satisfied
+                  %li.star1 Completely dissatisfied
 
 
         %fieldset.hide#q4
@@ -422,10 +428,12 @@
             %tr
               %td
                 =label_tag :treatmentrating, "Are you satisfied or dissatisfied with the way you were treated by the police officers and staff who dealt with you?"
-            %tr
-              %td
+                %span#treatmentratingvalue.orange Neither satisfied nor dissatisfied
                 %input{:type=>"text",:id=>"treatmentrating",:class=>"hide"}
                 #treatmentratingbar
+                %ul
+                  %li Completely satisfied
+                  %li.star1 Completely dissatisfied
           
         %fieldset.hide#q5
           %legend The whole experience - overall service
@@ -433,10 +441,12 @@
             %tr
               %td
                 =label_tag :wholerating, "Taking the whole experience into account, are you satisfied or dissatisfied with the service provide by the police in this case?"
-            %tr
-              %td
+                %span#wholeratingvalue.orange Neither satisfied nor dissatisfied
                 %input{:type=>"text",:id=>"wholerating",:class=>"hide"}
                 #wholeratingbar
+                %ul
+                  %li Completely satisfied
+                  %li.star1 Completely dissatisfied
 
 
     

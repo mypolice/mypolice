@@ -369,7 +369,26 @@ h2.newstory{
       table .story{
         text-algin:top;
         }
+    ul{
+      margin:0; 
+      padding:0;
+      height:35px;
+      li{
+         @include inline-list;
+        float:left;
+        }
+    .star1{
+      float:right;
+      }
+  }
+  .orange{
+    color:#F6931F;
     }
+  
+      .ui-widget-content{
+       margin:0 25px; 
+      }
+  }
   #next_button{
     display: inline;  
     @include column(3,true);
@@ -578,6 +597,7 @@ label.error{
     font-size:18px;
     padding:0 0 0 5px;
     }
+
   }
   }
 

@@ -309,114 +309,71 @@ var cache = {};
 			}
 		});
 
-    $("#easeofcontactingratingbar").slider({
-          value:0,
-          min:0,
-          max:6,
-          step:1,
-          slide:function(event,ui){
-            $("#easeofcontactingrating").val(ui.value);
-            }
+//rating bar
+    var sevenlevels = ["Completely satisfie","Very satisfied","Fairly satisfied","Neither satisfied nor dissatisfied","Fairly dissatisfied","Very dissatisfied","Completely dissatisfied"]; 
+    function ratebar(name, bar, val){
+      $("#"+bar).slider({
+        value:3,
+        min:0,
+        max:6,
+        step:1,
+        slide:function(event,ui){
+          $("#"+name).val(ui.value);
+          $("#"+val).empty();
+          $("#"+val).append(sevenlevels[ui.value]);
+        }    
           });
-          $("#easeofcontactingrating").val($("easeofcontactingratingbar").slider("value"));
-        $("#arrvieratingbar").slider({
-          value:0,
-          min:0,
-          max:6,
-          step:1,
-          slide:function(event,ui){
-            $("#arriveratingvalue").val(ui.value);
-            }
-          });
-          $("#arriveratingvalue").val($("#arrvieratingbar").slider("value"));
-          $("#actionratingbar").slider({
-          value:0,
-          min:0,
-          max:6,
-          step:1,
-          slide:function(event,ui){
-            $("#actionrating").val(ui.value);
-            }
-          });
-          $("#actionrating").val($("#actionratingbar").slider("value"));
-           $("#arrvieratingbar").slider({
-          value:0,
-          min:0,
-          max:6,
-          step:1,
-          slide:function(event,ui){
-            $("#arriveratingvalue").val(ui.value);
-            }
-          });
-          $("#arriveratingvalue").val($("#arrvieratingbar").slider("value"));
-          $("#keepinformratingbar").slider({
-          value:0,
-          min:0,
-          max:6,
-          step:1,
-          slide:function(event,ui){
-            $("#keepinformrating").val(ui.value);
-            }
-          });
-          $("#keepinformrating").val($("#keepinformratingbar").slider("value"));
-                     $("#arrvieratingbar").slider({
-          value:0,
-          min:0,
-          max:6,
-          step:1,
-          slide:function(event,ui){
-            $("#arriveratingvalue").val(ui.value);
-            }
-          });
-          $("#arriveratingvalue").val($("#arrvieratingbar").slider("value"));
-          $("#treatmentratingbar").slider({
-          value:0,
-          min:0,
-          max:6,
-          step:1,
-          slide:function(event,ui){
-            $("#treatmentrating").val(ui.value);
-            }
-          });
-          $("#treatmentrating").val($("#treatmentratingbar").slider("value"));
-           $("#wholeratingbar").slider({
-          value:0,
-          min:0,
-          max:6,
-          step:1,
-          slide:function(event,ui){
-            $("#wholerating").val(ui.value);
-            }
-          });
-          $("#wholerating").val($("#wholeratingbar").slider("value"));
-
+       $("#"+name).val($("#"+bar).slider("value"));
+    }
+    ratebar("easeofcontactingrating","easeofcontactingratingbar","easeofcontactingratingvalue");
+    ratebar("arriverating","arriveratingbar","arriveratingvalue");
+    ratebar("actionrating","actionratingbar","actionratingvalue");
+    ratebar("keepinformrating","keepinformratingbar","keepinformratingvalue");
+    ratebar("treatmentrating","treatmentratingbar","treatmentratingvalue");
+    ratebar("wholerating","wholeratingbar","wholeratingvalue");
           //question flow
           //init
-          if ($('input:radio[name=contact]:checked').val()=="Yes"){
-            $("#q12, #q13,#q14,#q15,#q2,#q3,#q4,#q5").removeClass('hide');}
-          $("input:radio[name=contact]").change(function(){
-          if ($('input:radio[name=contact]:checked').val()=="Yes"){
-            $("#q12, #q13,#q14,#q15,#q2,#q3,#4,#5").removeClass('hide');
-             $("input:radio[name=isreported]").change(function(){
-                if ($('input:radio[name=isreported]:checked').val()=="Yes"){
-                  $("#q16,#q17").removeClass('hide');
-                }else{
-                $("#q16,#q17").addClass('hide');
-                }
+        contactcheck();
+        isreport();
+        anycontact();
+
+        $("input:radio[name=contact]").change(function(){
+              contactcheck();});
+
+        $("input:radio[name=isreported]").change(function(){
+                isreport();
                });
-             $("input:radio[name=anyocontact]").change(function(){
-                if ($('input:radio[name=anyocontact]:checked').val()=="Yes"){
+        $("input:radio[name=anycontact]").change(function(){
+               anycontact();
+               });
+            
+    function contactcheck(){
+       if ($('input:radio[name=contact]:checked').val()=="Yes"){
+        $("#q12, #q13,#q14,#q15,#q2,#q3,#q4,#q5").removeClass('hide');
+       }
+       else{
+        $("#q12, #q13,#q14,#q15,#q2,#q3,#q4,#q5,#q16,#q17,#q18,.q31").addClass('hide');
+       }
+    }
+
+    function isreport(){
+      if ($('input:radio[name=isreported]:checked').val()=="Yes")
+      {
+        $("#q16,#q17,#q18").removeClass('hide');
+      }else
+      {
+        $("#q16,#q17,#q18").addClass('hide');
+      }
+    }
+
+    function anycontact(){
+     if ($('input:radio[name=anycontact]:checked').val()=="Yes"){
                   $(".q31").removeClass('hide');
                 }
                 else{
                  $(".q31").addClass('hide');
                 }
-               })
-            
-          } else{
-            //$("#post_submit").click();
-             $("#q12, #q13, #q14,#q15,#q2,#q3,#q4,#q5").addClass('hide');
-          }
-          });
+    
+    }
     });
 
