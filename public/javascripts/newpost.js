@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     //formwizard configure
     $("#new_post").formwizard({
-      historyEnabled:true,
+      historyEnabled:false,
       formPluginEnabled:true,
       validationEnabled:true,
       focusFirstInput:true,
@@ -40,11 +40,11 @@ $(document).ready(function(){
       },
       {
         rules:{
-                "post[title]":{
+                /*"post[title]":{
                       required:true,
                       minlength: 4,
                       maxlength:100
-                      },
+                      },*/
                 "post[body]":{
                       required:true,
                       minlength:140
@@ -153,7 +153,9 @@ var island="";
       );
   $("#saveaddress").click(function(){
       $('#address_address_line1').val(streetNumber);
-      $('#address_county').val(county+","+island);
+      $('#address_country').val(island);
+      alert(island);
+      $('#address_county').val(county);
       $('#address_city').val(city);
       $('#address_address_line2').val(streetName);
       $('#address_postcode').val(postcode);
@@ -310,7 +312,7 @@ var cache = {};
 		});
 
 //rating bar
-    var sevenlevels = ["Completely satisfie","Very satisfied","Fairly satisfied","Neither satisfied nor dissatisfied","Fairly dissatisfied","Very dissatisfied","Completely dissatisfied"]; 
+    var sevenlevels = ["Completely dissatisfie","Very dissatisfied","Fairly dissatisfied","Neither satisfied nor dissatisfied","Fairly satisfied","Very satisfied","Completely satisfied"]; 
     function ratebar(name, bar, val){
       $("#"+bar).slider({
         value:3,
@@ -318,12 +320,12 @@ var cache = {};
         max:6,
         step:1,
         slide:function(event,ui){
-          $("#"+name).val(ui.value);
+          $("#storydata_"+name).val(ui.value);
           $("#"+val).empty();
           $("#"+val).append(sevenlevels[ui.value]);
         }    
           });
-       $("#"+name).val($("#"+bar).slider("value"));
+       $("#storydata_"+name).val($("#"+bar).slider("value"));
     }
     ratebar("easeofcontactingrating","easeofcontactingratingbar","easeofcontactingratingvalue");
     ratebar("arriverating","arriveratingbar","arriveratingvalue");
@@ -337,18 +339,18 @@ var cache = {};
         isreport();
         anycontact();
 
-        $("input:radio[name=contact]").change(function(){
+        $("input:radio[name=storydata[contact]]").change(function(){
               contactcheck();});
 
-        $("input:radio[name=isreported]").change(function(){
+        $("input:radio[name=storydata[isreport]]").change(function(){
                 isreport();
                });
-        $("input:radio[name=anycontact]").change(function(){
+        $("input:radio[name=storydata[anycontact]]").change(function(){
                anycontact();
                });
             
     function contactcheck(){
-       if ($('input:radio[name=contact]:checked').val()=="Yes"){
+       if ($('input:radio[name=storydata[contact]]:checked').val()=="true"){
         $("#q12, #q13,#q14,#q15,#q2,#q3,#q4,#q5").removeClass('hide');
        }
        else{
@@ -357,7 +359,7 @@ var cache = {};
     }
 
     function isreport(){
-      if ($('input:radio[name=isreported]:checked').val()=="Yes")
+      if ($('input:radio[name=storydata[isreport]]:checked').val()=="true")
       {
         $("#q16,#q17,#q18").removeClass('hide');
       }else
@@ -367,7 +369,7 @@ var cache = {};
     }
 
     function anycontact(){
-     if ($('input:radio[name=anycontact]:checked').val()=="Yes"){
+     if ($('input:radio[name=storydata[anycontact]]:checked').val()=="true"){
                   $(".q31").removeClass('hide');
                 }
                 else{

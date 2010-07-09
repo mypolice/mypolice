@@ -1,31 +1,32 @@
 -title "Mypolice"
+= javascript_include_tag "slide", "jquery.nivo.slider.pack"
+= stylesheet_link_tag "nivo-slider"
 %h1#mph1
   MyPolice is an online feedback tool that enables the public and the police to have a conversation
+#mp_intro 
+  #mp_slider  
+    %a{:title=>"Tell us your story",:href=>tellusyourstory_path}
+      %img{:src=>image_path('slide1.png'),:title=>"<span>We want to know asdsad asdasd asdasd</span>"}
+    %img{:src=>image_path('slide2.png'), :title=>"<span>We want to know about your experiences</span>"}    
+    %img{:src=>image_path('slide3.png'),:title=>"<span>Hello</span>"}
+  #mp_sidebar
+    %a{:title=>"Tell us your story",:href=>tellusyourstory_path}
+      %img{:title=>"Tell us your story",:class=>"submitbutton", :alt=>"Tell us your story", :src=>image_path('tellusstorybuton.png')}
 
-#mp_intro
-  %a{:title=>"Tell us your story",:href=>new_post_path}
-    %img{:id =>"tellbutton", :title=>"Tell us your story", :alt=>"Tell us your story", :src=>"/images/tellusstorybuton.png"}
-  %ul
-    %li
-      1.
-      =link_to "Sign in",new_user_session_path
-      or 
-      =link_to "post anonymously", new_post_path
-    %li
-      2.Tell us your story
-    %li 
-      3.Receive feedback
-#col1
+    =render :partial=>"home/post", :collection=>@posts  
+    =link_to "See all", posts_path, :id=>"viewall"
+-#
+  #col1
   %h2
     Latest Members:
   =render :partial=>"home/user",:collection=>@users 
-#col2
+  #col2
   %h2
     Latest Stories:
   =render :partial=>"home/post", :collection=>@posts  
   =link_to "View All Stories", posts_path,:class=>"purplelink",:id=>"homebt"
       
-#col3
+  #col3
   %h2
     Latest Response:
   =render :partial=>"home/response", :collection=>@responses

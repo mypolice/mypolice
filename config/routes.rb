@@ -49,7 +49,7 @@ Mypolice::Application.routes.draw do |map|
   match '/tools'=>'tools#index', :as =>:tools_root
   match 'police/help'=>"police/help#index", :as=>:police_help_root
 
-  match 'tellusyourstory'=>'posts#new', :as=>:tellusyourstory
+  match '/tellusyourstory'=>'posts#new', :as=>:tellusyourstory
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

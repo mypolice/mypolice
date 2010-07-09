@@ -9,28 +9,32 @@ $blueprint-grid-margin: 10px;
 // Or you can set !blueprint_grid_width to a fixed value and unset !blueprint_container_size -- it will be calculated for you.
 $blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
 
+//color
+$bd_color: #f2f2f2;
+$black:#000;
+$darkgrey:#4D4D4D;
+$lightgrey:#F2F2F2;
+$darkpurple: #4f0083;
+$lightpurple: #ebe6f5;
+$pink: #deb5d3;
+$white:#fff;
+$postbubble:#55218b;
+$commentbubble:#cccccc;
+$responsebubble:#8f87c5;
 
-$font_color:#535353;
-$loud_color:#535353;
-$header_color:#535353;
-$link_color:#535353;
-$link_hover_color:#808080;
+$font_color:$darkgrey;
+$loud_color:$darkgrey;
+$header_color:$darkgrey;
+$link_color:$darkgrey;
+$link_visited_color:$darkgrey;
+$link_hover_color:$darkpurple;
 
 
 $blueprint-font-family:Arial,Georgia, sans-serif;
 
 
 
-//color
-$bd_color: #f2f2f2;
-$darkpurple: #4f0083;
-$lightpurple: #ebe6f5;
-$pink: #deb5d3;
-$white:#fff;
-$darkgrey:#535353;
-$postbubble:#55218b;
-$commentbubble:#cccccc;
-$responsebubble:#8f87c5;
+
 //margin
 $menurightmargin:20px;
 //padding layout

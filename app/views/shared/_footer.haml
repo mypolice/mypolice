@@ -1,25 +1,60 @@
 #footer
-  #footerlogo
-    %a{:title=>"Mypolice", :href=>"#"}
-      %img{:title=>"Mypolicelogi", :src=>"/images/logo.png", :width=>"100px"}
-  %ul#relatedlink
-    %li
-      %a{:title=>"Blog", :href=>"#"} Blog    
-    %li
-      %a{:title=>"Team", :href=>"#"} Team
-    %li
-      %a{:title=>"Contact us", :href=>"#"} Contact us
+  .footerwrapper
+    #footerlogo.footercolumn
+      %a{:title=>"Mypolice", :href=>root_path}
+        %img{:title=>"Mypolicelogi", :src=>image_path("logo.png"), :alt=>"mypolice logo"}
+    %ul.footercolumn
+      %li
+        %a{:title=>"Blog", :href=>"#"} Blog    
+      %li
+        %a{:title=>"Team", :href=>"#"} Team
+      %li
+        %a{:title=>"Contact us", :href=>"#"} Contact us
 
-  %ul#legallink
-    %li
-      %a{:title=>"Terms and Conditions", :href=>"#"} Terms and Conditions
-    %li
-      %a{:title=>"Privacy", :href=>"#"} Privacy
-    %li
-      %a{:title=>"Other stuff", :href=>"#"} Other stuff
-    %li
-      %a{:title=>"Here", :href=>"#"} Here
-  #copyright
-    %p
-      &copy; MyPolice 2010
+    %ul.footercolumn
+      %li
+        %a{:title=>"Terms and Conditions", :href=>"#"} Terms and Conditions
+      %li
+        %a{:title=>"Privacy", :href=>"#"} Privacy
+      %li
+        %a{:title=>"Other stuff", :href=>"#"} Other stuff
+      %li
+        %a{:title=>"Here", :href=>"#"} Here
+
+    .otherlink
+      %ul 
+        %li Mypolice are delighted to work with
+        %li
+          %a{:href=>"http://www.sicamp.org/", :title=>"social innovation camp"}
+            %img{:src=>image_path("workwith/sic.png"), :title=>"social innovation camp", :alt=>"social innovation camp", :height=>"50px;"}
+          %a{:href=>"http://www.4ip.org.uk/",:title=>"4ip",:target=>"_blank"}
+            %img{:src=>image_path("workwith/4ip.png"),:title=>"4ip",:alt=>"4i"}
+        %li
+          %a{:href=>"http://www.socialentrepreneursfund.co.uk/", :title=>"social entrepreneurs fund",:target=>"_blank"}
+            %img{:src=>image_path("workwith/sef.png"),:title=>"social entrepreneurs fund",:alt=>"social entrepreneurs fund"}
+
+    .otherlink#last
+      %ul
+        %li We have been featured here:
+        %li
+          %a{:href=>"http://news.bbc.co.uk/1/hi/technology/8562308.stm", :title=>"BBC", :target=>"_blank"}
+            %img{:src=>image_path("workwith/bbc.png"), :title=>"BBC", :alt=>"BBC"}
+          %a{:href=>"http://news.sky.com/skynews/Home/UK-News/Nottinghamshire-Police-Ranked-Worse-In-UK-By-HMIC-Row-Over-MyPoliceOrg-Domain-Name/Article/201003215571295?f=rss", :title=>"Sky News", :target=>"_blank"}
+            %img{:src=>image_path("workwith/skynews.png"), :title=>"Sky News", :alt=>"Sky News"}
+          %a{:href=>"#", :title=>"WEST", :target=>"_blank"}
+            %img{:src=>image_path("workwith/west.png"), :title=>"WEST", :alt=>"WEST"}
+        %li
+          %a{:href=>"http://www.guardian.co.uk/technology/blog/2010/mar/10/mypolice-government-row", :title=>"guardian", :target=>"_blank"}
+            %img{:src=>image_path("workwith/guardian.png"), :title=>"guardian", :alt=>"guardian" }
+          %a{:href=>"http://www.heraldscotland.com/news/home-news/web-designers-blast-police-for-internet-rip-off-1.1013001", :title=>"The Herald", :target=>"_blank"}
+            %img{:src=>image_path("workwith/theherald.png"), :title=>"The Herald", :alt=>"The Herald"}
+        %li
+          %a{:href=>"#", :title=>"NESTA", :target=>"_blank"}
+            %img{:src=>image_path("workwith/nesta.png"), :title=>"NESTA", :alt=>"NESTA"}
+          %a{:href=>"#", :title=>"THE COURIER", :target=>"_blank"}
+            %img{:src=>image_path("workwith/thecourier.png"), :title=>"THE COURIER", :alt=>"THE COURIER"}
+      
+    #copyright
+      %p
+        &copy; MyPolice 2010
 

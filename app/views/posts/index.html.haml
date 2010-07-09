@@ -21,12 +21,12 @@
 #content
   
   #posts
-    %a{:title=>"Tell us your story",:href=>new_post_path}
-      %img{:id =>"tellbutton", :title=>"Tell us your story", :alt=>"Tell us your story", :src=>"/images/tellusstorybuton.png"}
     =render :partial => @posts
     =will_paginate @posts
 
 =content_for :sidebar do
+  %a{:title=>"Tell us your story",:href=>tellusyourstory_path}
+    %img{:title=>"Tell us your story", :alt=>"Tell us your story", :src=>"/images/tellusstorybuton.png"}
   #latestresponses.sideblock
     %h3.sidebar
       Latest Responses:

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100615111223) do
+ActiveRecord::Schema.define(:version => 20100705142715) do
 
   create_table "addresses", :force => true do |t|
     t.text "address_line1"
@@ -84,17 +84,17 @@ ActiveRecord::Schema.define(:version => 20100615111223) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.boolean  "approved",          :default => false
+    t.boolean  "approved",        :default => false
     t.integer  "category_id"
     t.text     "suggestion"
     t.integer  "who_id"
     t.integer  "address_id"
-    t.date     "happened_on_year"
-    t.date     "happened_on_month"
     t.date     "happened_on_day"
+    t.integer  "storydata_id"
   end
 
   add_index "posts", ["address_id"], :name => "index_posts_on_address_id"
+  add_index "posts", ["storydata_id"], :name => "index_posts_on_storydata_id"
 
   create_table "responses", :force => true do |t|
     t.integer  "post_id"
@@ -102,6 +102,51 @@ ActiveRecord::Schema.define(:version => 20100615111223) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "police_id"
+  end
+
+  create_table "storydatas", :force => true do |t|
+    t.integer  "post_id"
+    t.boolean  "contact"
+    t.integer  "contactway"
+    t.integer  "easeofcontactingrating"
+    t.integer  "afterreport"
+    t.boolean  "isreport"
+    t.integer  "howlongarrivetold"
+    t.integer  "howlongarrive"
+    t.integer  "arriverating"
+    t.integer  "isexplain"
+    t.integer  "isinvestigate"
+    t.integer  "referenceno"
+    t.integer  "contactdetail"
+    t.integer  "actionrating"
+    t.boolean  "anycontact"
+    t.boolean  "furthercontact"
+    t.boolean  "contact_a"
+    t.boolean  "contact_b"
+    t.boolean  "contact_c"
+    t.boolean  "contact_d"
+    t.boolean  "contact_e"
+    t.boolean  "contact_f"
+    t.boolean  "contact_g"
+    t.boolean  "contact_h"
+    t.integer  "keepinformrating"
+    t.integer  "islisten"
+    t.integer  "issympathetically"
+    t.integer  "isinterested"
+    t.integer  "ispolitely"
+    t.integer  "understand"
+    t.integer  "isseriously"
+    t.integer  "discourage"
+    t.integer  "treatmentrating"
+    t.integer  "wholerating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "gender"
+    t.integer  "age"
+    t.date     "happened_on_year"
+    t.date     "happened_on_month"
+    t.date     "happened_on_day"
+    t.string   "crimenumber"
   end
 
   create_table "taggings", :force => true do |t|

@@ -1,8 +1,8 @@
 -if current_role_name 
   -if current_role_name=='user'
     %li
-      =link_to 'Settings', edit_registration_path(current_role_name),:class=>"purplelink"
+      =link_to 'Settings', edit_registration_path(current_role_name)
 -else
   %li
-    = link_to 'Sign Up', new_user_registration_path, :class=>"purplelink"  
+    = link_to 'Sign Up', new_user_registration_path  
 

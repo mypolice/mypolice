@@ -37,37 +37,37 @@ input[type="file"] > input[type="button"]::-moz-focus-inner,select::-moz-focus-i
     border: none;
 }
 // font
-
+/*
 p{
   font-family: Georgia;
-  }
+  }*/
 //layout
 body{
 
   @include blueprint-typography;
-  background:$bd_color;
+  //background:$bd_color;
   font-family:$blueprint-font-family;
   font-size: $blueprint-font-size;
   color:$darkgrey; 
   
   #container{
     @include container;
-    background:$lightpurple;
+    background:url("/images/bg.png") repeat-x; 
   
     #header{
       @include column(24);
-      background:$white;
+      //background:$white;
       #logo {
-        @include column(4);
+        @include column(5);
         img{
-          padding:10px $leftpadding 0;
+          padding:0px $leftpadding 0;
           }
         }
       #menu{
-        @include column(20,true);
+        @include column(19,true);
         #searchbox{
           @include push(0);
-          margin:10px $menurightmargin 0 400px; 
+          margin:10px $menurightmargin 0 0px; 
           }
         }
     }
@@ -76,29 +76,41 @@ body{
       #maincontent{
         padding:10px $rightpadding;
         min-height:200px;
+        overflow:hidden;
         margin:0 auto;
         }
       }
     #footer{
       background:$white;
+        padding:0 20px;
+      .footerwrapper{
+        padding:20px 0;
+        border-top:1px solid #b3b3b3;
+        overflow:hidden;
+        }
+
       ul{
         padding:10px 0;
         li{
           line-height:2em;
           }
         }
-      #footerlogo,#relatedlink, #legallink{
-        @include column(8);
+      .footercolumn,.otherlink{
+        float:left;
+        margin-right:52px;
         @include no-bullets;
-        a{
+        li{
           font-weight:bold;
           }
-        img{
-          padding:10px;
+        }
+      .otherlink{
+         //@include column(6);
+        }
+      #last{
+        margin:0;
+        ul{
+          margin:0;
           }
-        } 
-      #legallink{
-        @include column(8,last)
         }
       #copyright{
         @include column(24,true);
@@ -114,19 +126,19 @@ a{
 
 //search
 #search{
-  border:1px solid $darkpurple;
+  border:1px solid $darkgrey;
   margin-right:-10px;
   padding:0;
-  width:169px;
+  width:200px;
   padding: 5px;
   color: $darkgrey;
+  background: $lightgrey;
 }
 #submitbutton{
-  background: $darkpurple;
+  background: $darkgrey;
   color:$white;
   font-weight:bold;
   text-algin:center;
-  @include border-right-radius(5px);
   padding:6px;
   border:0 none;
 }
@@ -136,9 +148,10 @@ ul.hmenu{
   @include inline-block;
   @include no-bullets;
   @include push(0);
-  margin: 0px $menurightmargin 20px 60px;
+  margin: 10px $menurightmargin 10px 10px;
   li{
     @include inline-block;
+    margin: 0 10px;
     }
 }
 
@@ -169,8 +182,8 @@ a.purplelink:visited{
   height:auto;
   overflow:auto;
   padding-left:0;
-  @include push(0);
-  margin:0 $menurightmargin 0 0;
+  @include column (12);
+  margin:0;
   ul{
     margin:0;
     }
@@ -179,37 +192,42 @@ a.purplelink:visited{
 * html .tabs { height:1%; /* fixing IE 6 */ }
 .tabs li {
   float:left;
-  line-height:1.5;
+  line-height:2;
   list-style-type:none;
-  margin:0 0 0 0.5em;
+  margin:0 0.5em 0 0;
   padding:0;
   font-size:18px;
 }
 .tabs li a {
-  background:$pink;
+  background:url("/images/tab-bg.png") 0 -28px no-repeat;
+  width:122px;
   color:$darkgrey;
   cursor:pointer;
   display:block;
+  height:80px;
   @include border-top-radius(5px);
   float:left;
   font-weight:bold;
-  padding:10px 40px;
+  text-align:center;
   display:block;
 }
 .tabs li a.selected {
-  background:$lightpurple;
+  //background:$lightpurple;
+  color:#EC2B8C;
 }
 .tabs li a, .tabs li a:focus, .tabs li a:hover {
   text-decoration:none;
 }
 .tabs li a:focus, .tabs li a:hover {
-  color:$darkgrey;
-  background:$lightpurple;
+  //background:$lightpurple;
+  background-position:0 0;
+  line-height:3.5;
   outline:none;
+  color:#EC2B8C;
 }
-.tabs li a.selected:focus, .tabs li a.selected:hover {
+/*.tabs li a.selected:focus, .tabs li a.selected:hover {
   color:$darkgrey;
-}
+}*/
 
 // create a new post
 h2.newstory{
@@ -495,33 +513,110 @@ label.error{
 
 //homepage
 #mph1{
-  font-weight:bold;
-  line-height:1.5em;
-  padding:0 40px;
+  text-align:center;
 }
 #mp_intro{
+  //background:$white;
+  overflow:hidden;
+  //border:1px solid $darkgrey;
+  //@include border-radius(10px);
   ul{
-    background:url(/images/whatismp.png) no-repeat;
-    width:930px;
-    height:224px;
+      @include no-bullets;
+    }
+
+// slide
+.nivo-controlNav {
+	position:absolute;
+	left:36%;
+	bottom:-30px;
+}
+.nivo-controlNav a {
+	display:block;
+	width:12px;
+	height:12px;
+	background:url("/images/slide-bar.png") no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin:0 20px;
+	float:left;
+}
+.nivo-controlNav a.active {
+	background-position:-12px 0;
+}
+
+.nivo-directionNav a {
+	display:block;
+	width:30px;
+	height:30px;
+	background:url("/images/arrows.png") no-repeat;
+	text-indent:-9999px;
+	border:0;
+}
+a.nivo-nextNav {
+	background-position:-30px 0;
+	right:15px;
+}
+a.nivo-prevNav {
+	left:15px;
+}
+
+.nivo-caption{
+  top:60%;
+  position:relative;
+  background:none;
+  width:60%;
+  p{
     padding:0;
-    list-style:none;
-    li{
-      color:$white;
-      float:left;
-      font-size:18px;
-      height:40px;
-      line-height:40px;
-      text-align:center;
-      width:310px;
-      padding:172px 0px 0;
-    a{
-      color:$white;
+    span{
+      font-weight:bold;
+      font-size:36px;
+      line-height:42px;
+      background:#000;
       }
+    }
+  }  
+  #mp_slider{
+  float:left;
+  background:url("/images/loading.gif") no-repeat scroll 50% 50%;
+  @include box-shadow;
+  border:1px solid #dedede;
+  margin:10px 10px 50px;
+  height:494px;
+  position:relative;
+  width:600px;
+   a{
+	  display:block;
+  }
+  img{
+    position:absolute;
+	  top:0px;
+	  left:0px;
+	  display:none;
+    }
+  }
+  #mp_sidebar{
+    float:left;
+    margin:0 10px;
+    width:265px;
+  .submitbutton{
+    margin:10px 0 0 0;
+    }
+  .post{
+    background:url("/images/story-bubble.png") no-repeat;
+    margin:10px 0 0 0;
+    padding:10px;
+    height:92px;    
+    h3{
+      margin-bottom:5px;
+      }
+    }
+    #viewall{
+      margin:10px 0 0;
+      float:right;
       }
   }
 }
-
+/*
 #col1, #col2,#col3{
   float:left;
   display:inline;
@@ -541,7 +636,7 @@ label.error{
     margin:20px 0 10px 0;
     }
 }
-
+*/
 //sidebar
 #sidebar{
   h3{
@@ -575,9 +670,9 @@ label.error{
 
 //login
 #blankbox{
-  background:$white;
   margin:0 auto;
   @include span(8);
+  background:$white;
 }
 
 .centerbox{

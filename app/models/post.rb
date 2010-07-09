@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   validates :body, :presence=>true, :length=>{:minimum=>140}
-  validates :title, :presence=>true, :length=>{:minimum=>4, :maximum =>100}
+  validates :title, :presence=>true
   has_many :comments, :dependent => :destroy
   has_many :responses, :dependent => :destroy
   belongs_to :user

@@ -19,7 +19,7 @@
 
           -else
             tell us as a
-            =link_to "user", new_user_session_path
+            =link_to "user", new_user_registration_path
             If you don't sign in as a user, your story will be kept anonymous
         
 
@@ -32,41 +32,42 @@
               %a.tooltip{:href=>"#"}
                 Example
                 %span.classic
-                  "Police really cared" "Neighbourhood chaos"
+                  Please give your story a title. Like "Police listened to my son"or "Neighbourhood chaos"
             %td
               =f.text_field :title, :value=>@post.title
-             
           %tr.field
             %td
-              =f.label(:who_id,"Who did it happen to?")
+              =f.label(:category_id, "Type of incident" )
+              -type_array = Category.all.map{|t|[t.name,t.id]}
+            %td
+              =f.select(:category_id,options_for_select(type_array,@post.category_id))
+          %tr.field
+            %td
+              =f.label(:who_id," Who is this story about?")
               %a.tooltip{:href=>"#"}
                 help
                 %span.classic
-                  please tell us details about who it happened to. (i.e My friend is female aged 16-24.)
+                  Who is this story about? you? a female friend? an elderly relative?
                   /Is this story about you or a friend?
             -who_array = Who.all.map{|w|[w.name,w.id]}
             %td
               =f.select(:who_id, options_for_select(who_array,@post.who_id),{},{:class=>"short"})
               is
-              %select{:name=>"gender",:class=>"short"} 
-                %option female 
-                %option male
-              aged
-              %select{:name=>"age", :class=>"short"} 
-                %option 16-24 
-                %option 25-34
-                %option 35-44
-                %option 45-54
-                %option 55-64
-                %option 65-74
-                %option 75 and over
+              -gender_array={"female"=>1,"male"=>2}
+
+              -age_array={"16-24 years"=>1,"25-34 years"=>2, "35-44 years"=>3, "45-54 years"=>4, "55-64 years"=>5, "65-74 years"=>6, "75 years or over"=>7}
+              =fields_for :storydata do |s| 
+                =s.select(:gender, options_for_select(gender_array),{},{:class=>"short"}) 
+                aged
+                =s.select(:age,options_for_select(age_array),{},{:class=>"short"})
+              
           %tr.field
             %td
-              =f.label(:happened_on,"When did it happend?")
+              =f.label(:happened_on,"When did it happen?")
               %a.tooltip{:href=>"#"}
                 help
                 %span.classic
-                  If you can remember the exact date, that's great, but if not, the year would be good.
+                  When did it happen? The date would be helpful or the month and/or year.
             /%td=f.text_field :happened_on
             %td
               =select_year(0,:start_year=>Time.now.year,:end_year=>Time.now.year-50, :field_name=>:happened_on_year, :prompt => "What year? Don't worry if you can't remember")
@@ -79,6 +80,12 @@
             %td
             %td
               =select_day(0, :field_name=>:happened_on_day, :prompt=>"What day? Don't worry if you can't remember")
+          =fields_for :storydata do |s|
+            %tr.field
+              %td
+                =s.label(:cirmenumber,"Do you have a crime number?")
+              %td
+                =s.text_field :crimenumber
             /%td= date_select("post","happened_on", :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' })
         -#beign
           %tr.field
@@ -102,13 +109,13 @@
             %a.tooltip{:href=>"#"}
               Why
               %span.classic
-                The more information you tell us, the better.  We will never reveal an exact street address online, it's just so we can make our data as accurate as possible.  Tell us what city or town this happened in, the name of the area, the street name, and finally the postcode. if you can't remember some of the details or are unsure of the area, try clicking our map button and using a pointer to tell us where it happened.
+                The more information you give, the easier it is for us to make our data accurate. We will never reveal an exact street address online. Can you tell us the city or town, the name of the area, the street name if you know, and finally the postcode or part of the postcode, if are unsure of the area, click our map button and use the pointer to tell us where it happened.                
           %a{:id=>'gmap', :href=>'#addresslookup',:title=>"fintitonmap"}
             Find it on map
           %table
             %tr.field 
-              %td=a.label(:country, "Country(Our serivce is only available in the UK)")
-              %td=a.select(:country, options_for_select(["United Kingdom"]), {:disabled => true})
+              %td=a.label(:country, "Country")
+              %td=a.select(:country, options_for_select(["scotland","england","northern ireland"]))
             %tr.field 
               %td=a.label(:county," County")
               %td=a.text_field :county
@@ -131,322 +138,302 @@
       
       .step#third
         %h3 Questions
-        %fieldset
-          %legend First Contact - Making contact with police
-          %table
-            %tr.field#q11
-              %td
-                =label_tag "Did you make contact with police"
-                =radio_button_tag 'contact', 'Yes'
-                =label_tag 'contact_Yes','Yes'
-                =radio_button_tag 'contact', 'No'
-                =label_tag 'contact_No','No'
-            %tr.field.hide#q12
-              %td
-                =label_tag :contactway,"How did you contact the police?"
-                %select{:name=>"contactway",:id=>"contactway"}
-                  %option By telephone call(not 999)
-                  %option By personal visit to a police station
-                  %option 999 call
-                  %option Direct to a police officer
-                  %option The police contacted you 
-                  %option other method
-            %tr.hide#q13
-              %td
-                =label_tag :easeofcontactingrating, "Were you satisfied or dissatisfied with the ease of contacting someone who could asset you?"
-                %span#easeofcontactingratingvalue.orange  Neither satisfied nor dissatisfied
-                %input{:type=>"text",:id=>"easeofcontactingrating",:class=>"hide"}
-                #easeofcontactingratingbar
-                %ul
-                  %li Completely satisfied
-                  %li.star1 Completely dissatisfied
+        =fields_for :storydata do |s|
+          %fieldset
+            %legend First Contact - Making contact with police
+            %table
+              %tr.field#q11
+                %td
+                  =s.label "Did you make contact with police"
+                  =s.radio_button 'contact', true
+                  =s.label 'contact_true','Yes'
+                  =s.radio_button 'contact', false
+                  =s.label 'contact_false','No'
+              %tr.field.hide#q12
+                %td
+                  =s.label :contactway,"How did you contact the police?"
+                  =s.select(:contactway, options_for_select(@contactways))
+                  
+              %tr.hide#q13
+                %td
+                  =s.label :easeofcontactingrating, "Were you satisfied or dissatisfied with the ease of contacting someone who could assist you?"
+                  %span#easeofcontactingratingvalue.orange  Neither satisfied nor dissatisfied
+                  =s.text_field(:easeofcontactingrating,:class=>"hide")
+                  #easeofcontactingratingbar
+                  %ul
+                    %li Completely dissatisfied
+                    %li.star1 Completely satisfied
                
-            %tr.hide#q14
-              %td
-                =label_tag :afterreport,"After the detail were reported. how was the incident dealt with?"
-                %select{:name=>"afterreport",:id=>"afterreport"}
-                  %option Entirely over the phone
-                  %option By an officer or other member of police staff
-                  %option At the police station
-            %tr.hide#q15
-              %td
-                =label_tag :isreported,"Were you told when you reported the crime how long it would be before someone would attend?"
-                =radio_button_tag 'isreported', 'Yes'
-                =label_tag 'isreported_Yes','Yes'
-                =radio_button_tag 'isreported', 'No'
-                =label_tag 'isreported_No','No'
-                =radio_button_tag 'isreported', "Don't know"
-                =label_tag "isreported_Don't know","Don't know"
-            %tr.hide#q16
-              %td
-                =label_tag :howlongarrive, "How long did it take for them to arrive?"
-                %select{:name=>"howlongarrive", :id=>"howlongarrive"}
-                  %option As soon as they could
-                  %option Within 10 minutes
-                  %option Within 1 hour
-                  %option Within 4 hours
-                  %option At an agreed time later the same day
-                  %option At an agreed time on another day
-                  %option Don't know/can't remember
+              %tr.hide#q14
+                %td
+                  =s.label :afterreport,"After the detail were reported. how was the incident dealt with?"
+                  =s.select(:afterreport,options_for_select(@afterreport))
+                
+              %tr.hide#q15
+                %td
+                  =s.label :isreport,"Were you told when you reported the crime how long it would be before someone would attend?"
+                  =s.radio_button 'isreport', true
+                  =s.label 'isreport_true','Yes'
+                  =s.radio_button 'isreport', false
+                  =s.label 'isreport_false','No'
 
-            %tr.hide#q17
-              %td
-                =label_tag :howlongarrive, "How long did it take for them to arrive?"
-                %select{:name=>"howlongarrive", :id=>"howlongarrive"}
-                  %option Within 10 minutes
-                  %option Within 1 hour
-                  %option Within 4 hours
-                  %option At an agreed time appointment time
-                  %option Later than the agreed appointment time
-                  %option Earlier than the agreed appointment time
-                  %option Never arrived
-                  %option Don't know/can't remember
-            %tr.hide#q18
-              %td
-                =label_tag :arriverating,"How satisfied or dissatisfied were you with the time it took for the police to arrive?"
-                %span#arriveratingvalue.orange Neither satisfied nor dissatisfied
-                %input{:type=>"text",:id=>"arriverating",:class=>"hide"}
-                #arriveratingbar
-                %ul
-                  %li Completely satisfied
-                  %li.star1 Completely dissatisfied
+              %tr.hide#q16
+                %td
+                  =s.label :howlongarrivetold, "How long were you told it would take for an officer or other member of police staff to arrive?"
+                  =s.select(:howlongarrivetold, options_for_select(@howlongarrivetold))
+
+              %tr.hide#q17
+                %td
+                  =s.label :howlongarrive, "How long did it take for them to arrive?"
+                  =s.select(:howlongarrive, options_for_select(@howlongarrive))
+
+              %tr.hide#q18
+                %td
+                  =s.label :arriverating,"How satisfied or dissatisfied were you with the time it took for the police to arrive?"
+                  %span#arriveratingvalue.orange Neither satisfied nor dissatisfied
+                  =s.text_field('arriverating',:class=>"hide")         
+                  #arriveratingbar
+                  %ul
+                    %li Completely dissatisfied
+                    %li.star1 Completely satisfied
 
             
-        %fieldset.hide#q2
-          %legend Police Actions to deal with the incident
-          %p Please think about the actions taken by the police officers and staff who dealt with your incident, did they;
-          %table
-            %tr
-              %td
-              %td Yes
-              %td No
-              %td Don't know
-              %td Not applicable
-            %tr 
-              %td Explain what was going to happen and why?
-              %td
-                =radio_button_tag 'isexplain', "Yes"
-              %td
-                =radio_button_tag 'isexplain', "No"
-              %td
-                =radio_button_tag 'isexplain', "Don't know"
-              %td
-                =radio_button_tag 'isexplain', "Not applicable"
-            %tr 
-              %td Arrange for an investigation of the scene of the crime (e.g. fingerprints), or examination of items recovered from the scene?
-              %td
-                =radio_button_tag 'isinvestigate', "Yes"
-              %td
-                =radio_button_tag 'isinvestigate', "No"
-              %td
-                =radio_button_tag 'isinvestigate', "Don't know"
-              %td
-                =radio_button_tag 'isinvestigate', "Not applicable"
-            %tr 
-              %td Provide you with a reference number?
-              %td
-                =radio_button_tag 'referenceno', "Yes"
-              %td
-                =radio_button_tag 'referenceno', "No"
-              %td
-                =radio_button_tag 'referenceno', "Don't know"
-              %td
-                =radio_button_tag 'referenceno', "Not applicable"
-            %tr 
-              %td Provide you with contact details for someone dealing with your case?
-              %td
-                =radio_button_tag 'contactdetail', "Yes"
-              %td
-                =radio_button_tag 'contactdetail', "No"
-              %td
-                =radio_button_tag 'contactdetail', "Don't know"
-              %td
-                =radio_button_tag 'contactdetail', "Not applicable"
-          %table
-            %tr
-              %td
-                =label_tag :actionrating, "Were you satisfied or dissatisfied with the ease of contacting someone who could asset you?"
-                %span#actionratingvalue.orange Neither satisfied nor dissatisfied
-                %input{:type=>"text",:id=>"actionrating",:class=>"hide"}
-                #actionratingbar
-                %ul
-                  %li Completely satisfied
-                  %li.star1 Completely dissatisfied
+          %fieldset.hide#q2
+            %legend Police Actions to deal with the incident
+            %p Please think about the actions taken by the police officers and staff who dealt with your incident, did they;
+            %table
+              %tr
+                %td
+                %td Yes
+                %td No
+                %td Don't know
+                %td Not applicable
+              %tr 
+                %td Explain what was going to happen and why?
+                %td
+                  =s.radio_button 'isexplain', 1
+                %td
+                  =s.radio_button 'isexplain', 2
+                %td
+                  =s.radio_button 'isexplain', 3
+                %td
+                  =s.radio_button 'isexplain', 4
+              %tr 
+                %td Arrange for an investigation of the scene of the crime (e.g. fingerprints), or examination of items recovered from the scene?
+                %td
+                  =s.radio_button 'isinvestigate', 1
+                %td
+                  =s.radio_button 'isinvestigate', 2
+                %td
+                  =s.radio_button 'isinvestigate', 3
+                %td
+                  =s.radio_button 'isinvestigate', 4
+              %tr 
+                %td Provide you with a reference number?
+                %td
+                  =s.radio_button 'referenceno', 1
+                %td
+                  =s.radio_button 'referenceno', 2
+                %td
+                  =s.radio_button 'referenceno', 3
+                %td
+                  =s.radio_button 'referenceno', 4
+              %tr 
+                %td Provide you with contact details for someone dealing with your case?
+                %td
+                  =s.radio_button 'contactdetail', 1
+                %td
+                  =s.radio_button 'contactdetail', 2
+                %td
+                  =s.radio_button 'contactdetail', 3
+                %td
+                  =s.radio_button 'contactdetail', 4
+            %table
+              %tr
+                %td
+                  =s.label :actionrating, "Were you satisfied or dissatisfied with the ease of contacting someone who could asset you?"
+                  %span#actionratingvalue.orange Neither satisfied nor dissatisfied
+                  =s.text_field('actionrating', :id=>"actionrating",:class=>"hide")                                    
+                  #actionratingbar
+                  %ul
+                    %li Completely dissatisfied
+                    %li.star1 Completely satisfied
 
 
                  
-        %fieldset.hide#q3
-          %legend Follow Up - Being kept informed
+          %fieldset.hide#q3
+            %legend Follow Up - Being kept informed
         
-          %table
-            %tr
-              %td
-                Have had any contact with the police about thisincident since your report and the initial police response? (Thos contact could have been over the phone, face-to-face, by letter or by other means)
-            %tr
-              %td
-                =radio_button_tag 'anycontact', "Yes"
-                =label_tag 'anycontact_Yes', "Yes"
-                =radio_button_tag 'anycontact', "No"
-                =label_tag 'anycontact_No', "No"
+            %table
+              %tr
+                %td
+                  Have had any contact with the police about thisincident since your report and the initial police response? (Thos contact could have been over the phone, face-to-face, by letter or by other means)
+              %tr
+                %td
+                  =s.radio_button 'anycontact', true
+                  =s.label 'anycontact_true', "Yes"
+                  =s.radio_button 'anycontact', false
+                  =s.label 'anycontact_false', "No"
        
-            %tr
-              %td Did you want further contact from the police
-            %tr
-              %td
-                =radio_button_tag 'furthercontact', "Yes"
-                =label_tag 'furthercontact_Yes', "Yes"
-                =radio_button_tag 'furthercontact', "No"
-                =label_tag 'furthercontact_No', "No"
+              %tr
+                %td Did you want further contact from the police
+              %tr
+                %td
+                  =s.radio_button 'furthercontact', "Yes"
+                  =s.label 'furthercontact_Yes', "Yes"
+                  =s.radio_button 'furthercontact', "No"
+                  =s.label 'furthercontact_No', "No"
             
               %tr.q31.hide
                 %td Have the police told you at any point that: (please tick all that apply)
               %tr.q31.hide
                 %td
-                  =check_box_tag 'a'
-                  =label_tag "a", "a. Somebody has been arrested in connection with the case "
+                  =s.check_box 'contact_a'
+                  =s.label "contact_a", "a. Somebody has been arrested in connection with the case "
               %tr.q31.hide
                 %td
-                  =check_box_tag 'b'
-                  =label_tag "b", "b. The police have recovered some or all of your property  "
+                  =s.check_box 'contact_b'
+                  =s.label "contact_b", "b. The police have recovered some or all of your property  "
               %tr.q31.hide
                 %td
-                  =check_box_tag 'c'
-                  =label_tag "c", "c. A person has been charged with or is being reported for the offence "
+                  =s.check_box 'contact_c'
+                  =s.label "contact_c", "c. A person has been charged with or is being reported for the offence "
               %tr.q31.hide
                 %td
-                  =check_box_tag 'd'
-                  =label_tag "d", "d. Lines of enquiry are still being pursued "
+                  =s.check_box 'contact_d'
+                  =s.label "contact_d", "d. Lines of enquiry are still being pursued "
               %tr.q31.hide
                 %td
-                  =check_box_tag 'e'
-                  =label_tag "e", "e. No further police action is being taken at this time due to insufficient evidence  "
+                  =s.check_box 'contact_e'
+                  =s.label "contact_e", "e. No further police action is being taken at this time due to insufficient evidence  "
               %tr.q31.hide
                 %td
-                  =check_box_tag 'f'
-                  =label_tag "f", "f. You are required to attend court as a witness  "
+                  =s.check_box 'contact_f'
+                  =s.label "contact_f", "f. You are required to attend court as a witness  "
            
               %tr.q31.hide
                 %td
-                  =check_box_tag 'g'
-                  =label_tag "g", "g. Court proceedings have been finalised and the outcome of these proceedings "
+                  =s.check_box 'contact_g'
+                  =s.label "contact_g", "g. Court proceedings have been finalised and the outcome of these proceedings "
               %tr.q31.hide
                 %td
-                  =check_box_tag 'h'
-                  =label_tag "h", "h. The offender has been dealt with by police as an alternative to court  "
-            %tr
-              %td
-                =label_tag :keepinformrating, "Were you satisfied or dissatisfied with the ease of contacting someone who could asset you?"
-                %span#keepinformratingvalue.orange Neither satisfied nor dissatisfied
-                %input{:type=>"text",:id=>"keepinformrating",:class=>"hide"}
-                #keepinformratingbar
-                %ul
-                  %li Completely satisfied
-                  %li.star1 Completely dissatisfied
+                  =s.check_box 'contact_h'
+                  =s.label "contact_h", "h. The offender has been dealt with by police as an alternative to court  "
+              %tr
+                %td
+                  =s.label :keepinformrating, "Were you satisfied or dissatisfied with the ease of contacting someone who could asset you?"
+                  %span#keepinformratingvalue.orange Neither satisfied nor dissatisfied
+                  =s.text_field('keepinformrating', :id=>"keepinformrating",:class=>"hide")                  
+                  %input{:type=>"text",:id=>"keepinformrating",:class=>"hide"}
+                  #keepinformratingbar
+                  %ul
+                    %li Completely dissatisfied
+                    %li.star1 Completely satisfied
 
 
-        %fieldset.hide#q4
-          %legend Treament by police staff
-          %p Please think about how you were treated by the police officers and other staff who dealt with you. If more than one person was involved, please give an overall impression of how you were treated. Did they:
-          %table
-            %tr
-              %td
-              %td Yes
-              %td No
-              %td Don't know
-              %td Not applicable
-            %tr 
-              %td Listen to what you had to say?
-              %td
-                =radio_button_tag 'islisten', "Yes"
-              %td
-                =radio_button_tag 'islisten', "No"
-              %td
-                =radio_button_tag 'islisten', "Don't know"
-              %td
-                =radio_button_tag 'islisten', "Not applicable"
-            %tr 
-              %td Deal with you sympathetically
-              %td
-                =radio_button_tag 'issympathetically', "Yes"
-              %td
-                =radio_button_tag 'issympathetically', "No"
-              %td
-                =radio_button_tag 'issympathetically', "Don't know"
-              %td
-                =radio_button_tag 'issympathetically', "Not applicable"
-            %tr 
-              %td Appear interested in what you told them?
-              %td
-                =radio_button_tag 'isinterested', "Yes"
-              %td
-                =radio_button_tag 'isinterested', "No"
-              %td
-                =radio_button_tag 'isinterested', "Don't know"
-              %td
-                =radio_button_tag 'isinterested', "Not applicable"
-            %tr 
-              %td Treat you politely?
-              %td
-                =radio_button_tag 'ispolitely', "Yes"
-              %td
-                =radio_button_tag 'ispolitely', "No"
-              %td
-                =radio_button_tag 'ispolitely', "Don't know"
-              %td
-                =radio_button_tag 'ispolitely', "Not applicable"
-            %tr 
-              %td Make the effort to understand the nature of your enquiry?
-              %td
-                =radio_button_tag 'understand', "Yes"
-              %td
-                =radio_button_tag 'understand', "No"
-              %td
-                =radio_button_tag 'understand', "Don't know"
-              %td
-                =radio_button_tag 'understand', "Not applicable"
-            %tr 
-              %td Appear to take the matter seriously?
-              %td
-                =radio_button_tag 'isseriously', "Yes"
-              %td
-                =radio_button_tag 'isseriously', "No"
-              %td
-                =radio_button_tag 'isseriously', "Don't know"
-              %td
-                =radio_button_tag 'isseriously', "Not applicable"
-            %tr 
-              %td Try to discourage you from reporting the incident?
-              %td
-                =radio_button_tag 'discourage', "Yes"
-              %td
-                =radio_button_tag 'discourage', "No"
-              %td
-                =radio_button_tag 'discourage', "Don't know"
-              %td
-                =radio_button_tag 'discourage', "Not applicable"
-          %table
-            %tr
-              %td
-                =label_tag :treatmentrating, "Are you satisfied or dissatisfied with the way you were treated by the police officers and staff who dealt with you?"
-                %span#treatmentratingvalue.orange Neither satisfied nor dissatisfied
-                %input{:type=>"text",:id=>"treatmentrating",:class=>"hide"}
-                #treatmentratingbar
-                %ul
-                  %li Completely satisfied
-                  %li.star1 Completely dissatisfied
+          %fieldset.hide#q4
+            %legend Treament by police staff
+            %p Please think about how you were treated by the police officers and other staff who dealt with you. If more than one person was involved, please give an overall impression of how you were treated. Did they:
+            %table
+              %tr
+                %td
+                %td Yes
+                %td No
+                %td Don't know
+                %td Not applicable
+              %tr 
+                %td Listen to what you had to say?
+                %td
+                  =s.radio_button 'islisten', 1
+                %td
+                  =s.radio_button 'islisten', 2
+                %td
+                  =s.radio_button 'islisten', 3
+                %td
+                  =s.radio_button 'islisten', 4
+              %tr 
+                %td Deal with you sympathetically
+                %td
+                  =s.radio_button 'issympathetically', 1
+                %td
+                  =s.radio_button 'issympathetically', 2
+                %td
+                  =s.radio_button 'issympathetically', 3
+                %td
+                  =s.radio_button 'issympathetically', 4
+              %tr 
+                %td Appear interested in what you told them?
+                %td
+                  =s.radio_button 'isinterested', 1
+                %td
+                  =s.radio_button 'isinterested', 2
+                %td
+                  =s.radio_button 'isinterested', 3
+                %td
+                  =s.radio_button 'isinterested', 4
+              %tr 
+                %td Treat you politely?
+                %td
+                  =s.radio_button 'ispolitely', 1
+                %td
+                  =s.radio_button 'ispolitely', 2
+                %td
+                  =s.radio_button 'ispolitely', 3
+                %td
+                  =s.radio_button 'ispolitely', 4
+              %tr 
+                %td Make the effort to understand the nature of your enquiry?
+                %td
+                  =s.radio_button 'understand', 1
+                %td
+                  =s.radio_button 'understand', 2
+                %td
+                  =s.radio_button 'understand', 3
+                %td
+                  =s.radio_button 'understand', 4
+              %tr 
+                %td Appear to take the matter seriously?
+                %td
+                  =s.radio_button 'isseriously', 1
+                %td
+                  =s.radio_button 'isseriously', 2
+                %td
+                  =s.radio_button 'isseriously', 3
+                %td
+                  =s.radio_button 'isseriously', 4
+              %tr 
+                %td Try to discourage you from reporting the incident?
+                %td
+                  =s.radio_button 'discourage', 1
+                %td
+                  =s.radio_button 'discourage', 2
+                %td
+                  =s.radio_button 'discourage', 3
+                %td
+                  =s.radio_button 'discourage', 4
+            %table
+              %tr
+                %td
+                  =s.label :treatmentrating, "Are you satisfied or dissatisfied with the way you were treated by the police officers and staff who dealt with you?"
+                  %span#treatmentratingvalue.orange Neither satisfied nor dissatisfied
+                  =s.text_field('treatmentrating', :id=>"treatmentrating",:class=>"hide")                  
+                  #treatmentratingbar
+                  %ul
+                    %li Completely dissatisfied
+                    %li.star1 Completely satisfied
           
-        %fieldset.hide#q5
-          %legend The whole experience - overall service
-          %table
-            %tr
-              %td
-                =label_tag :wholerating, "Taking the whole experience into account, are you satisfied or dissatisfied with the service provide by the police in this case?"
-                %span#wholeratingvalue.orange Neither satisfied nor dissatisfied
-                %input{:type=>"text",:id=>"wholerating",:class=>"hide"}
-                #wholeratingbar
-                %ul
-                  %li Completely satisfied
-                  %li.star1 Completely dissatisfied
+          %fieldset.hide#q5
+            %legend The whole experience - overall service
+            %table
+              %tr
+                %td
+                  =s.label :wholerating, "Taking the whole experience into account, are you satisfied or dissatisfied with the service provide by the police in this case?"
+                  %span#wholeratingvalue.orange Neither satisfied nor dissatisfied
+                  =s.text_field(:wholerating, :id=>"wholerating",:class=>"hide")                                   
+                  #wholeratingbar
+                  %ul
+                    %li Completely dissatisfied
+                    %li.star1 Completely satisfied
 
 
     
@@ -507,7 +494,8 @@
       %fieldset.step#fifth
         %h3
           Thank you for sharing your experience with MyPolice. Press submit to continue
-        =f.submit 
+      =f.submit :type=>"reset" ,:value=>"Back",:class=>"navigation_button"
+      =f.submit :class=>"navigation_button" ,:value=>"Next"
     #next_button.action
       =f.submit :value=>"Next",:class=>"navigation_button submitstory"
    
