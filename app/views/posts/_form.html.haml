@@ -19,7 +19,7 @@
 
           -else
             tell us as a
-            =link_to "user", new_user_registration_path
+            =link_to "user", new_user_session_path
             If you don't sign in as a user, your story will be kept anonymous
         
 
@@ -115,7 +115,7 @@
           %table
             %tr.field 
               %td=a.label(:country, "Country")
-              %td=a.select(:country, options_for_select(["scotland","england","northern ireland"]))
+              %td=a.select(:country, options_for_select(["Scotland","England","Northern Ireland"]))
             %tr.field 
               %td=a.label(:county," County")
               %td=a.text_field :county
@@ -494,8 +494,7 @@
       %fieldset.step#fifth
         %h3
           Thank you for sharing your experience with MyPolice. Press submit to continue
-      =f.submit :type=>"reset" ,:value=>"Back",:class=>"navigation_button"
-      =f.submit :class=>"navigation_button" ,:value=>"Next"
+        =f.submit 
     #next_button.action
       =f.submit :value=>"Next",:class=>"navigation_button submitstory"
    

@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     //formwizard configure
     $("#new_post").formwizard({
-      historyEnabled:false,
+      historyEnabled:true,
       formPluginEnabled:true,
       validationEnabled:true,
       focusFirstInput:true,
@@ -154,7 +154,6 @@ var island="";
   $("#saveaddress").click(function(){
       $('#address_address_line1').val(streetNumber);
       $('#address_country').val(island);
-      alert(island);
       $('#address_county').val(county);
       $('#address_city').val(city);
       $('#address_address_line2').val(streetName);

@@ -15,6 +15,7 @@
       %h3 Suggestion
       =simple_format sanitize(post.suggestion[0,100])
     
+    .postrelated
       Posted by
       %strong
         =post.user.nil? ? "anonymous" : post.user.email
@@ -23,18 +24,17 @@
         =time_ago_in_words(post.created_at)
       ago
 
-    
-  %span.triangle
-  .postrelated
-    -if post.responses.count > 1
-      =link_to "#{post.responses.count} Responses", post
-    -else
-      =link_to "#{post.responses.count} Response", post
-    \/
-    -if post.comments.approved.count > 1
-      =link_to "#{post.comments.approved.count} Comments", post
-    -else
-      =link_to "#{post.comments.approved.count} Comment", post
+
+    .postrelated
+      -if post.responses.count > 1
+        =link_to "#{post.responses.count} Responses", post
+      -else
+        =link_to "#{post.responses.count} Response", post
+        \/
+      -if post.comments.approved.count > 1
+        =link_to "#{post.comments.approved.count} Comments", post
+      -else
+        =link_to "#{post.comments.approved.count} Comment", post
 
 
  

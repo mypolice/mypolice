@@ -9,8 +9,14 @@
       #layout
         #maincontentwrapper
           #maincontent
+            #newstory_header
+              %a{:title=>"Mypolice", :href=>root_path}
+                %img{:title=>"Mypolicelogi", :src=>image_path("logo.png"), :alt=>"mypolice logo"} 
+              =link_to "Get me out of here", root_path, :class=>"right"
             -flash.each do |name, msg| 
               =content_tag :div, msg, :id=>"flash_#{name}"
             = yield 
-        #layout_footer
-      -#%script{:src=>'http://cdn.wibiya.com/Toolbars/dir_0393/Toolbar_393982/Loader_393982.js',:type=>'text/javascript'}
+      #copyright
+        %p
+          &copy; 2010 My conversation ltd (Mypolice)
+

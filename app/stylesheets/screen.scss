@@ -18,7 +18,7 @@
 @import "compass/utilities/lists";
 //sticky-footer
 @import "compass/layout/sticky-footer";
-@include sticky-footer(170px, "#layout" , "#layout_footer", "#footer");
+@include sticky-footer(200px, "#layout" , "#layout_footer", "#footer");
 //border-radius
 @import "compass/css3";
 //form
@@ -53,7 +53,7 @@ body{
   #container{
     @include container;
     background:url("/images/bg.png") repeat-x; 
-  
+     
     #header{
       @include column(24);
       //background:$white;
@@ -74,9 +74,9 @@ body{
     #maincontentwrapper{
       @include column(24);
       #maincontent{
-        padding:10px $rightpadding;
+        padding:0px $rightpadding $rightpadding;
         min-height:200px;
-        overflow:hidden;
+       overflow:hidden;
         margin:0 auto;
         }
       }
@@ -84,13 +84,14 @@ body{
       background:$white;
         padding:0 20px;
       .footerwrapper{
-        padding:20px 0;
+        padding:20px 0 0 0;
         border-top:1px solid #b3b3b3;
-        overflow:hidden;
+       overflow:hidden;
         }
 
       ul{
         padding:10px 0;
+        margin: 0 18px 0 0;
         li{
           line-height:2em;
           }
@@ -112,12 +113,13 @@ body{
           margin:0;
           }
         }
-      #copyright{
+      
+      }
+  }
+  #copyright{
         @include column(24,true);
         padding:0 10px;
         }
-      }
-  }
 }
 
 a{
@@ -230,132 +232,72 @@ a.purplelink:visited{
 }*/
 
 // create a new post
-h2.newstory{
-  text-align:center;
-  margin:10px 0;
-  font-weight:bold;
-  font-size:36px;
-  }
+#newstory_header{
+  padding:10px;
+}
 #progress, #complete{
-  background:url("/images/progressbar.png") no-repeat scroll 0 0 transparent;
-  margin:0 auto;
+  background:url("/images/progress.png") no-repeat;
+  margin:-40px auto 5px auto;
   position:relative;
-  width:738px;
-  
-  ul{
-    margin:0;
-    padding:0;
-      li{
-        list-style-type:none;
-        display:inline;
-        float:left;
-        font-weight:bold;
-        line-height:1.5em;
-        padding: 0 0 10px 0;
-         }
-        li.first{
-        width:170px;  
-        position:relative;
-        left:-15px;
-          }
-        li.second{
-         width:171px; 
-          }
-        li.third{
-        width:171px;  
-          }
-        li.forth{
-         width:180px; 
-          }
-        li.fifth{  
-          }
-    }
-  
-  .first{
+  width:641px;
+  height:40px;
+ overflow:hidden;
+   
+   .first{
+   background-position:0 -40px;
+   height:40px;
+   width:130px;
     }
   .second {    
-    #marker{
-    background-position:-39px 0;
-    left:175px;
-    }
+    background-position:0 -40px;
+   height:40px;
+   width:260px;
   }
   .third{
-    #marker{
-    left:349px;
-    background-position:-76px 0;
-      }
+    background-position:0 -40px;
+   height:40px;
+   width:390px;
     }
   .forth{
-    #marker{
-    left:524px;
-    background-position:-115px 0;    
-      }
+    background-position:0 -40px;
+   height:40px;
+   width:500px;
     }
   .fifth{
-    #marker{
-    left:698px;
-    background-position:-152px 0;    
-      }
+    background-position:0 -40px;
+   height:40px;
+   width:640px;
     }
 }
 #complete{
   margin:1px 0 19px;
   margin-top:0;
   height:41px;
-  
-  #marker{
-   background:url("/images/marker.png") no-repeat;
-   height:38px;
-   position:absolute;
-   top:0;
-   margin:1px;
-   width:38px;
-   }
-}
+  }
 
 #newpost{
   @include span(22);
   margin:0px auto;
   background:$white;
-  padding:10px;
-  overflow:hidden;
+  padding:20px 10px;
+ overflow:hidden;
 
-  #new_post{
-    height:100%;
-    float:left;
-    display:table-cell;
-    vertical-aligin:middle;
-    }
-
-  #back_button{
-    @include column(3);
-    display: inline;
-    margin-right:50px;
-    min-height:20px;
-    }
+  
   .navigation_button{
-      width:56px;
-      float:left;
-      padding:120px 0 0 0px;
+      width:127px;
+      height:36px;
       text-align:center;
-      margin-top:80px;
       cursor:pointer;
       border:none;
-      color:$darkpurple;
+      color:$darkgrey;
       font-family:$blueprint-font-family;
-      font-size:14px;
+      font-size:18px;
       font-weight:bold;
       text-decoration:none;
       }
-    .submitstory{
-      background:url("/images/arrow.png") no-repeat;
-      }
-     #backbutton{
-      background:url("/images/leftarrow.png") no-repeat;
-      float:right;
-       }
   #formcontent{
-    @include column(14);
+    width:641px;
+    margin:0 auto;
     @include blueprint-form;
     @include blueprint-form-borders($unfocused_border_color,$focused_border_color,$fieldset_border_color);
     vertical-align:middle;
@@ -371,22 +313,37 @@ h2.newstory{
     select{
       width:314px;
       padding:5px;
-      background:$darkpurple;
-      color:$white;
+      background:url("/images/input-bg.png");
       }
     select.short{
       width:88px;}
+      #post_tag_list{
+        width:600px;
+        }
       textarea{
-        width:495px;
+        width:600px;
         margin:0 0 20px 0;
         background:url("/images/input-bg.png")!important;
         }
-      input{
+      input[type="text"]{
         background:url("/images/input-bg.png")!important;
         }
-      table .story{
-        text-algin:top;
+      input[type="reset"]{
+        background:url("/images/resetbutton.png") no-repeat;
+        text-align:right;
+        padding: 0 30px 0 0;
         }
+      input[type="submit"]{
+        background:url("/images/nextbutton.png") no-repeat;
+        text-align:left;
+        padding: 0 0 0 30px;
+    }
+      table {
+        tr, td, caption{
+          text-align:right;
+          }
+        }
+
     ul{
       margin:0; 
       padding:0;
@@ -407,11 +364,8 @@ h2.newstory{
        margin:0 25px; 
       }
   }
-  #next_button{
-    display: inline;  
-    @include column(3,true);
-    margin-left:40px;
-    min-height:20px;
+  #gmap img{
+    vertical-align:middle;
     }
 }
 
@@ -436,11 +390,21 @@ label.error{
   cursor:pointer;  
 
 }
+#head{
+ background:#666;
+ margin:0 10px;
+ padding:10px;
+ color:#e6e6e6;
+ h2{
+   margin:0;
+   color:#e6e6e6;
+   }
+}
 #posts{
   background:$white;
   @include border-radius(5px);
   padding:10px;
-  overflow:hidden;
+ overflow:hidden;
   
   .post, .response, .comment{
     margin: 0 0 40px 0;
@@ -450,7 +414,7 @@ label.error{
     border:2px dashed $postbubble;
     padding:10px;
     margin:10px 0 10px 0;
-    overflow:hidden;  
+   overflow:hidden;  
   }
   span.triangle{
     background:url("/images/bubble-triangle.png") no-repeat;
@@ -462,7 +426,7 @@ label.error{
     }
 
   .postrelated{
-    font-weight:bold;
+    text-align:right;
     }
   #sharethis_0{
     float:right;
@@ -517,7 +481,7 @@ label.error{
 }
 #mp_intro{
   //background:$white;
-  overflow:hidden;
+ overflow:hidden;
   //border:1px solid $darkgrey;
   //@include border-radius(10px);
   ul{
@@ -641,13 +605,18 @@ a.nivo-prevNav {
 #sidebar{
   h3{
       margin:0;
-      border-bottom:2px solid $darkpurple;
-      padding:0 0 10px 0;
+      background:url(/images/findmapicon.png) 10px 10px no-repeat #666;
+      padding:10px;
+      text-align: center;
+      color:#E6E6E6;
+      @include border-top-radius(10px);
       }
   .sideblock{
     padding:10px $rightpadding 10px 0;
     .sidecontent{
       padding:10px;
+      background:$white;
+      @include border-bottom-radius(10px); 
       }
     }
   #latestresponses{
@@ -708,16 +677,22 @@ a.nivo-prevNav {
 
 //tooltip
 .tooltip{
-  border-bottom:1px dotted #000;
   color: #000;
   outline:none;
   cursor:help;
   position:relative;
   text-decoration: none;
+  img{
+    vertical-align:middle;
+    }
   span{
     margin-left:-999em;
     position:absolute;
     }
+  }
+.tooltip:hover .left{
+  position:absolute;
+  left:-250px;
   }
 .tooltip:hover span {
   font-family: Calibri, Tahoma, Geneva, sans-serif;
@@ -733,10 +708,6 @@ a.nivo-prevNav {
   line-height:1.5em;
 }
 .tooltip:hover img {
-  border: 0;
-  margin: -10px 0 0 -55px;
-  float: left;
-  position: absolute;
 }
 .tooltip:hover em {
   font-family: Candara, Tahoma, Geneva, sans-serif;
@@ -745,7 +716,7 @@ a.nivo-prevNav {
   display: block;
   padding: 0.2em 0 0.6em 0;
 }
-.classic { padding: 0.8em 1em; }
+.classic { padding: 0.8em 1em;  text-align:left;}
 .custom { padding: 0.5em 0.8em 0.8em 2em; }
 * html a:hover { background: transparent; }
 .classic { background: #E9ECF5; border: 1px solid #0F2F8D; color:#000;
@@ -757,3 +728,8 @@ a.nivo-prevNav {
 .help { background: #9FDAEE; border: 1px solid #2BB0D7; }
 .info { background: #9FDAEE; border: 1px solid #2BB0D7; }
 .warning { background: #FFFFAA; border: 1px solid #FFAD33; }
+
+//position
+.right{
+  float:right;
+  }

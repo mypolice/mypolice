@@ -1,25 +1,10 @@
 -title  "Stories"
 
-=content_for :sortby do
-  -if params[:controller] == "posts"
-    .sortby
-      %ul
-        %li
-          Sort by:
-        %li
-          Most Recent /
-        %li
-          Oldest     
-      %h1 Stories: Most Recent
-  -if params[:controller] == "tags"
-    .sortby
-      %h1
-        Tag:
-        =@tag
 
 //yield
 #content
-  
+  #head
+    %h2 All Story
   #posts
     =render :partial => @posts
     =will_paginate @posts
@@ -30,14 +15,16 @@
   #latestresponses.sideblock
     %h3.sidebar
       Latest Responses:
-    =render :partial=>"home/response",:collection=>@responses
+    .sidecontent
+      =render :partial=>"home/response",:collection=>@responses
   #tags.sideblock
     %h3.sidebar
       Tags
-    -tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag,css_class|
-      =link_to tag.name, tag_path(tag),:class=>css_class
+    .sidecontent
+      -tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag,css_class|
+        =link_to tag.name, tag_path(tag),:class=>css_class
   #map.sideblock
     %h3.sidebar
       Map
     .sidecontent 
-      %img{:src=>"/images/map.png"}
+      %img{:src=>"/images/map.png", :width=>"270px;"}
