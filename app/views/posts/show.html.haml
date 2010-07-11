@@ -1,13 +1,10 @@
 -title @post.title.titlecase
 
-=content_for :sortby do
-  .sortby
-    %h1 
-      Story:
-      =@post.title.titlecase
-
 /=link_to "Back to All @posts", @posts_path
 #content
+  #head
+    %h2
+      =@post.title.titlecase
   #posts
     .postbubble
       %h3
@@ -15,19 +12,19 @@
       =simple_format sanitize(@post.body)
       %h3 Suggestion
       =simple_format sanitize(@post.suggestion)
-      %p
+      .postrelated
         posted by 
         =@post.user.nil? ? "anonymous" : @post.user.email
         on
         =time_ago_in_words(@post.created_at)
         ago
-    %span.triangle
+  
 
-    %p
-      =link_to pluralize(@post.responses.count, 'Response'), @post, :id=>"responses_#{@post.id}"
-      \/
-      =link_to pluralize(@post.comments.approved.count, 'Comment'), @post, :id=>"Comments_#{@post.id}"
-      %script{:type=>"text/javascript",:src=>"http://w.sharethis.com/button/sharethis.js#publisher=534a6efc-b729-4f7e-9b27-b0751fe00183&amp;type=website&amp;style=vertical&amp;@post_services=email%2Cfacebook%2Ctwitter%2Cgbuzz%2Cmyspace%2Cdigg%2Csms%2Cwindows_live%2Cdelicious%2Cstumbleupon%2Creddit%2Cgoogle_bmarks%2Clinkedin%2Cbebo%2Cybuzz%2Cblogger%2Cyahoo_bmarks%2Cmixx%2Ctechnorati%2Cfriendfeed%2Cpropeller%2Cwordpress%2Cnewsvine"}
+      .postrelated
+        =link_to pluralize(@post.responses.count, 'Response'), @post, :id=>"responses_#{@post.id}"
+        \/
+        =link_to pluralize(@post.comments.approved.count, 'Comment'), @post, :id=>"Comments_#{@post.id}"
+        %script{:type=>"text/javascript",:src=>"http://w.sharethis.com/button/sharethis.js#publisher=534a6efc-b729-4f7e-9b27-b0751fe00183&amp;type=website&amp;style=vertical&amp;@post_services=email%2Cfacebook%2Ctwitter%2Cgbuzz%2Cmyspace%2Cdigg%2Csms%2Cwindows_live%2Cdelicious%2Cstumbleupon%2Creddit%2Cgoogle_bmarks%2Clinkedin%2Cbebo%2Cybuzz%2Cblogger%2Cyahoo_bmarks%2Cmixx%2Ctechnorati%2Cfriendfeed%2Cpropeller%2Cwordpress%2Cnewsvine"}
    
     #responses
       = error_messages_for :response
@@ -60,15 +57,31 @@
 =content_for :sidebar do
   %a{:title=>"Tell us your story",:href=>tellusyourstory_path}
     %img{:title=>"Tell us your story",:class=>"submitbutton", :alt=>"Tell us your story", :src=>"/images/tellusstorybuton.png"}
-  -if @post.tags.length>0
-    #tags.sideblock
-      %h3
-        Tags
+
+  #storydetail.sideblock
+    %h3
+      Story details
     .sidecontent
-      -@post.tags.each do |tag|
-        =link_to tag.name, tag_path(tag)
+      %ul
+        %li
+          Crime type:
+          =@post.category.name
+        %li
+          when it happened
+        %li
+          it happened to: 
+        %li
+          They are
   #map.sideblock
     %h3
       Where it took place
     .sidecontent
       %img{:src=>"/images/map.png", :width=>"270px"}
+  -if @post.tags.length>0
+    #tags.sideblock
+      %h3
+        Tags
+      .sidecontent
+        -@post.tags.each do |tag|
+          =link_to tag.name, tag_path(tag)
+  
