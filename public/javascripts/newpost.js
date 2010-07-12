@@ -337,7 +337,15 @@ var cache = {};
         contactcheck();
         isreport();
         anycontact();
-
+        var current_question = [1];
+        var question_steps = [1,2,3,4,5];
+        navigationbutton();
+        $("#nextbt").click(function(){
+            nextpage();
+            });
+        $("#backbt").click(function(){
+            backpage();
+            });
         $("input:radio[name=storydata[contact]]").change(function(){
               contactcheck();});
 
@@ -350,10 +358,10 @@ var cache = {};
             
     function contactcheck(){
        if ($('input:radio[name=storydata[contact]]:checked').val()=="true"){
-        $("#q12, #q13,#q14,#q15,#q2,#q3,#q4,#q5").removeClass('hide');
+        $("#q12, #q13,#q14,#q15").removeClass('hide');
        }
        else{
-        $("#q12, #q13,#q14,#q15,#q2,#q3,#q4,#q5,#q16,#q17,#q18,.q31").addClass('hide');
+        $("#q12, #q13,#q14,#q15,#q16,#q17,#q18").addClass('hide');
        }
     }
 
@@ -376,5 +384,49 @@ var cache = {};
                 }
     
     }
+
+    function nextpage(){
+        var current = parseInt(current_question[current_question.length-1]);
+        var step = current+1;
+        $("#q"+current).addClass("hide");
+        $("#q"+step).removeClass("hide");
+        current_question.push(step);
+        navigationbutton();
+    }
+    
+      function backpage(){
+        var current = parseInt(current_question[current_question.length-1]);
+        var backstep = current-1;
+        $("#q"+current).addClass("hide");
+        $("#q"+backstep).removeClass("hide");
+        current_question.pop();
+        navigationbutton();
+    }
+
+    function navigationbutton(){
+      for(i=1; i<6; i++){
+       if($.inArray(i,current_question)>-1){
+        $("#l"+i).addClass("active");
+       }
+       else{
+        $("#l"+i).removeClass("active");
+       }
+      } 
+      if(current_question.length>1){
+        $("#backbt").removeClass("hide");
+        }else{
+        $("#backbt").addClass("hide");
+        }
+      if(current_question.length>4){
+        $("#nextbt").addClass("hide");
+      }
+      else{
+        $("#nextbt").removeClass("hide");
+      }
+    }
+
     });
+
+
+  
 

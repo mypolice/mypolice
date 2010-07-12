@@ -109,9 +109,10 @@
               =image_tag("infoicon.png")
               %span.classic
                 The more information you give, the easier it is for us to make our data accurate. We will never reveal an exact street address online. Can you tell us the city or town, the name of the area, the street name if you know, and finally the postcode or part of the postcode, if are unsure of the area, click our map button and use the pointer to tell us where it happened.                
-          %a{:id=>'gmap', :href=>'#addresslookup',:title=>"fintitonmap"}
-            Find it on map 
-            =image_tag("findmapicon.png")
+          %p 
+            Find it on map
+            %a{:id=>'gmap', :href=>'#addresslookup',:title=>"fintitonmap"}
+              =image_tag("findmapicon.png")
           %table
             %tr.field 
               %td=a.label(:country, "Country")
@@ -137,26 +138,34 @@
               %td=a.text_field :postcode
       
       .step#third
-        %h3 Questions
+        %h3 Going into a little more detail
+        %ul#questionstracker
+          %li#l1 First contact
+          %li#l2 Police Actions
+          %li#l3 Follow Up
+          %li#l4 Treatment by staff
+          %li#l5 overall experience
+        %a{:id=>"backbt",:class=>"hide"}back
+        %a{:id=>"nextbt"}next
         =fields_for :storydata do |s|
-          %fieldset
-            %legend First Contact - Making contact with police
-            %table
+          %fieldset#q1
+            %legend 
+            %table.textleft
               %tr.field#q11
                 %td
-                  =s.label "Did you make contact with police"
+                  =s.label "1. Did you make contact with police"
                   =s.radio_button 'contact', true
                   =s.label 'contact_true','Yes'
                   =s.radio_button 'contact', false
                   =s.label 'contact_false','No'
               %tr.field.hide#q12
                 %td
-                  =s.label :contactway,"How did you contact the police?"
+                  =s.label :contactway,"2.How did you contact the police?"
                   =s.select(:contactway, options_for_select(@contactways))
                   
               %tr.hide#q13
                 %td
-                  =s.label :easeofcontactingrating, "Were you satisfied or dissatisfied with the ease of contacting someone who could assist you?"
+                  =s.label :easeofcontactingrating, "3.Were you satisfied or dissatisfied with the ease of contacting someone who could assist you?"
                   %span#easeofcontactingratingvalue.orange  Neither satisfied nor dissatisfied
                   =s.text_field(:easeofcontactingrating,:class=>"hide")
                   #easeofcontactingratingbar
@@ -166,12 +175,12 @@
                
               %tr.hide#q14
                 %td
-                  =s.label :afterreport,"After the detail were reported. how was the incident dealt with?"
+                  =s.label :afterreport,"4.After the detail were reported. how was the incident dealt with?"
                   =s.select(:afterreport,options_for_select(@afterreport))
                 
               %tr.hide#q15
                 %td
-                  =s.label :isreport,"Were you told when you reported the crime how long it would be before someone would attend?"
+                  =s.label :isreport,"5.Were you told when you reported the crime how long it would be before someone would attend?"
                   =s.radio_button 'isreport', true
                   =s.label 'isreport_true','Yes'
                   =s.radio_button 'isreport', false
@@ -179,17 +188,17 @@
 
               %tr.hide#q16
                 %td
-                  =s.label :howlongarrivetold, "How long were you told it would take for an officer or other member of police staff to arrive?"
+                  =s.label :howlongarrivetold, "6.How long were you told it would take for an officer or other member of police staff to arrive?"
                   =s.select(:howlongarrivetold, options_for_select(@howlongarrivetold))
 
               %tr.hide#q17
                 %td
-                  =s.label :howlongarrive, "How long did it take for them to arrive?"
+                  =s.label :howlongarrive, "7.How long did it take for them to arrive?"
                   =s.select(:howlongarrive, options_for_select(@howlongarrive))
 
               %tr.hide#q18
                 %td
-                  =s.label :arriverating,"How satisfied or dissatisfied were you with the time it took for the police to arrive?"
+                  =s.label :arriverating,"8.How satisfied or dissatisfied were you with the time it took for the police to arrive?"
                   %span#arriveratingvalue.orange Neither satisfied nor dissatisfied
                   =s.text_field('arriverating',:class=>"hide")         
                   #arriveratingbar
@@ -201,7 +210,7 @@
           %fieldset.hide#q2
             %legend Police Actions to deal with the incident
             %p Please think about the actions taken by the police officers and staff who dealt with your incident, did they;
-            %table
+            %table.textleft
               %tr
                 %td
                 %td Yes
@@ -248,7 +257,7 @@
                   =s.radio_button 'contactdetail', 3
                 %td
                   =s.radio_button 'contactdetail', 4
-            %table
+            %table.textleft
               %tr
                 %td
                   =s.label :actionrating, "Were you satisfied or dissatisfied with the ease of contacting someone who could asset you?"
@@ -264,7 +273,7 @@
           %fieldset.hide#q3
             %legend Follow Up - Being kept informed
         
-            %table
+            %table.textleft
               %tr
                 %td
                   Have had any contact with the police about thisincident since your report and the initial police response? (Thos contact could have been over the phone, face-to-face, by letter or by other means)
@@ -334,7 +343,7 @@
           %fieldset.hide#q4
             %legend Treament by police staff
             %p Please think about how you were treated by the police officers and other staff who dealt with you. If more than one person was involved, please give an overall impression of how you were treated. Did they:
-            %table
+            %table.textleft
               %tr
                 %td
                 %td Yes
@@ -411,7 +420,7 @@
                   =s.radio_button 'discourage', 3
                 %td
                   =s.radio_button 'discourage', 4
-            %table
+            %table.textleft
               %tr
                 %td
                   =s.label :treatmentrating, "Are you satisfied or dissatisfied with the way you were treated by the police officers and staff who dealt with you?"
@@ -424,7 +433,7 @@
           
           %fieldset.hide#q5
             %legend The whole experience - overall service
-            %table
+            %table.textleft
               %tr
                 %td
                   =s.label :wholerating, "Taking the whole experience into account, are you satisfied or dissatisfied with the service provide by the police in this case?"
@@ -444,7 +453,7 @@
         %p
           =f.label(:body,"We want you to tell us your story. Tell us the details - how did you feel? what happened? No swear words or names please. ")
           %a.tooltip{:href=>"#"}
-            Example
+            =image_tag("infoicon.png")
             %span.classic
               PUBLIC 
               %br/
@@ -461,7 +470,6 @@
               Just because we aren't wearing silly high glo coats and in marked Police cars, it doesn't mean we aren't there. What you also have to bear in mind is that we are patrolling the streets whilst you are sleeping."
               
         %p
-          You have already typed
           %span#charCount
           charatcers(
           %a.tooltip{:href=>"#"}
@@ -471,7 +479,7 @@
               A character is a written symbol, a letter,  that is used to represent speech; "the Greek alphabet has 24 characters
           ). More than 140 characters would be great.
             
-          =f.text_area :body
+        =f.text_area :body
         %p
           =f.label(:suggestion, "We would like you to tell us how the service you experienced could be improved.")
           %a.tooltip{:href=>"#"}

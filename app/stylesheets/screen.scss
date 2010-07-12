@@ -343,6 +343,12 @@ a.purplelink:visited{
           text-align:right;
           }
         }
+      table.textleft{
+        tr,td, caption{
+          text-align:left;
+          }
+        
+        }
 
     ul{
       margin:0; 
@@ -364,6 +370,21 @@ a.purplelink:visited{
        margin:0 25px; 
       }
   }
+  
+  ul#questionstracker{
+     margin:10px auto;
+     border-top:1px solid #CCCCCC;
+     border-bottom:1px solid #CCCCCC;
+     li{
+       width:105px;
+       padding:10px;
+       text-align:center;
+       color:#CCCCCC;    
+       }
+      .active{
+         color:#4D4D4D;
+         }
+    }
   #gmap img{
     vertical-align:middle;
     }
