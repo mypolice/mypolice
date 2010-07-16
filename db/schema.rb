@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100705142715) do
+ActiveRecord::Schema.define(:version => 20100715102852) do
 
   create_table "addresses", :force => true do |t|
     t.text "address_line1"
@@ -84,17 +84,12 @@ ActiveRecord::Schema.define(:version => 20100705142715) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.boolean  "approved",        :default => false
+    t.boolean  "approved",     :default => false
     t.integer  "category_id"
     t.text     "suggestion"
-    t.integer  "who_id"
     t.integer  "address_id"
-    t.date     "happened_on_day"
     t.integer  "storydata_id"
   end
-
-  add_index "posts", ["address_id"], :name => "index_posts_on_address_id"
-  add_index "posts", ["storydata_id"], :name => "index_posts_on_storydata_id"
 
   create_table "responses", :force => true do |t|
     t.integer  "post_id"
@@ -147,7 +142,10 @@ ActiveRecord::Schema.define(:version => 20100705142715) do
     t.date     "happened_on_month"
     t.date     "happened_on_day"
     t.string   "crimenumber"
+    t.integer  "who_id"
   end
+
+  add_index "storydatas", ["who_id"], :name => "index_storydatas_on_who_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

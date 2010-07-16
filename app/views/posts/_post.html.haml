@@ -15,6 +15,9 @@
       %h3 Suggestion
       =simple_format sanitize(post.suggestion[0,100])
     
+    .ratingbar
+      -if post.storydata && post.storydata.wholerating
+        =image_tag("ratingbar"<<post.storydata.wholerating.to_s<<".png")
     .postrelated
       Posted by
       %strong

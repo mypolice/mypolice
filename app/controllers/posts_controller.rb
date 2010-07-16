@@ -19,6 +19,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
+    @gender ={1=>"female",2=>"male"} 
+    @age ={1=>"16-24 years",2=>"25-34 years", 3=>"35-44 years", 4=>"45-54 years", 5=>"55-64 years", 6=>"65-74 years", 7=>"75 years or over"}
     @post = Post.approved.find(params[:id])
     respond_with(@post)
   end

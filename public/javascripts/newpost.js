@@ -2,11 +2,6 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(document).ready(function(){
-    // add postcode validation
-    $.validator.addMethod("postcode",
-        function(value,element){
-      return this.optional(element)||/^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$/i.test(value);},
-      "Please enter valid postcode");
     //initial the process bar
     $("#complete").addClass("first");
     //update the process bar
@@ -16,15 +11,27 @@ $(document).ready(function(){
       $("#complete").removeClass();
       $("#complete").addClass(fields[length-1]); 
      }
+     navigationbutton();
+     confirmpage();
     }
 
+    function confirmpage(){
+      $("#confirm-title").html($("#post_title").val());
+      $("#confirm-story").html($("#post_body").val());
+      $("#confirm-suggestion").html($("#post_suggestion").val());
+      $("#confirm-storydetail").html("<p>"+$("#post_who_id").val()+" is "+$("#storydata_gender").val()+" aged "+$("#storydata_age").val()+"</p>");
+      $("#confirm-storywhere").html("<p>"+$("#address_address_line1").val()+" "+$("#address_address_line2").val()+" "+$("#address_city").val()+" "+$("#address_county").val()+" "+$("#address_postcode").val()+"</p>");
+      $("#confirm-storytag").html("<p>"+$("#post_tag_list").val()+"</p>");
+      $("#confirm-storyrating").html("<img src='/images/ratingbar"+$('#storydata_wholerating').val()+".png' alt='rating'");
+    }
 
     //formwizard configure
     $("#new_post").formwizard({
-      historyEnabled:true,
+      historyEnabled:false,
       formPluginEnabled:true,
       validationEnabled:true,
       focusFirstInput:true,
+      inAnimation:"slideDown",
       afterNext:function(wizardData){
         updateSteps(wizardData.activatedSteps);
         if($("#new_post").formwizard("state").isLastStep){
@@ -40,19 +47,9 @@ $(document).ready(function(){
       },
       {
         rules:{
-                /*"post[title]":{
-                      required:true,
-                      minlength: 4,
-                      maxlength:100
-                      },*/
                 "post[body]":{
                       required:true,
                       minlength:140
-
-                //},
-              //  "address[postcode]":{
-                  //    required:true,
-                    //  postcode:true
                 }
            },
         messages:{
@@ -60,12 +57,9 @@ $(document).ready(function(){
                  "post[title]":"4-140 characters would be great"
                  },
           errorElement:"div",
-          //wrapper:"div",
-          //errorLabelContainer: ".message",
         errorPlacement: function(error, element) {
                 offset=element.offset();
                 error.insertBefore(element);
-                //error.addClass('message');
                 error.css('position','absolute');
                 error.css('left',offset.left+element.outerWidth());
                 error.css('top',offset.top);
@@ -76,7 +70,6 @@ $(document).ready(function(){
               updateSteps([]);
               $("#formcontent").empty();
               $("#formcontent").append("<h2> Thanks! Your Story is now being moderated and should appear on the site shortly. In the meantime, explore the other <a href='/posts'>Stories</a> on MyPolice</h2>");
-
                 },
         resetForm:true
       }
@@ -87,7 +80,7 @@ $(document).ready(function(){
       $("#date_happened_on_day").hide();
       $("#date_happened_on_year").change(function(){
           if ($(this).val()){
-            $("#date_happened_on_month").show();}
+            $("#date_happened_on_month").slideDown("slow");}
           else{
             $("#date_happened_on_month").hide();
             $("#date_happened_on_day").hide();
@@ -95,7 +88,7 @@ $(document).ready(function(){
           });
       $("#date_happened_on_month").change(function(){
           if($(this).val()){
-            $("#date_happened_on_day").show();
+            $("#date_happened_on_day").slideDown("slow");
           }
           else{
             $("#date_happened_on_day").hide();
@@ -165,7 +158,7 @@ var island="";
     marker.setMap(null); 
     var address = document.getElementById("address").value;
     if (geocoder) {
-      geocoder.geocode( { 'address': address}, function(results, status) {
+      geocoder.geocode({'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           map.setCenter(results[0].geometry.location);
               marker = new google.maps.Marker({
@@ -226,19 +219,6 @@ $("a#gmap").fancybox({
     'height':600,
     'autoDimensions':true
     });
-//Address form display
-/*
-$("#address_county").change(function(){
-  $("#address_city").parent().parent().removeClass("hide"); 
-});
-$("#address_city").change(function(){
-  $("#address_address_line2").parent().parent().removeClass("hide"); 
-});
-$("#address_address_line2").change(function(){
-  $("#address_address_line1").parent().parent().removeClass("hide"); 
-});
-
-*/
 //character count
 function charactercount(){
    var charLength=$('#post_body').val().length;
@@ -273,7 +253,6 @@ var cache = {};
         dataType:"json",
         data: request,
         success:function(data){
-          
         response($.map(data,function(item){
             return {
               label:item.name,
@@ -284,15 +263,6 @@ var cache = {};
           }
         })
       },
-      /*
-      source:function(request,response){
-        $.getJSON(
-          '/tags.json',{term:extractLast(request.term)},response($.map(data,function(item){
-              alert(item.name);
-              return value:item.name
-              }))
-          );
-      },*/
 			focus: function() {
 				// prevent value inserted on focus
 				return false;
@@ -358,29 +328,28 @@ var cache = {};
             
     function contactcheck(){
        if ($('input:radio[name=storydata[contact]]:checked').val()=="true"){
-        $("#q12, #q13,#q14,#q15").removeClass('hide');
+        $("#q12, #q13,#q14,#q15").slideDown("slow");
        }
        else{
-        $("#q12, #q13,#q14,#q15,#q16,#q17,#q18").addClass('hide');
+        $("#q12, #q13,#q14,#q15,#q16,#q17,#q18,#q2,#q3,#q4,#q5").slideUp("slow");
        }
     }
 
     function isreport(){
       if ($('input:radio[name=storydata[isreport]]:checked').val()=="true")
       {
-        $("#q16,#q17,#q18").removeClass('hide');
+        $("#q16,#q17,#q18").slideDown("slow");
       }else
       {
-        $("#q16,#q17,#q18").addClass('hide');
+        $("#q16,#q17,#q18").slideUp("slow");
       }
     }
-
     function anycontact(){
      if ($('input:radio[name=storydata[anycontact]]:checked').val()=="true"){
-                  $(".q31").removeClass('hide');
+                  $(".q31").slideDown("slow");
                 }
                 else{
-                 $(".q31").addClass('hide');
+                 $(".q31").slideUp("slow");
                 }
     
     }
@@ -388,8 +357,8 @@ var cache = {};
     function nextpage(){
         var current = parseInt(current_question[current_question.length-1]);
         var step = current+1;
-        $("#q"+current).addClass("hide");
-        $("#q"+step).removeClass("hide");
+        $("#q"+current).hide();
+        $("#q"+step).slideDown("slow");
         current_question.push(step);
         navigationbutton();
     }
@@ -397,8 +366,8 @@ var cache = {};
       function backpage(){
         var current = parseInt(current_question[current_question.length-1]);
         var backstep = current-1;
-        $("#q"+current).addClass("hide");
-        $("#q"+backstep).removeClass("hide");
+        $("#q"+current).hide();
+        $("#q"+backstep).slideDown("slow");
         current_question.pop();
         navigationbutton();
     }
@@ -412,16 +381,28 @@ var cache = {};
         $("#l"+i).removeClass("active");
        }
       } 
+
+      if ($("#new_post").formwizard("state").currentStep=="third"){
       if(current_question.length>1){
         $("#backbt").removeClass("hide");
+        $("#back").addClass("hide");
         }else{
         $("#backbt").addClass("hide");
+        $("#back").removeClass("hide");
         }
       if(current_question.length>4){
+
         $("#nextbt").addClass("hide");
+        $("#next").removeClass("hide");
       }
       else{
         $("#nextbt").removeClass("hide");
+        $("#next").addClass("hide");
+      }
+      }
+      else{
+       $("#next").removeClass("hide");
+        $("#back").removeClass("hide");
       }
     }
 

@@ -1,5 +1,5 @@
 -title @post.title.titlecase
-
+= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false&region=GB&language=en-GB","application"
 /=link_to "Back to All @posts", @posts_path
 #content
   #head
@@ -10,8 +10,9 @@
       %h3
         =link_to_unless_current @post.title.titlecase, @post
       =simple_format sanitize(@post.body)
-      %h3 Suggestion
-      =simple_format sanitize(@post.suggestion)
+      -if @post.suggestion
+        %h3 Suggestion
+        =simple_format sanitize(@post.suggestion)
       .postrelated
         posted by 
         =@post.user.nil? ? "anonymous" : @post.user.email
@@ -55,10 +56,12 @@
 
 
 =content_for :sidebar do
-  %a{:title=>"Tell us your story",:href=>tellusyourstory_path}
-    %img{:title=>"Tell us your story",:class=>"submitbutton", :alt=>"Tell us your story", :src=>"/images/tellusstorybuton.png"}
-
-  #storydetail.sideblock
+  -if @post.storydata && @post.storydata.wholerating
+    #rating.sideblock
+      .sidecontent
+        =image_tag("ratingbar"<<@post.storydata.wholerating.to_s<<".png")
+ 
+  #storydetail.sideblock 
     %h3
       Story details
     .sidecontent
@@ -67,21 +70,30 @@
           Crime type:
           =@post.category.name
         %li
-          when it happened
+          when it happened:
+          =@post.storydata.happened_on_day if @post.storydata.happened_on_day>0
+          =@post.storydata.happened_on_month if @post.storydata.happened_on_month>0
+          =@post.storydata.happened_on_year if @post.storydata.happened_on_year>0
         %li
-          it happened to: 
+          it happened to:
+          =@post.storydata.who.name if @post.storydata.who.name
+        
         %li
           They are
+          =@gender[@post.storydata.gender] if @post.storydata.gender
+          ="aged" << @age[@post.storydata.age].to_s if @post.storydata.age
   #map.sideblock
     %h3
       Where it took place
     .sidecontent
-      %img{:src=>"/images/map.png", :width=>"270px"}
+      -if @post.address.postcode
+        =hidden_field_tag 'postcode', @post.address.postcode
+        #where
   -if @post.tags.length>0
     #tags.sideblock
       %h3
         Tags
       .sidecontent
         -@post.tags.each do |tag|
-          =link_to tag.name, tag_path(tag)
-  
+          =link_to tag.name, tag_path(tag), :class=>"tag"
+ 

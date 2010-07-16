@@ -4,7 +4,9 @@ class Post < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :responses, :dependent => :destroy
   belongs_to :user
-  has_one :address
+  belongs_to :address
+  has_one :storydata
+  belongs_to :who
   belongs_to :category
   scope :approved, where(:approved=>true)
   scope :unapproved, where(:approved=>false)

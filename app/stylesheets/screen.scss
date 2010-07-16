@@ -41,6 +41,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner,select::-moz-focus-i
 p{
   font-family: Georgia;
   }*/
+
 //layout
 body{
 
@@ -134,7 +135,7 @@ a{
   width:200px;
   padding: 5px;
   color: $darkgrey;
-  background: $lightgrey;
+  background: #F2F2F2;
 }
 #submitbutton{
   background: $darkgrey;
@@ -171,13 +172,6 @@ a.purplelink{
   display:block;
   cursor:pointer;  
 }
-
-a.purplelink:active{
-  color:$white;
-  }
-a.purplelink:visited{
-  color:$white;
-  }
 
 //menu tabs
 .tabs {
@@ -300,6 +294,10 @@ a.purplelink:visited{
     margin:0 auto;
     @include blueprint-form;
     @include blueprint-form-borders($unfocused_border_color,$focused_border_color,$fieldset_border_color);
+    fieldset{
+      margin:0;
+      padding:10px;
+      }
     vertical-align:middle;
     h2{
       margin:76px 0;
@@ -339,21 +337,28 @@ a.purplelink:visited{
         padding: 0 0 0 30px;
     }
       table {
+        margin:0;
         tr, td, caption{
           text-align:right;
+          padding:4px;
           }
         }
       table.textleft{
         tr,td, caption{
           text-align:left;
+          
           }
         
         }
-
+     ul.confirm{
+  li{
+    float:none;
+    }
+  }
     ul{
       margin:0; 
       padding:0;
-      height:35px;
+      overflow:hidden;
       li{
          @include inline-list;
         float:left;
@@ -364,15 +369,29 @@ a.purplelink:visited{
   }
   .orange{
     color:#F6931F;
+    display:block;
+    width:100%;
+    text-align:center;
+    margin-top:10px;
     }
   
       .ui-widget-content{
-       margin:0 25px; 
+       margin:0px auto -30px; 
+       background:url("/images/ratingbarbg.png") no-repeat;
+       height:29px;
+       border:none;
+       width:445px;
       }
+
+      .ui-slider-handle{
+        margin-top:10px;
+        }
   }
   
+ 
+  
   ul#questionstracker{
-     margin:10px auto;
+     margin:0 auto;
      border-top:1px solid #CCCCCC;
      border-bottom:1px solid #CCCCCC;
      li{
@@ -382,14 +401,44 @@ a.purplelink:visited{
        color:#CCCCCC;    
        }
       .active{
-         color:#4D4D4D;
+         color:#EC2B8C;
          }
+    }
+
+    ol{
+      li{
+        margin:15px 0;
+        
+        }
+      }
+  #backbt{
+    background:url("/images/resetbutton.png") no-repeat;
+    padding:7px 30px 0 0;
+    text-align:right;
+    text-decoration:none;
+    float:left;
+   }
+  #nextbt{
+    background:url("/images/nextbutton.png") no-repeat;
+    padding:7px 0 0 30px;
+    text-align:left;
+    text-decoration:none;
+    float:right;
+    }
+  .navibt{
+    width:97px;
+    height:29px;
+    text-decoration:none;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+    font-family:Arial;
+    display:block;
     }
   #gmap img{
     vertical-align:middle;
     }
 }
-
 
 .error{
 background-color:#F3E6E6;
@@ -413,7 +462,7 @@ label.error{
 }
 #head{
  background:#666;
- margin:0 10px;
+ margin:0 30px;
  padding:10px;
  color:#e6e6e6;
  h2{
@@ -424,10 +473,10 @@ label.error{
 #posts{
   background:$white;
   @include border-radius(5px);
-  padding:10px;
+  padding:10px 30px;
  overflow:hidden;
   
-  .post, .response, .comment{
+  .post, .response, .commentquestionstracker{
     margin: 0 0 40px 0;
     }
 
@@ -445,9 +494,14 @@ label.error{
     float:right;
     margin: -12px 54px 0 0;
     }
-
+  .ratingbar{
+    float:left;
+    width: 236px;
+    }
   .postrelated{
     text-align:right;
+    float:right;
+    width:280px;
     }
   #sharethis_0{
     float:right;
@@ -638,8 +692,16 @@ a.nivo-prevNav {
       padding:10px;
       background:$white;
       @include border-bottom-radius(10px); 
+      overflow:hidden;
       }
-    }
+  }
+  #rating {
+      .sidecontent{
+       text-align:center;
+        @include border-bottom-radius(0px); 
+      }
+  }
+
   #latestresponses{
     p{
       padding: 10px;
@@ -648,14 +710,23 @@ a.nivo-prevNav {
     }
   }
   #tags, #map{
-    a{
+    a.tag{
+      display:block;
+      background:$lightgrey;
       padding:5px;
+      float:left;
+      margin:5px;
       }
-    .css1{font-size:1em;}
-    .css2{font-size:1.2em;}
-    .css3{font-size:1.4em;}
-    .css4{font-size:1.6em;}
+    .css1{font-size:1em; padding:5px;}
+    .css2{font-size:1.2em; padding:5px;}
+    .css3{font-size:1.4em; padding:5px;}
+    .css4{font-size:1.6em; padding:5px}
   }
+
+  #where{
+    width:270px;
+    height:220px;
+    }
 }
 
 //login

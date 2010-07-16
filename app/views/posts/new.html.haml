@@ -13,18 +13,3 @@
 =render :partial=>"form"
 = javascript_include_tag "newpost"
 = javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false&region=GB&language=en-GB"
--#begin
-  #newpost
-  #back_button
-    %a{:title=>"back", :href=>new_post_path,:class=>"leftarrow"}
-      Back
-    
-  #formcontent  
-    =form_for(@post) do |f|
-      = render "shared/error_message", :target => [@post, @address]
-      = hidden_field_tag "current_step", "#{@current_step}" 
-      = render :partial=>"#{@current_step}", :locals => {:f =>f} 
-  
-  #next_button
-    %a{:title=>"next", :href=>"#", :id=>"next", :class=>"rightarrow" } Next
--#end

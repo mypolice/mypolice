@@ -1,4 +1,5 @@
 class Address < ActiveRecord::Base
+  has_many :post
 =begin
   validates :address_line1, :presence=>true
   validates :city, :presence=>true
