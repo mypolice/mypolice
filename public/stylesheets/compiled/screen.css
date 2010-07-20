@@ -1776,7 +1776,7 @@ label.error {
 /* line 681, ../../../app/stylesheets/screen.scss */
 #sidebar h3 {
   margin: 0;
-  background: url(/images/findmapicon.png) 10px 10px no-repeat #666666;
+  background: url("/images/findmapicon.png") 10px 10px no-repeat #666666;
   padding: 10px;
   text-align: center;
   color: #E6E6E6;
